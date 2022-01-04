@@ -1,5 +1,4 @@
-public class Dealer extends Player{
-    public Dealer(String name, int ID) {
-        super(name, ID);
-    }
+public class Dealer extends CardHolder {
+
+    Dealer(String name) {super(name);}
 }
