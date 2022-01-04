@@ -9,4 +9,6 @@ public class Card {
     public String getSuit() {
         return suit;
     }
+
+    public String getSymbol() { return symbol; }
 }
