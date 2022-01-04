@@ -11,7 +11,9 @@ public class Player extends CardHolder {
         // TO DO
     }
 
-    public String getName(){
-        return this.name;
+    public int getMoney(){
+        return money;
     }
+
+    public void setMoney(int newMoney) {money = newMoney;}
 }
