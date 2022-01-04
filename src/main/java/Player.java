@@ -1,21 +1,19 @@
-public class Player {
-    public int ID = 0;
-    public String name;
+public class Player extends CardHolder {
 
-    public Player(String name, int ID){
-        this.name = name;
-        this.ID = ID;
+    private int money;
+
+    public Player(String name, int money){
+        super(name);
+        this.money = money;
     }
 
     public void play(){
         // TO DO
     }
 
-    public int getID(){
-        return this.ID;
+    public int getMoney(){
+        return money;
     }
 
-    public String getName(){
-        return this.name;
-    }
+    public void setMoney(int newMoney) {money = newMoney;}
 }
