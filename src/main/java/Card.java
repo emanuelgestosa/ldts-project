@@ -1,16 +1,12 @@
 public class Card {
-    private String naipe;
-    private String symbol;
-    public Card(String naipe, String symbol){
-        this.naipe = naipe;
+    private final String suit;
+    private final String symbol;
+    public Card(String suit, String symbol){
+        this.suit = suit;
         this.symbol = symbol;
     }
 
-    public String getNaipe() {
-        return naipe;
-    }
-
-    public void setNaipe(String naipe) {
-        this.naipe = naipe;
+    public String getSuit() {
+        return suit;
     }
 }
