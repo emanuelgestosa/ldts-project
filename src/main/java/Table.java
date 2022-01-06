@@ -39,6 +39,8 @@ public class Table {
         //TODO
     }
     public void drawGame(Dealer dealer, Player player){
+        if (dealer.getHand().getCards().size() ==1)
+            System.out.print("##" + "  ");
         for(Card card : dealer.getHand().getCards()){
             System.out.print(card.getSuit() + card.getSymbol() + "  ");
         }
