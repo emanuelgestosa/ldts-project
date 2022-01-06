@@ -21,7 +21,7 @@ public class LanternaGUI implements GUI{
     }
 
     @Override
-    public void close() {
-
+    public void close() throws IOException {
+        screen.close();
     }
 }

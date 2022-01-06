@@ -1,4 +1,6 @@
+import java.io.IOException;
+
 public interface GUI {
 
-    void close();
+    void close() throws IOException;
 }
