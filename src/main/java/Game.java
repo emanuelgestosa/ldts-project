@@ -25,7 +25,8 @@ public class Game {
             }
             else if (key == 1) break;
         }
-        // TODO
-        System.out.println("Start game");
+        gui.clear();
+        table.draw(gui);
+        gui.refresh();
     }
 }
