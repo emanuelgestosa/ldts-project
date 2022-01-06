@@ -1,6 +1,7 @@
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Table {
@@ -9,7 +10,7 @@ public class Table {
     private Dealer dealer;
 
     //Methods----------------------------------------------------------------Constructor, Getters, Setters
-    Table(String playerName, int money, int deckNum){
+    public Table(String playerName, int money, int deckNum){
         deck = new Deck(deckNum);
         player = new Player(playerName, money);
         dealer = new Dealer();
@@ -97,5 +98,10 @@ public class Table {
         if (player.getMoney() > player.getInitialMoney())
             return true;
         return false;
+    }
+
+    public void draw(GUI gui) throws IOException {
+        gui.drawTable();
+        // TODO
     }
 }
