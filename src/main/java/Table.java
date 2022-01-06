@@ -9,9 +9,9 @@ public class Table {
     private Dealer dealer;
 
     //Methods----------------------------------------------------------------Constructor, Getters, Setters
-    Table(String playerName, int money, int deckNum, int bet){
+    Table(String playerName, int money, int deckNum){
         deck = new Deck(deckNum);
-        player = new Player(playerName, money, bet);
+        player = new Player(playerName, money);
         dealer = new Dealer();
     }
     public boolean play(){
@@ -71,7 +71,7 @@ public class Table {
 
     private void double_down(Player player) {
         if(player.hand.getCards().size() == 2){
-            player.setBet(player.getBet()*2);
+            // player.setBet(player.getBet()*2);
             deck.GiveCardTo(player);
         }
     }
