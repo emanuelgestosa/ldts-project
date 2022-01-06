@@ -26,6 +26,13 @@ public class LanternaGUI implements GUI{
     }
 
     @Override
+    public void drawMenu() throws IOException {
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.putString(0, 0, "(S)tart");
+        graphics.putString(0, 1, "(Q)uit");
+    }
+
+    @Override
     public void drawTable() throws IOException {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));

@@ -1,11 +1,10 @@
-
-
+import java.io.IOException;
 
 public class Menu {
     Menu() {
     }
-    public void run(){
-        Table game = new Table("", 100, 2);
-        boolean PlayerWon = game.play();
+
+    public static void draw(GUI gui) throws IOException {
+        gui.drawMenu();
     }
 }

@@ -14,13 +14,9 @@ public class Game {
         table = new Table("Domingos", 50, 10);
     }
 
-    private void draw() throws IOException {
-        gui.clear();
-        table.draw(gui);
-        gui.refresh();
-    }
-
     public void run() throws IOException {
-        draw();
+        gui.clear();
+        menu.draw(gui);
+        gui.refresh();
     }
 }
