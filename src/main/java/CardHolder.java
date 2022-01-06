@@ -1,8 +1,11 @@
 public abstract class CardHolder {
+    protected Hand hand;
 
-    protected final String name;
-
-    CardHolder(String name) {this.name = name;}
-
-    public String getName() {return name;}
+    CardHolder() {
+        hand = new Hand();
+    }
+    public Hand getHand(){
+        return hand;
+    }
 }
+
