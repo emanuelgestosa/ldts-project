@@ -1,6 +1,4 @@
 import java.io.IOException;
-import java.security.PublicKey;
-import java.util.ArrayList;
 
 public class Game {
 
@@ -15,8 +13,19 @@ public class Game {
     }
 
     public void run() throws IOException {
-        gui.clear();
-        menu.draw(gui);
-        gui.refresh();
+        while(true) {
+            gui.clear();
+            menu.draw(gui);
+            gui.refresh();
+
+            int key = menu.proccessKey(gui.getKey());
+            if (key == -1) {
+                gui.close();
+                return;
+            }
+            else if (key == 1) break;
+        }
+        // TODO
+        System.out.println("Start game");
     }
 }

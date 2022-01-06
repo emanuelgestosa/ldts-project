@@ -1,6 +1,10 @@
+import com.googlecode.lanterna.input.KeyStroke;
+
 import java.io.IOException;
 
 public interface GUI {
+
+    public KeyStroke getKey() throws IOException;
 
     void drawMenu() throws IOException;
 
