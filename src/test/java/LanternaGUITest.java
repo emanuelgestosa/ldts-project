@@ -26,6 +26,12 @@ public class LanternaGUITest {
     }
 
     @Test
+    public void getKey() throws IOException {
+        gui.getKey();
+        Mockito.verify(screen, Mockito.times(1)).readInput();
+    }
+
+    @Test
     public void drawMenu() throws IOException {
         gui.drawMenu();
         Mockito.verify(graphics, Mockito.times(1)).putString(0, 0, "(S)tart");
