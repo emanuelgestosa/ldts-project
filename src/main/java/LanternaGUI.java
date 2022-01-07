@@ -25,6 +25,17 @@ public class LanternaGUI implements GUI{
         }
     }
 
+    public LanternaGUI(Screen screen) throws IOException {
+        try {
+            terminal = new DefaultTerminalFactory().createTerminal();
+            this.screen = screen;
+            screen.startScreen();
+            screen.doResizeIfNecessary();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     @Override
     public KeyStroke getKey() throws IOException {
         return screen.readInput();

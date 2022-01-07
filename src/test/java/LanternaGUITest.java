@@ -12,23 +12,21 @@ public class LanternaGUITest {
 
     private LanternaGUI gui;
     private Screen screen;
-    private Terminal terminal;
     private TextGraphics graphics;
 
     @BeforeEach
     private void helper() throws IOException {
-        gui = new LanternaGUI();
         screen = Mockito.mock(Screen.class);
-        terminal = Mockito.mock(Terminal.class);
         graphics = Mockito.mock(TextGraphics.class);
+        Mockito.when(screen.newTextGraphics()).thenReturn(graphics);
+        gui = new LanternaGUI(screen);
     }
 
     @Test
     public void drawMenu() throws IOException {
-        boolean expected = true;
         gui.drawMenu();
         Mockito.verify(graphics, Mockito.times(1)).putString(0, 0, "(S)tart");
-        Mockito.verify(graphics, Mockito.times(1)).putString(0, 0, "(Q)uit");
+        Mockito.verify(graphics, Mockito.times(1)).putString(0, 1, "(Q)uit");
     }
 
 }
