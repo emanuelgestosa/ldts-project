@@ -56,6 +56,11 @@ public class LanternaGUI implements GUI{
     }
 
     @Override
+    public void drawHand(CardHolder holder) throws IOException {
+
+    }
+
+    @Override
     public void refresh() throws IOException {
         screen.refresh();
     }

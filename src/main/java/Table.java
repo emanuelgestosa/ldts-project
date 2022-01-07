@@ -31,12 +31,9 @@ public class Table {
         deck.GiveCardTo(dealer);
         deck.GiveCardTo(player);
         deck.GiveCardTo(player);
-        drawGame(dealer, player); //Draws cards on the screen
         player.turn(deck, dealer.getHand()); //Takes the player's turn
         deck.GiveCardTo(dealer);
-        drawGame(dealer, player);
         dealer.turn(deck); //Takes the dealer's turn
-        drawGame(dealer, player);
         prepareForNewRound(); //Calculates who won, removes/adds money to player, empties hands
     }
 
@@ -83,17 +80,6 @@ public class Table {
     private void prepareForNewRound(){
         //TODO
     }
-    public void drawGame(Dealer dealer, Player player){
-        if (dealer.getHand().getCards().size() ==1)
-            System.out.print("##" + "  ");
-        for(Card card : dealer.getHand().getCards()){
-            System.out.print(card.getSuit() + card.getSymbol() + "  ");
-        }
-        System.out.print("\n\n");
-        for(Card card : player.getHand().getCards()){
-            System.out.print(card.getSuit() + card.getSymbol() + "  ");
-        }
-    }
     public boolean playerWon(Player player){
         if (player.getMoney() > player.getInitialMoney())
             return true;
@@ -102,6 +88,7 @@ public class Table {
 
     public void draw(GUI gui) throws IOException {
         gui.drawTable();
-        // TODO
+        gui.drawHand(dealer);
+        gui.drawHand(player);
     }
 }

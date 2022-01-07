@@ -10,6 +10,8 @@ public interface GUI {
 
     void drawTable() throws IOException;
 
+    void drawHand(CardHolder holder) throws IOException;
+
     void refresh() throws IOException;
 
     void clear();

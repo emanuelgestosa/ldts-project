@@ -44,4 +44,13 @@ public class LanternaGUITest {
         Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
     }
 
+    @Test
+    public void drawHand() throws IOException {
+        Player player = new Player("", 100);
+        player.getHand().addCard(new Card("S", "A"));
+        gui.drawHand(player);
+        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#000000"));
+        Mockito.verify(graphics, Mockito.times(1)).putString(0, 0, "AS");
+    }
+
 }
