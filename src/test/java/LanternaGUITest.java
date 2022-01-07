@@ -1,3 +1,4 @@
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
@@ -12,12 +13,14 @@ public class LanternaGUITest {
 
     private LanternaGUI gui;
     private Screen screen;
+    private Terminal terminal;
     private TextGraphics graphics;
 
     @BeforeEach
     private void helper() throws IOException {
         screen = Mockito.mock(Screen.class);
         graphics = Mockito.mock(TextGraphics.class);
+        terminal = Mockito.mock(Terminal.class);
         Mockito.when(screen.newTextGraphics()).thenReturn(graphics);
         gui = new LanternaGUI(screen);
     }
@@ -27,6 +30,12 @@ public class LanternaGUITest {
         gui.drawMenu();
         Mockito.verify(graphics, Mockito.times(1)).putString(0, 0, "(S)tart");
         Mockito.verify(graphics, Mockito.times(1)).putString(0, 1, "(Q)uit");
+    }
+
+    @Test
+    public void drawTable() throws IOException {
+        gui.drawTable();
+        Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
     }
 
 }
