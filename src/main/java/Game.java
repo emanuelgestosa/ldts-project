@@ -6,10 +6,17 @@ public class Game {
     private Menu menu;
     private final LanternaGUI gui;
 
-    public Game() throws IOException {
+    private static Game instance = null;
+
+    private Game() throws IOException {
         gui = new LanternaGUI();
         menu = new Menu();
         table = new Table("Domingos", 50, 10);
+    }
+
+    public static Game getInstance() throws IOException {
+        if (instance == null) instance = new Game();
+        return instance;
     }
 
     public void run() throws IOException {
@@ -29,5 +36,12 @@ public class Game {
         table.play();
         table.draw(gui);
         gui.refresh();
+    }
+}
+
+class GameEntryPoint {
+    public static void main(String[] args) throws IOException {
+        Game game = Game.getInstance();
+        game.run();
     }
 }
