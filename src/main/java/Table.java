@@ -34,9 +34,9 @@ public class Table {
         deck.GiveCardTo(player);
         deck.GiveCardTo(player);
         // player.turn(deck, dealer.getHand()); //Takes the player's turn
-        deck.GiveCardTo(dealer);
+        // deck.GiveCardTo(dealer);
         // dealer.turn(deck); //Takes the dealer's turn
-        prepareForNewRound(); //Calculates who won, removes/adds money to player, empties hands
+        // prepareForNewRound(); //Calculates who won, removes/adds money to player, empties hands
     }
 
 
