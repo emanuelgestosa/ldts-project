@@ -11,9 +11,9 @@ This project was developed by *Domingos Santos* (*up201906680*@fe.up.pt), *Emanu
 
 ### PLANNED FEATURES
   
-- **Turn** - The player will decide which startegy is the best, accordind to his cards. He can choose between *Split*, *Double*, *Stand* & *Hit*.
+- **Turn** - The player will decide which startegy is the best, according to his cards. He can choose between *Split*, *Double*, *Stand* & *Hit*.
 
-### DESIGN
+### GAME IS SHOULD ONLY BE INITIALIZED ONCE.
 
 - **Problem in Context.** 
   
@@ -38,8 +38,9 @@ By using the **Singleton** desgin pattern we ensure that:
 
 #### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
 
-**Long Method** - Game.run() - Currently this method has two different functionalities (running the menu and the game itself). These two should be separated into individual methods.
-**Long Class** - Table - This class does most of the heavy lifting for the flow of the game. As the code grows further we might need to extract some subclasses or interfaces to keep it from becoming more bloated.
+- **Long Method** - Game.run() - Currently this method has two different functionalities (running the menu and the game itself). These two should be separated into individual methods.
+
+- **Long Class** - Table - This class does most of the heavy lifting for the flow of the game. As the code grows further we might need to extract some subclasses or interfaces to keep it from becoming more bloated.
 
 ------
 
