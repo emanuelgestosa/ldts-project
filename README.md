@@ -25,7 +25,7 @@ We applied the **Singleton** design pattern. **Singleton** is a creational desig
   
 - **Implementation.** 
   
-![img](https://imgur.com/a/2jyeINi)
+![img](https://i.imgur.com/sHrW6m2.png)
   
 - **Consequences.** 
  
