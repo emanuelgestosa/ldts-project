@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="LanternaGUITest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-01-08T10:22:26" hostname="arch" time="1.535">
+<testsuite name="LanternaGUITest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-01-08T10:28:00" hostname="arch" time="1.551">
   <properties/>
-  <testcase name="getKey()" classname="LanternaGUITest" time="1.308"/>
-  <testcase name="drawHand()" classname="LanternaGUITest" time="0.119"/>
+  <testcase name="getKey()" classname="LanternaGUITest" time="1.328"/>
+  <testcase name="drawHand()" classname="LanternaGUITest" time="0.11"/>
   <testcase name="drawMenu()" classname="LanternaGUITest" time="0.074"/>
-  <testcase name="drawTable()" classname="LanternaGUITest" time="0.03"/>
+  <testcase name="drawTable()" classname="LanternaGUITest" time="0.033"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
