@@ -33,9 +33,13 @@ public class Game {
             else if (key == 1) break;
         }
         gui.clear();
-        table.play();
+        table.play(gui);
         table.draw(gui);
         gui.refresh();
+    }
+
+    public Table getTable() {
+        return table;
     }
 }
 

@@ -7,7 +7,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
+import javax.swing.*;
 import java.io.IOException;
+
+import static java.util.UUID.fromString;
 
 public class LanternaGUITest {
 
@@ -54,6 +57,17 @@ public class LanternaGUITest {
         Mockito.verify(graphics, Mockito.times(1)).putString(8, 0, "AS");
         Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#fc1111"));
         Mockito.verify(graphics, Mockito.times(1)).putString(11, 0, "TH");
+
+    }
+
+    @Test
+    public void Hit() throws IOException {
+        GUI guiMock = Mockito.mock(GUI.class);
+        Game game = Game.getInstance();
+        game.run();
+        char a = 'a';
+        //KeyStroke key = new KeyStroke(a, false, false, false);
+        //when(guiMock.getKey()).thenReturn(key);
 
     }
 

@@ -3,6 +3,7 @@ import com.googlecode.lanterna.input.KeyType;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Table {
     private Deck deck;
@@ -15,10 +16,10 @@ public class Table {
         player = new Player(playerName, money);
         dealer = new Dealer();
     }
-    public boolean play(){
+    public boolean play(GUI gui) throws IOException {
         deck.shuffle();
         while(!this.gameIsOver()){
-            this.round();
+            this.round(gui);
             // TEMPORARY
             break;
         }
@@ -29,19 +30,26 @@ public class Table {
             return true;
         return false;
     }
-    public void round(){
+    public void round(GUI gui) throws IOException {
         deck.GiveCardTo(dealer);
         deck.GiveCardTo(player);
         deck.GiveCardTo(player);
-        // player.turn(deck, dealer.getHand()); //Takes the player's turn
+        draw(gui);
+        turn(gui); //Takes the player's turn
         // deck.GiveCardTo(dealer);
         // dealer.turn(deck); //Takes the dealer's turn
         // prepareForNewRound(); //Calculates who won, removes/adds money to player, empties hands
     }
 
 
-    private void turn(KeyStroke key){
-        processKey(key);
+    private void turn(GUI gui) throws IOException {
+        while(player.getHand().getValue() < 21){
+            KeyStroke key = gui.getKey();
+            processKey(key);
+            draw(gui);
+            gui.refresh();
+        }
+
     }
 
     private int processKey(KeyStroke key) {
@@ -71,7 +79,7 @@ public class Table {
 
     private void double_down(Player player) {
         if(player.hand.getCards().size() == 2){
-            // player.setBet(player.getBet()*2);
+            //player.setBet(player.getBet()*2);
             deck.GiveCardTo(player);
         }
     }
@@ -92,5 +100,6 @@ public class Table {
         gui.drawTable();
         gui.drawHand(dealer);
         gui.drawHand(player);
+        gui.refresh();
     }
 }

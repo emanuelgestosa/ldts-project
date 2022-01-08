@@ -10,9 +10,6 @@ public class Player extends CardHolder{
         this.initialMoney = money;
     }
 
-    public void turn(Deck deck, Hand dealerHand){
-    }
-
     public int getMoney(){
         return money;
     }
