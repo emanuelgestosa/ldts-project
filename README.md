@@ -17,20 +17,22 @@ This project was developed by *Domingos Santos* (*up201906680*@fe.up.pt), *Emanu
 
 - **Problem in Context.** 
   
-// TODO
+We didn't have any mesures to stop several instances of Game to be running, which we definitly don't want to happen.
   
 - **The Pattern.** 
   
-// TODO
+We applied the **Singleton** design pattern. **Singleton** is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance.
   
 - **Implementation.** 
   
-// TODO
-- **Consequences.** 
+![img](https://imgur.com/a/2jyeINi)
   
-// TODO
-
-**Example of one of such subsections**:
+- **Consequences.** 
+ 
+By using the **Singleton** desgin pattern we ensure that:
+- The Game class has only a single instance.
+- We have a global access point to that instance.
+- The instance is initialized only when it's requested for the first time.
 
 ------
 
