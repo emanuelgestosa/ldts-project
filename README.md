@@ -1,6 +1,3 @@
-# ldts-project-assignment-g1501
-ldts-project-assignment-g1501 created by GitHub Classroom
-
 ## LPOO_<15><01> - <BLACKJACK>
 
 In this project you can simulate a BLACKJACK match, by making bets and playing with your cards and an interactive dealer.
