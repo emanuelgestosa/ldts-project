@@ -48,9 +48,13 @@ public class LanternaGUITest {
     public void drawHand() throws IOException {
         Player player = new Player("", 100);
         player.getHand().addCard(new Card("S", "A"));
+        player.getHand().addCard(new Card("H", "T"));
         gui.drawHand(player);
         Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#000000"));
-        Mockito.verify(graphics, Mockito.times(1)).putString(0, 0, "AS");
+        Mockito.verify(graphics, Mockito.times(1)).putString(8, 0, "AS");
+        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#fc1111"));
+        Mockito.verify(graphics, Mockito.times(1)).putString(11, 0, "TH");
+
     }
 
 }

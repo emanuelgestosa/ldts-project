@@ -26,6 +26,7 @@ public class Game {
             else if (key == 1) break;
         }
         gui.clear();
+        table.play();
         table.draw(gui);
         gui.refresh();
     }

@@ -19,6 +19,8 @@ public class Table {
         deck.shuffle();
         while(!this.gameIsOver()){
             this.round();
+            // TEMPORARY
+            break;
         }
         return playerWon(player);
     }
@@ -31,10 +33,10 @@ public class Table {
         deck.GiveCardTo(dealer);
         deck.GiveCardTo(player);
         deck.GiveCardTo(player);
-        player.turn(deck, dealer.getHand()); //Takes the player's turn
-        deck.GiveCardTo(dealer);
-        dealer.turn(deck); //Takes the dealer's turn
-        prepareForNewRound(); //Calculates who won, removes/adds money to player, empties hands
+        // player.turn(deck, dealer.getHand()); //Takes the player's turn
+        // deck.GiveCardTo(dealer);
+        // dealer.turn(deck); //Takes the dealer's turn
+        // prepareForNewRound(); //Calculates who won, removes/adds money to player, empties hands
     }
 
 
