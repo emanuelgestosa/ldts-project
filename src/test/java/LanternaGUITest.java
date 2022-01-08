@@ -50,7 +50,7 @@ public class LanternaGUITest {
         player.getHand().addCard(new Card("S", "A"));
         gui.drawHand(player);
         Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#000000"));
-        Mockito.verify(graphics, Mockito.times(1)).putString(0, 0, "AS");
+        Mockito.verify(graphics, Mockito.times(1)).putString(8, 0, "AS");
     }
 
 }

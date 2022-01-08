@@ -8,6 +8,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.input.KeyStroke;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Objects;
 
 public class LanternaGUI implements GUI{
@@ -59,14 +60,19 @@ public class LanternaGUI implements GUI{
     @Override
     public void drawHand(CardHolder holder) throws IOException {
         TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
         Hand hand = holder.getHand();
         int row;
-        if (holder.getClass() == Player.class) row = 0;
-        else row = 1;
-        for (Card card : hand.getCards()) {
+        String holderString;
+        if (holder.getClass().equals(Player.class)) {row = 0; holderString = "Player";}
+        else {row = 1; holderString = "Dealer";}
+        List<Card> cards = hand.getCards();
+        graphics.putString(0, row, holderString + ": ");
+        for (int i = 0; i < cards.size(); i++) {
+            Card card = cards.get(i);
             if (Objects.equals(card.getSuit(), "S") || Objects.equals(card.getSuit(), "C")) graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
             else graphics.setForegroundColor(TextColor.Factory.fromString("#fc1111"));
-            graphics.putString(row, 0, card.getSymbol() + card.getSuit());
+            graphics.putString(i * 3 + 8, row, card.getSymbol() + card.getSuit());
         }
     }
 
