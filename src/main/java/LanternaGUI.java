@@ -15,6 +15,7 @@ public class LanternaGUI implements GUI{
 
     private Screen screen;
     private Terminal terminal;
+    private TextGraphics graphics;
 
     public LanternaGUI() throws IOException {
         try {
@@ -25,6 +26,7 @@ public class LanternaGUI implements GUI{
         } catch (IOException e) {
             e.printStackTrace();
         }
+        graphics = screen.newTextGraphics();
     }
 
     public LanternaGUI(Screen screen) throws IOException {
@@ -36,6 +38,7 @@ public class LanternaGUI implements GUI{
         } catch (IOException e) {
             e.printStackTrace();
         }
+        graphics = screen.newTextGraphics();
     }
 
     @Override
@@ -45,28 +48,25 @@ public class LanternaGUI implements GUI{
 
     @Override
     public void drawMenu() throws IOException {
-        TextGraphics graphics = screen.newTextGraphics();
         graphics.putString(0, 0, "(S)tart");
         graphics.putString(0, 1, "(Q)uit");
     }
 
     @Override
     public void drawTable() throws IOException {
-        TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
         graphics.fillRectangle(new TerminalPosition(0, 0), terminal.getTerminalSize(), ' ');
     }
 
     @Override
     public void drawHand(CardHolder holder) throws IOException {
-        TextGraphics graphics = screen.newTextGraphics();
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
         Hand hand = holder.getHand();
         int row;
         String holderString;
         if (holder.getClass().equals(Player.class)) {row = 0; holderString = "Player";}
         else {row = 1; holderString = "Dealer";}
         List<Card> cards = hand.getCards();
+        graphics.setForegroundColor(TextColor.Factory.fromString("#ffffcc"));
         graphics.putString(0, row, holderString + ": ");
         for (int i = 0; i < cards.size(); i++) {
             Card card = cards.get(i);
