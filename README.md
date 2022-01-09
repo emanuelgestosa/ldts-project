@@ -2,7 +2,7 @@
 
 In this project you can simulate a BLACKJACK match, by making bets and playing with your cards and an interactive dealer.
 
-This project was developed by *Domingos Santos* (*up201906680*@fe.up.pt), *Emanuel Gestosa* (*up202005485*@fe.up.pt) & *Igor Liberato* (**@fe.up.pt) for LDTS 2021⁄22.
+This project was developed by *Domingos Santos* (*up201906680*@fe.up.pt), *Emanuel Gestosa* (*up202005485*@fe.up.pt) & *Igor Liberato* (*up202000161*@fe.up.pt) for LDTS 2021⁄22.
 
 ### IMPLEMENTED FEATURES
 
