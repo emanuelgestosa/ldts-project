@@ -1,4 +1,4 @@
-## LPOO_<15><01> - <BLACKJACK>
+## LDTS_1501 - BLACKJACK
 
 In this project you can simulate a BLACKJACK match, by making bets and playing with your cards and an interactive dealer.
 
@@ -8,16 +8,21 @@ This project was developed by *Domingos Santos* (*up201906680*@fe.up.pt), *Emanu
 
 - **Menu** - A basic menu that lets you either start the game or quit by taking input from the user.
 - **Display Cards** - Display on the screen the cards in the player's and the dealer's hands.
+  
+![img](https://i.imgur.com/3106A9I.png)
+  
+A screenshot of the inicial state of the game (before any decisions have been made).
+Note that this is only a basic display, we definitley will work on it to make it more visually appeling.
 
 ### PLANNED FEATURES
   
 - **Turn** - The player will decide which startegy is the best, according to his cards. He can choose between *Split*, *Double*, *Stand* & *Hit*.
 
-### GAME IS SHOULD ONLY BE INITIALIZED ONCE.
+### GAME SHOULD ONLY BE INITIALIZED ONCE.
 
 - **Problem in Context.** 
   
-We didn't have any mesures to stop several instances of Game to be running, which we definitly don't want to happen.
+We didn't have any mesures to stop several instances of Game to be running, which we definitley don't want to happen.
   
 - **The Pattern.** 
   
@@ -47,3 +52,9 @@ By using the **Singleton** desgin pattern we ensure that:
 ### TESTING
   
 We currently only test the methods in LanternaGUI with mockito. We haven't checked coverage or mutation testing for the time being.
+
+### SELF-EVALUATION
+
+- Domingos Santos: ?? %
+- Emanuel Gestosa: 40 %
+- Igor Liberato: ?? %
