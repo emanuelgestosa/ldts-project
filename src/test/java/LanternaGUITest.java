@@ -59,16 +59,4 @@ public class LanternaGUITest {
         Mockito.verify(graphics, Mockito.times(1)).putString(11, 0, "TH");
 
     }
-
-    @Test
-    public void Hit() throws IOException {
-        GUI guiMock = Mockito.mock(GUI.class);
-        Game game = Game.getInstance();
-        game.run();
-        char a = 'a';
-        //KeyStroke key = new KeyStroke(a, false, false, false);
-        //when(guiMock.getKey()).thenReturn(key);
-
-    }
-
 }
