@@ -1,3 +1,4 @@
+
 public class Player extends CardHolder{
     private int initialMoney;
     private String name;
@@ -8,6 +9,10 @@ public class Player extends CardHolder{
         this.name = name;
         this.money = money;
         this.initialMoney = money;
+    }
+
+    public void turn(Deck deck, Hand dealerHand){
+        //TODO
     }
 
     public int getMoney(){

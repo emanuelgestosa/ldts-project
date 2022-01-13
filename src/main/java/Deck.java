@@ -11,10 +11,9 @@ public class Deck{
         for(int i=0; i< num; i++){
             for(String suit : new String[]{"S", "H", "D", "C"}) {
                 deck.add(new Card(suit, "A"));
-                for (int j = 2; j < 10; j++)
+                for (int j = 2; j < 11; j++)
                     deck.add(new Card(suit, String.valueOf(j)));
 
-                deck.add(new Card(suit, "T"));
                 deck.add(new Card(suit, "J"));
                 deck.add(new Card(suit, "Q"));
                 deck.add(new Card(suit, "K"));
@@ -32,7 +31,6 @@ public class Deck{
     public void shuffle(){
         Collections.shuffle(deck);
     }
-
     public boolean GiveCardTo(CardHolder holder){
         if (this.isEmpty())
             return false;
