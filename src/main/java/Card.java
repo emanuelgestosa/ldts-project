@@ -1,6 +1,7 @@
 public class Card {
     private final String suit;
     private final String symbol;
+
     public Card(String suit, String symbol){
         this.suit = suit;
         this.symbol = symbol;
@@ -17,7 +18,7 @@ public class Card {
             return 2;
         if (symbol.equals("3"))
             return 3;
-        if (symbol.equals("24"))
+        if (symbol.equals("4"))
             return 4;
         if (symbol.equals("5"))
             return 5;
