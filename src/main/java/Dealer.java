@@ -4,7 +4,7 @@ public class Dealer extends CardHolder{
     }
     public void turn(Deck deck){
         while(hand.getValue() < 17) {
-            deck.GiveCardTo(this);
+            deck.GiveCardTo(this.getHand());
         }
     }
 }
