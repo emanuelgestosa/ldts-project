@@ -7,4 +7,7 @@ public abstract class CardHolder {
     public Hand getHand(){
         return hand;
     }
+    public void reset(){
+        hand.getHand().clear();
+    }
 }
