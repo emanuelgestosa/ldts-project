@@ -3,8 +3,12 @@ import java.util.List;
 
 public class Hand {
     private List<Card> hand;
+
     Hand(){
         hand = new ArrayList<Card>();
+    }
+    public List<Card> getHand() {
+        return hand;
     }
     public void addCard(Card card){
         hand.add(card);
@@ -25,4 +29,11 @@ public class Hand {
         return totValue;
     }
     public List<Card> getCards(){return hand;}
+    public Card getCardAt(int index){
+        return hand.get(index);
+    }
+
+    public void setHand(List<Card> hand) {
+        this.hand = hand;
+    }
 }
