@@ -11,7 +11,7 @@ public class Deck{
         for(int i=0; i< num; i++){
             for(String suit : new String[]{"S", "H", "D", "C"}) {
                 deck.add(new Card(suit, "A"));
-                for (int j = 2; j < 11; j++)
+                for (int j = 2; j < 10; j++)
                     deck.add(new Card(suit, String.valueOf(j)));
 
                 deck.add(new Card(suit, "J"));
@@ -31,10 +31,11 @@ public class Deck{
     public void shuffle(){
         Collections.shuffle(deck);
     }
-    public boolean GiveCardTo(CardHolder holder){
+
+    public boolean GiveCardTo(Hand hand){
         if (this.isEmpty())
             return false;
-        holder.getHand().addCard(deck.pop());
+        hand.addCard(deck.pop());
         return true;
     }
     public boolean isEmpty(){
