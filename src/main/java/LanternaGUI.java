@@ -9,14 +9,15 @@ import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.input.KeyStroke;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
 public class LanternaGUI implements GUI{
 
     private final Screen screen;
-    private Terminal terminal;
-    private TextGraphics graphics;
+    private final Terminal terminal;
+    private final TextGraphics graphics;
 
     public LanternaGUI(int width, int height) throws IOException {
         terminal = createTerminal(width, height);
@@ -30,7 +31,6 @@ public class LanternaGUI implements GUI{
         graphics = screen.newTextGraphics();
     }
 
-    @Override
     public Terminal createTerminal(int width, int height) throws IOException {
         TerminalSize terminalSize = new TerminalSize(width, height + 1);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
@@ -38,7 +38,6 @@ public class LanternaGUI implements GUI{
         return terminal;
     }
 
-    @Override
     public Screen createScreen(Terminal terminal) throws IOException {
         final Screen screen;
         screen = new TerminalScreen(terminal);
@@ -63,6 +62,11 @@ public class LanternaGUI implements GUI{
     public void drawTable() throws IOException {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
         graphics.fillRectangle(new TerminalPosition(0, 0), terminal.getTerminalSize(), ' ');
+        graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+        final char[] array = new char[terminal.getTerminalSize().getColumns()];
+        Arrays.fill(array, '-');
+        String str = new String(array);
+        graphics.putString(0, terminal.getTerminalSize().getRows() - 3, str);
     }
 
     @Override

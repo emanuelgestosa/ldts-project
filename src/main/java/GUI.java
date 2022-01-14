@@ -6,10 +6,6 @@ import java.io.IOException;
 
 public interface GUI {
 
-    Terminal createTerminal(int width, int height) throws IOException;
-
-    Screen createScreen(Terminal terminal) throws IOException;
-
     public KeyStroke getKey() throws IOException;
 
     void drawMenu() throws IOException;

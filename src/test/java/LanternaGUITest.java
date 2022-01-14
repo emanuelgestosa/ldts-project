@@ -1,4 +1,5 @@
 import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
@@ -26,6 +27,7 @@ public class LanternaGUITest {
         graphics = Mockito.mock(TextGraphics.class);
         terminal = Mockito.mock(Terminal.class);
         Mockito.when(screen.newTextGraphics()).thenReturn(graphics);
+        Mockito.when(terminal.getTerminalSize()).thenReturn(new TerminalSize(40, 15 + 1));
         gui = new LanternaGUI(screen, terminal);
     }
 
@@ -46,7 +48,7 @@ public class LanternaGUITest {
     public void drawTable() throws IOException {
         gui.drawTable();
         Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
-        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("000000"));
+        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#000000"));
         final char[] array = new char[terminal.getTerminalSize().getColumns()];
         Arrays.fill(array, '-');
         String str = new String(array);
