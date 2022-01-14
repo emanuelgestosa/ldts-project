@@ -1,4 +1,5 @@
 import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
@@ -17,28 +18,34 @@ public class LanternaGUI implements GUI{
     private Terminal terminal;
     private TextGraphics graphics;
 
-    public LanternaGUI() throws IOException {
-        try {
-            terminal = new DefaultTerminalFactory().createTerminal();
-            screen = new TerminalScreen(terminal);
-            screen.startScreen();
-            screen.doResizeIfNecessary();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public LanternaGUI(int width, int height) throws IOException {
+        terminal = createTerminal(width, height);
+        screen = createScreen(terminal);
         graphics = screen.newTextGraphics();
     }
 
     public LanternaGUI(Screen screen) throws IOException {
-        try {
-            terminal = new DefaultTerminalFactory().createTerminal();
-            this.screen = screen;
-            screen.startScreen();
-            screen.doResizeIfNecessary();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.screen = screen;
         graphics = screen.newTextGraphics();
+    }
+
+    @Override
+    public Terminal createTerminal(int width, int height) throws IOException {
+        TerminalSize terminalSize = new TerminalSize(width, height + 1);
+        DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory().setInitialTerminalSize(terminalSize);
+        Terminal terminal = terminalFactory.createTerminal();
+        return terminal;
+    }
+
+    @Override
+    public Screen createScreen(Terminal terminal) throws IOException {
+        final Screen screen;
+        screen = new TerminalScreen(terminal);
+
+        screen.setCursorPosition(null);
+        screen.startScreen();
+        screen.doResizeIfNecessary();
+        return screen;
     }
 
     @Override

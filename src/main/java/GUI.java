@@ -1,8 +1,14 @@
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.screen.Screen;
+import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
 
 public interface GUI {
+
+    Terminal createTerminal(int width, int height) throws IOException;
+
+    Screen createScreen(Terminal terminal) throws IOException;
 
     public KeyStroke getKey() throws IOException;
 
