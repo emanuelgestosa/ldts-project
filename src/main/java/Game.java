@@ -9,7 +9,7 @@ public class Game {
     private static Game instance = null;
 
     private Game() throws IOException {
-        gui = new LanternaGUI(60, 15);
+        gui = new LanternaGUI(65, 15);
         menu = new Menu();
         table = new Table("Domingos", 50, 10);
     }

@@ -49,13 +49,12 @@ public class LanternaGUITest {
         gui.drawTable(50);
         Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
         Mockito.verify(graphics, Mockito.times((1))).fillRectangle(new TerminalPosition(0, 0), terminal.getTerminalSize(), ' ');
-        Mockito.verify(graphics, Mockito.times(2)).setBackgroundColor(TextColor.Factory.fromString("#a2b536"));
+        Mockito.verify(graphics, Mockito.times(3)).setBackgroundColor(TextColor.Factory.fromString("#a2b536"));
         Mockito.verify(graphics, Mockito.times((1))).fillRectangle(new TerminalPosition(0, terminal.getTerminalSize().getRows() - 4), new TerminalSize(terminal.getTerminalSize().getColumns(), 4), ' ');
         Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#753216"));
         Mockito.verify(graphics, Mockito.times((1))).fillRectangle(new TerminalPosition(0, terminal.getTerminalSize().getRows() - 4), new TerminalSize(terminal.getTerminalSize().getColumns(), 1), ' ');
         Mockito.verify(graphics, Mockito.times((1))).fillRectangle(new TerminalPosition(20, terminal.getTerminalSize().getRows() - 4), new TerminalSize(2, 4), ' ');
-        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#000000"));
-        Mockito.verify(graphics, Mockito.times(2)).setBackgroundColor(TextColor.Factory.fromString("#a2b536"));
+        Mockito.verify(graphics, Mockito.times(2)).setForegroundColor(TextColor.Factory.fromString("#000000"));
         Mockito.verify(graphics, Mockito.times(1)).putString(1, terminal.getTerminalSize().getRows() - 2,"Balance: 50");
         Mockito.verify(graphics, Mockito.times(1)).putString(23, terminal.getTerminalSize().getRows() - 2, "Hit(a) Stand(s) DoubleDown(d) Split(w)");
     }

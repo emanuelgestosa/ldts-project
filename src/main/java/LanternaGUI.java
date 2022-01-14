@@ -67,12 +67,21 @@ public class LanternaGUI implements GUI{
         graphics.fillRectangle(new TerminalPosition(0, terminal.getTerminalSize().getRows() - 4), new TerminalSize(terminal.getTerminalSize().getColumns(), 1), ' ');
         graphics.fillRectangle(new TerminalPosition(20, terminal.getTerminalSize().getRows() - 4), new TerminalSize(2, 4), ' ');
         drawBalance(money);
+        drawOptions();
     }
     private void drawBalance(int money) throws IOException {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
         graphics.setBackgroundColor(TextColor.Factory.fromString("#a2b536"));
         graphics.putString(1, terminal.getTerminalSize().getRows() - 2,"Balance: 50") ;
+    }
+
+    private void drawOptions() throws IOException {
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#a2b536"));
+        graphics.putString(23, terminal.getTerminalSize().getRows() - 2, "Hit(a) Stand(s) DoubleDown(d) Split(w)");
+
     }
 
     @Override
