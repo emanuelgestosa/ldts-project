@@ -53,6 +53,7 @@ public class LanternaGUITest {
         Arrays.fill(array, '-');
         String str = new String(array);
         Mockito.verify(graphics, Mockito.times(1)).putString(0, terminal.getTerminalSize().getRows() - 3, str);
+        Mockito.verify(graphics, Mockito.times(1)).putString(2, terminal.getTerminalSize().getRows() - 1,"Balance: 50") ;
     }
 
     @Test
