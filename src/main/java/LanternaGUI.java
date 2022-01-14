@@ -67,7 +67,7 @@ public class LanternaGUI implements GUI{
         Arrays.fill(array, '-');
         String str = new String(array);
         graphics.putString(0, terminal.getTerminalSize().getRows() - 3, str);
-        graphics.putString(2, terminal.getTerminalSize().getRows() - 1, "Balance: " + money);
+        graphics.putString(1, terminal.getTerminalSize().getRows() - 2, "Balance: " + money);
     }
 
     @Override

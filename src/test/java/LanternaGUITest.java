@@ -48,12 +48,14 @@ public class LanternaGUITest {
     public void drawTable() throws IOException {
         gui.drawTable(50);
         Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
+        Mockito.verify(graphics, Mockito.times((1))).fillRectangle(new TerminalPosition(0, 0), terminal.getTerminalSize(), ' ');
+        Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#b54936"));
+        Mockito.verify(graphics, Mockito.times((1))).fillRectangle(new TerminalPosition(0, terminal.getTerminalSize().getRows() - 4), new TerminalSize(terminal.getTerminalSize().getColumns(), 4), ' ');
+        Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#753216"));
+        Mockito.verify(graphics, Mockito.times((1))).fillRectangle(new TerminalPosition(0, terminal.getTerminalSize().getRows() - 4), new TerminalSize(terminal.getTerminalSize().getColumns(), 1), ' ');
+        Mockito.verify(graphics, Mockito.times((1))).fillRectangle(new TerminalPosition(0, terminal.getTerminalSize().getRows() - 4), new TerminalSize(1, 4), ' ');
         Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#000000"));
-        final char[] array = new char[terminal.getTerminalSize().getColumns()];
-        Arrays.fill(array, '-');
-        String str = new String(array);
-        Mockito.verify(graphics, Mockito.times(1)).putString(0, terminal.getTerminalSize().getRows() - 3, str);
-        Mockito.verify(graphics, Mockito.times(1)).putString(2, terminal.getTerminalSize().getRows() - 1,"Balance: 50") ;
+        Mockito.verify(graphics, Mockito.times(1)).putString(1, terminal.getTerminalSize().getRows() - 2,"Balance: 50") ;
     }
 
     @Test
