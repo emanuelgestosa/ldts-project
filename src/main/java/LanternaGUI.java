@@ -17,18 +17,15 @@ public class LanternaGUI implements GUI{
 
     private final Screen screen;
     private final Terminal terminal;
-    private final TextGraphics graphics;
 
     public LanternaGUI(int width, int height) throws IOException {
         terminal = createTerminal(width, height);
         screen = createScreen(terminal);
-        graphics = screen.newTextGraphics();
     }
 
     public LanternaGUI(Screen screen, Terminal terminal) throws IOException {
         this.terminal = terminal;
         this.screen = screen;
-        graphics = screen.newTextGraphics();
     }
 
     public Terminal createTerminal(int width, int height) throws IOException {
@@ -54,31 +51,40 @@ public class LanternaGUI implements GUI{
 
     @Override
     public void drawMenu() throws IOException {
+        TextGraphics graphics = screen.newTextGraphics();
         graphics.putString(0, 0, "(S)tart");
         graphics.putString(0, 1, "(Q)uit");
     }
 
     @Override
     public void drawTable(int money) throws IOException {
+        TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
         graphics.fillRectangle(new TerminalPosition(0, 0), terminal.getTerminalSize(), ' ');
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#b54936"));
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#a2b536"));
         graphics.fillRectangle(new TerminalPosition(0, terminal.getTerminalSize().getRows() - 4), new TerminalSize(terminal.getTerminalSize().getColumns(), 4), ' ');
         graphics.setBackgroundColor(TextColor.Factory.fromString("#753216"));
         graphics.fillRectangle(new TerminalPosition(0, terminal.getTerminalSize().getRows() - 4), new TerminalSize(terminal.getTerminalSize().getColumns(), 1), ' ');
-        graphics.fillRectangle(new TerminalPosition(0, terminal.getTerminalSize().getRows() - 4), new TerminalSize(1, 4), ' ');
+        graphics.fillRectangle(new TerminalPosition(20, terminal.getTerminalSize().getRows() - 4), new TerminalSize(2, 4), ' ');
+        drawBalance(money);
+    }
+    private void drawBalance(int money) throws IOException {
+        TextGraphics graphics = screen.newTextGraphics();
         graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
-        graphics.putString(1, terminal.getTerminalSize().getRows() - 2, "Balance: " + money);
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#a2b536"));
+        graphics.putString(1, terminal.getTerminalSize().getRows() - 2,"Balance: 50") ;
     }
 
     @Override
     public void drawHand(CardHolder holder) throws IOException {
+        TextGraphics graphics = screen.newTextGraphics();
         Hand hand = holder.getHand();
         int row;
         String holderString;
         if (holder.getClass().equals(Player.class)) {row = 0; holderString = "Player";}
         else {row = 1; holderString = "Dealer";}
         List<Card> cards = hand.getCards();
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
         graphics.setForegroundColor(TextColor.Factory.fromString("#ffffcc"));
         graphics.putString(0, row, holderString + ": ");
         for (int i = 0; i < cards.size(); i++) {
