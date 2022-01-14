@@ -30,7 +30,7 @@ public class Card {
             return 8;
         if (symbol.equals("9"))
             return 9;
-        if (symbol.equals("10") || symbol.equals("J") || symbol.equals("Q") || symbol.equals("K") )
+        if (symbol.equals("T") || symbol.equals("J") || symbol.equals("Q") || symbol.equals("K") )
             return 10;
         else return 11;
     }
