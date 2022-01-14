@@ -62,11 +62,12 @@ public class LanternaGUI implements GUI{
     public void drawTable(int money) throws IOException {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
         graphics.fillRectangle(new TerminalPosition(0, 0), terminal.getTerminalSize(), ' ');
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#b54936"));
+        graphics.fillRectangle(new TerminalPosition(0, terminal.getTerminalSize().getRows() - 4), new TerminalSize(terminal.getTerminalSize().getColumns(), 4), ' ');
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#753216"));
+        graphics.fillRectangle(new TerminalPosition(0, terminal.getTerminalSize().getRows() - 4), new TerminalSize(terminal.getTerminalSize().getColumns(), 1), ' ');
+        graphics.fillRectangle(new TerminalPosition(0, terminal.getTerminalSize().getRows() - 4), new TerminalSize(1, 4), ' ');
         graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
-        final char[] array = new char[terminal.getTerminalSize().getColumns()];
-        Arrays.fill(array, '-');
-        String str = new String(array);
-        graphics.putString(0, terminal.getTerminalSize().getRows() - 3, str);
         graphics.putString(1, terminal.getTerminalSize().getRows() - 2, "Balance: " + money);
     }
 
