@@ -52,7 +52,9 @@ public class Table {
 
     private void prepareForNewRound(){
         float multiple = calculateWhoWon(player.getHand(), player.getSplitHand().getHand().size());
-        //TODO player balance += bet*multiple
+        float newMoney = this.player.getMoney();
+        newMoney += this.player.getBet()*multiple;
+        this.player.setMoney(newMoney);
         player.reset();
         dealer.reset();
     }
