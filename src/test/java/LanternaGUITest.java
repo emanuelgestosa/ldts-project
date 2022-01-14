@@ -46,7 +46,7 @@ public class LanternaGUITest {
 
     @Test
     public void drawTable() throws IOException {
-        gui.drawTable();
+        gui.drawTable(50);
         Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
         Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#000000"));
         final char[] array = new char[terminal.getTerminalSize().getColumns()];

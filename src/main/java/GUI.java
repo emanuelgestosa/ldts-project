@@ -10,7 +10,7 @@ public interface GUI {
 
     void drawMenu() throws IOException;
 
-    void drawTable() throws IOException;
+    void drawTable(int money) throws IOException;
 
     void drawHand(CardHolder holder) throws IOException;
 

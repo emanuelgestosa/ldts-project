@@ -59,7 +59,7 @@ public class LanternaGUI implements GUI{
     }
 
     @Override
-    public void drawTable() throws IOException {
+    public void drawTable(int money) throws IOException {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
         graphics.fillRectangle(new TerminalPosition(0, 0), terminal.getTerminalSize(), ' ');
         graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
@@ -67,6 +67,7 @@ public class LanternaGUI implements GUI{
         Arrays.fill(array, '-');
         String str = new String(array);
         graphics.putString(0, terminal.getTerminalSize().getRows() - 3, str);
+        graphics.putString(2, terminal.getTerminalSize().getRows() - 1, "Balance: " + money);
     }
 
     @Override
