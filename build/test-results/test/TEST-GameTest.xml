@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="GameTest" tests="25" skipped="0" failures="1" errors="0" timestamp="2022-01-14T15:13:54" hostname="LAPTOP-KDO09918" time="0.261">
+  <properties/>
+  <testcase name="hand value test 1 - Under 21" classname="GameTest" time="0.194"/>
+  <testcase name="hand value test 2 - Over 21" classname="GameTest" time="0.001"/>
+  <testcase name="hand value test 3 - Blackjack" classname="GameTest" time="0.001"/>
+  <testcase name="hand value test 4 - Ace as 11" classname="GameTest" time="0.0"/>
+  <testcase name="hand value test 5 - Ace as 1" classname="GameTest" time="0.001"/>
+  <testcase name="hit test 1 - Less than 21" classname="GameTest" time="0.019"/>
+  <testcase name="hit test 2 - More than 21" classname="GameTest" time="0.02"/>
+  <testcase name="hit test 3 - 21" classname="GameTest" time="0.001"/>
+  <testcase name="stand test" classname="GameTest" time="0.0"/>
+  <testcase name="double down test 1 - Different Symbols" classname="GameTest" time="0.0"/>
+  <testcase name="double down test 2 - Different Suits" classname="GameTest" time="0.0"/>
+  <testcase name="double down test 3 - 3 cards" classname="GameTest" time="0.001"/>
+  <testcase name="double down test 4 - Blackjack" classname="GameTest" time="0.0"/>
+  <testcase name="split test 1" classname="GameTest" time="0.002">
+    <failure message="java.lang.NullPointerException" type="java.lang.NullPointerException">java.lang.NullPointerException
+	at Player.split(Player.java:82)
+	at Player.processKey(Player.java:44)
+	at GameTest.split test 1(GameTest.groovy:160)
+</failure>
+  </testcase>
+  <testcase name="calculateWhoWon test 1 - player won" classname="GameTest" time="0.007"/>
+  <testcase name="calculateWhoWon test 2 - dealer won" classname="GameTest" time="0.001"/>
+  <testcase name="calculateWhoWon test 3 - tie" classname="GameTest" time="0.001"/>
+  <testcase name="calculateWhoWon test 4 - player blackjack" classname="GameTest" time="0.0"/>
+  <testcase name="calculateWhoWon test 5 - dealer blackjack" classname="GameTest" time="0.001"/>
+  <testcase name="calculateWhoWon test 6 - both blackjack" classname="GameTest" time="0.0"/>
+  <testcase name="calculateWhoWon test 7 - player bust" classname="GameTest" time="0.0"/>
+  <testcase name="calculateWhoWon test 8 - player bust, dealer blackjack" classname="GameTest" time="0.001"/>
+  <testcase name="calculateWhoWon test 9 - dealer bust" classname="GameTest" time="0.001"/>
+  <testcase name="calculateWhoWon test 10 - split" classname="GameTest" time="0.001"/>
+  <testcase name="calculateWhoWon test 11 - split blackjack" classname="GameTest" time="0.0"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

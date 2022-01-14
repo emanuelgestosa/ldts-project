@@ -10,6 +10,7 @@ public class Player extends CardHolder{
     private String name;
     private int money;
     private Hand splitHand;
+    private float insurance =0;
 
     public Player(String name, int money){
         super();
@@ -39,8 +40,10 @@ public class Player extends CardHolder{
                 return true;
             return false;
         }
-        if(choice == 'w' && splitHand.getHand().size() == 0)
+        if(choice == 'w')
             split(gui, dealer, deck);
+        if(choice == 'e')
+            insurance(gui, dealer, deck);
         return true;
     }
 
@@ -76,6 +79,8 @@ public class Player extends CardHolder{
 
 
     private void split(GUI gui, Dealer dealer, Deck deck) throws IOException{
+        if(splitHand.getHand().size() != 0 || hand.getCardAt(0).getSymbol() != hand.getCardAt(1).getSymbol())
+            return;
         List<Card> original = new ArrayList<Card>();
         List<Card> split = new ArrayList<Card>();
         original.add(hand.getCardAt(0));
@@ -103,6 +108,17 @@ public class Player extends CardHolder{
     public void setSplitHand(Hand splitHand) {
         this.splitHand = splitHand;
     }
+
+    public void insurance(GUI gui, Dealer dealer, Deck deck){
+        if(dealer.getHand().getHand().get(0).getSymbol() != "A")
+            return;
+        //TODO ask for insurance
+    }
+
+    public float getInsurance() {
+        return insurance;
+    }
 }
+
 
 

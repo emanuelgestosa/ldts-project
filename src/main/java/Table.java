@@ -53,9 +53,13 @@ public class Table {
     private void prepareForNewRound(){
         float multiple = calculateWhoWon(player.getHand(), player.getSplitHand().getHand().size());
         //TODO player balance += bet*multiple
+        if(dealer.getHand().getValue()==21) {
+            //TODO balance += insurance*2
+        }
         player.reset();
         dealer.reset();
     }
+
     public boolean playerWonGame(Player player){
         if (player.getMoney() > player.getInitialMoney())
             return true;
@@ -67,8 +71,9 @@ public class Table {
         if(split >= 2){
             multiple += calculateWhoWon(player.getSplitHand(),1);
         }
-        if(dealer.getHand().getValue() == 21)
+        if(dealer.getHand().getValue() == 21) {
             multiple -= 1.5;
+        }
         if(hand.getValue() == 21) {
             multiple += 1.5;
             if(split >= 1)

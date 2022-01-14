@@ -22,6 +22,15 @@ public class Menu {
         if (key.getKeyType() != KeyType.Character) return 0;
         if (Character.toLowerCase(key.getCharacter()) == 's') return 1;
         if (Character.toLowerCase(key.getCharacter()) == 'q') return -1;
+        if (Character.toLowerCase(key.getCharacter()) == 'c') return 2;
         return 0;
+    }
+
+    public int processConfigKey(KeyStroke key) {
+        if (key.getKeyType() == KeyType.EOF) return -1;
+        if (key.getKeyType() != KeyType.Character) return 1;
+        if (Character.toLowerCase(key.getCharacter()) == 'd') return 2;
+        if (Character.toLowerCase(key.getCharacter()) == 'q') return -1;
+        return 1;
     }
 }

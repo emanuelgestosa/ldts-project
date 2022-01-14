@@ -1,9 +1,12 @@
+import com.googlecode.lanterna.input.KeyStroke;
+
+import javax.swing.*;
 import java.io.IOException;
 
 public class Game {
-
     private Table table;
     private Menu menu;
+    private int nDecks = 8;
     private final LanternaGUI gui;
 
     private static Game instance = null;
@@ -11,7 +14,7 @@ public class Game {
     private Game() throws IOException {
         gui = new LanternaGUI();
         menu = new Menu();
-        table = new Table("Domingos", 50, 10);
+        table = new Table("Domingos", 50, nDecks);
     }
 
     public static Game getInstance() throws IOException {
@@ -31,6 +34,9 @@ public class Game {
                 return;
             }
             else if (key == 1) break;
+            else if (key ==2) {
+                configs();
+            }
         }
         gui.clear();
         table.play(gui);
@@ -42,7 +48,24 @@ public class Game {
         return table;
     }
 
-
+    public void configs() throws IOException{
+        gui.clear();
+        gui.drawConfigs();
+        gui.refresh();
+        int key = 1;
+        while (key != -1){
+            key = menu.processConfigKey(gui.getKey());
+            if(key == 2) {
+                KeyStroke nDecks = gui.getKey();
+                if ((int) nDecks.getCharacter() < 49 || (int) nDecks.getCharacter() > 57) {
+                    //invalid
+                } else {
+                    this.nDecks = (int) nDecks.getCharacter() - 48;
+                    break;
+                }
+            }
+        }
+    }
 }
 
 class GameEntryPoint {
