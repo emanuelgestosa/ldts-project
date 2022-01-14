@@ -25,7 +25,7 @@ public class LanternaGUITest {
         graphics = Mockito.mock(TextGraphics.class);
         terminal = Mockito.mock(Terminal.class);
         Mockito.when(screen.newTextGraphics()).thenReturn(graphics);
-        gui = new LanternaGUI(screen);
+        gui = new LanternaGUI(screen, terminal);
     }
 
     @Test

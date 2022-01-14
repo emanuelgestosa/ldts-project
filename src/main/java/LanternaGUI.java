@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class LanternaGUI implements GUI{
 
-    private Screen screen;
+    private final Screen screen;
     private Terminal terminal;
     private TextGraphics graphics;
 
@@ -24,7 +24,8 @@ public class LanternaGUI implements GUI{
         graphics = screen.newTextGraphics();
     }
 
-    public LanternaGUI(Screen screen) throws IOException {
+    public LanternaGUI(Screen screen, Terminal terminal) throws IOException {
+        this.terminal = terminal;
         this.screen = screen;
         graphics = screen.newTextGraphics();
     }
@@ -41,7 +42,6 @@ public class LanternaGUI implements GUI{
     public Screen createScreen(Terminal terminal) throws IOException {
         final Screen screen;
         screen = new TerminalScreen(terminal);
-
         screen.setCursorPosition(null);
         screen.startScreen();
         screen.doResizeIfNecessary();
