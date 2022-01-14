@@ -8,9 +8,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 
+import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.io.BufferedInputStream;
 import java.io.InputStream;
 import java.io.StringBufferInputStream;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import java.io.IOException;
@@ -36,15 +39,13 @@ public class PlayerTest {
         Mockito.when(screen.newTextGraphics()).thenReturn(graphics);
         gui = new LanternaGUI(screen);
         player = new Player("", 100);
-        scanner = Mockito.mock(Scanner.class);
 
     }
 
     @Test
     public void scannerTest() throws IOException {
-        Mockito.when(scanner.nextInt()).thenReturn(4);
 
-        player.scanInput();
+        player.scanInput(4);
         Assertions.assertEquals(4, this.player.getBet());
 
     }

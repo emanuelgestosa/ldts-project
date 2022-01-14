@@ -3,7 +3,9 @@ import com.googlecode.lanterna.input.KeyStroke;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Player extends CardHolder{
     private float initialMoney;
@@ -56,6 +58,24 @@ public class Player extends CardHolder{
         }
 
 
+    }
+
+    public int scanInput(int bet){
+
+        boolean isValid = false; // CHECKS IF INPUT IS VALID
+
+        while(isValid != true){
+            try{
+                isValid = true;
+            }
+            catch (InputMismatchException e){
+                isValid = false;
+            }
+            if(bet <= 0 || bet > this.getMoney())
+                isValid = false;
+        }
+        this.setBet(bet);
+        return this.bet;
     }
 
     public float getMoney(){
