@@ -9,6 +9,7 @@ import org.mockito.Mockito;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.Arrays;
 
 import static java.util.UUID.fromString;
 
@@ -45,6 +46,11 @@ public class LanternaGUITest {
     public void drawTable() throws IOException {
         gui.drawTable();
         Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
+        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("000000"));
+        final char[] array = new char[terminal.getTerminalSize().getColumns()];
+        Arrays.fill(array, '-');
+        String str = new String(array);
+        Mockito.verify(graphics, Mockito.times(1)).putString(0, terminal.getTerminalSize().getRows() - 3, str);
     }
 
     @Test
