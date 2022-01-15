@@ -1,4 +1,6 @@
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.screen.Screen;
+import com.googlecode.lanterna.terminal.Terminal;
 
 import java.io.IOException;
 
@@ -8,7 +10,7 @@ public interface GUI {
 
     void drawMenu() throws IOException;
 
-    void drawTable() throws IOException;
+    void drawTable(int money) throws IOException;
 
     void drawHand(CardHolder holder) throws IOException;
 

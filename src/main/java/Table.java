@@ -88,7 +88,7 @@ public class Table {
     }
 
     public static void draw(GUI gui, Dealer dealer, Player player) throws IOException {
-        gui.drawTable();
+        gui.drawTable(player.getMoney());
         gui.drawHand(dealer);
         gui.drawHand(player);
         gui.refresh();
