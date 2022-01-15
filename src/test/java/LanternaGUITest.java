@@ -59,10 +59,6 @@ public class LanternaGUITest {
         Mockito.verify(graphics, Mockito.times(1)).putString(23, terminal.getTerminalSize().getRows() - 2, "Hit(a) Stand(s) DoubleDown(d) Split(w)");
     }
 
-    private void drawBalance(int money) throws IOException {
-
-    }
-
     @Test
     public void drawHand() throws IOException {
         Player player = new Player("", 100);
@@ -70,9 +66,9 @@ public class LanternaGUITest {
         player.getHand().addCard(new Card("H", "T"));
         gui.drawHand(player);
         Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#000000"));
-        Mockito.verify(graphics, Mockito.times(1)).putString(8, 0, "AS");
+        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns() - 6) / 2, terminal.getTerminalSize().getRows() - 6, "AS");
         Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#fc1111"));
-        Mockito.verify(graphics, Mockito.times(1)).putString(11, 0, "TH");
+        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns() - 6) / 2 + 3, terminal.getTerminalSize().getRows() - 6, "TH");
 
     }
 

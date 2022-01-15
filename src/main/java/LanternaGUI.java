@@ -9,6 +9,7 @@ import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.input.KeyStroke;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
@@ -86,23 +87,36 @@ public class LanternaGUI implements GUI{
 
     @Override
     public void drawHand(CardHolder holder) throws IOException {
-        TextGraphics graphics = screen.newTextGraphics();
         Hand hand = holder.getHand();
-        int row;
-        String holderString;
-        if (holder.getClass().equals(Player.class)) {row = 0; holderString = "Player";}
-        else {row = 1; holderString = "Dealer";}
-        List<Card> cards = hand.getCards();
+        if (holder.getClass().equals(Player.class)) drawPlayerHand(hand);
+        else drawDealerHand(hand);
+    }
+
+    private void drawDealerHand(Hand hand) throws IOException {
+        TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
-        graphics.setForegroundColor(TextColor.Factory.fromString("#ffffcc"));
-        graphics.putString(0, row, holderString + ": ");
+        List<Card> cards = new ArrayList<Card>(hand.getCards());
+        if (cards.size() < 2) cards.add(new Card("#", "#"));
+        int drawColumn = (terminal.getTerminalSize().getColumns() - cards.size() * 3) / 2;
         for (int i = 0; i < cards.size(); i++) {
             Card card = cards.get(i);
-            if (Objects.equals(card.getSuit(), "S") || Objects.equals(card.getSuit(), "C")) graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
-            else graphics.setForegroundColor(TextColor.Factory.fromString("#fc1111"));
-            graphics.putString(i * 3 + 8, row, card.getSymbol() + card.getSuit());
+            if (Objects.equals(card.getSuit(), "H") || Objects.equals(card.getSuit(), "D")) graphics.setForegroundColor(TextColor.Factory.fromString("#fc1111"));
+            else graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+            graphics.putString(drawColumn + i*3, 1, card.getSymbol() + card.getSuit());
         }
     }
+
+    private void drawPlayerHand(Hand hand) throws IOException {
+        TextGraphics graphics = screen.newTextGraphics();
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
+        List<Card> cards = hand.getCards();
+        int drawColumn = (terminal.getTerminalSize().getColumns() - cards.size() * 3) / 2;
+        for (int i = 0; i < cards.size(); i++) {
+            Card card = cards.get(i);
+            if (Objects.equals(card.getSuit(), "H") || Objects.equals(card.getSuit(), "D")) graphics.setForegroundColor(TextColor.Factory.fromString("#fc1111"));
+            else graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
+            graphics.putString(drawColumn + i*3, terminal.getTerminalSize().getRows() - 6, card.getSymbol() + card.getSuit());
+        }}
 
     @Override
     public void refresh() throws IOException {
