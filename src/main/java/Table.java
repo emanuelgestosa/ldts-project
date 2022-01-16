@@ -52,7 +52,9 @@ public class Table {
 
     private void prepareForNewRound(){
         float multiple = calculateWhoWon(player.getHand(), player.getSplitHand().getHand().size());
-        //TODO player balance += bet*multiple
+        float newMoney = this.player.getMoney();
+        newMoney += this.player.getBet()*multiple;
+        this.player.setMoney(newMoney);
         player.reset();
         dealer.reset();
     }
@@ -88,7 +90,7 @@ public class Table {
     }
 
     public static void draw(GUI gui, Dealer dealer, Player player) throws IOException {
-        gui.drawTable(player.getMoney());
+        gui.drawTable((int)player.getMoney());
         gui.drawHand(dealer);
         gui.drawHand(player);
         gui.refresh();

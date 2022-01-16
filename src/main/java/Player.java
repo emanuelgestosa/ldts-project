@@ -3,15 +3,18 @@ import com.googlecode.lanterna.input.KeyStroke;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Player extends CardHolder{
-    private int initialMoney;
+    private float initialMoney;
     private String name;
-    private int money;
+    private float money;
     private Hand splitHand;
+    private int bet = 0;
 
-    public Player(String name, int money){
+    public Player(String name, float money){
         super();
         this.name = name;
         this.money = money;
@@ -53,17 +56,45 @@ public class Player extends CardHolder{
             Table.draw(gui, dealer, this);
             gui.refresh();
         }
+
+
     }
 
-    public int getMoney(){
+    public int scanInput(int bet){
+
+        boolean isValid = false; // CHECKS IF INPUT IS VALID
+
+        while(isValid != true){
+            try{
+                isValid = true;
+            }
+            catch (InputMismatchException e){
+                isValid = false;
+            }
+            if(bet <= 0 || bet > this.getMoney())
+                isValid = false;
+        }
+        this.setBet(bet);
+        return this.bet;
+    }
+
+    public float getMoney(){
         return money;
     }
 
-    public int getInitialMoney() {
+    public float getInitialMoney() {
         return initialMoney;
     }
 
-    public void setMoney(int newMoney) {money = newMoney;}
+    public int getBet() {
+        return bet;
+    }
+
+    public void setBet(int bet) {
+        this.bet = bet;
+    }
+
+    public void setMoney(float newMoney) {money = newMoney;}
 
     public void hit(Deck deck, Hand hand) {
         deck.GiveCardTo(hand);
@@ -97,7 +128,7 @@ public class Player extends CardHolder{
     public void reset(){
         super.reset();
         splitHand.getHand().clear();
-        //TODO empty player bet
+        this.bet = 0;
     }
 
     public void setSplitHand(Hand splitHand) {

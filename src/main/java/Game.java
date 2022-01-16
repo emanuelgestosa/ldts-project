@@ -1,10 +1,13 @@
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Game {
 
     private Table table;
     private Menu menu;
     private final LanternaGUI gui;
+
+
 
     private static Game instance = null;
 
