@@ -13,6 +13,7 @@ public class Player extends CardHolder{
     private float money;
     private Hand splitHand;
     private int bet = 0;
+    Scanner scanner = new Scanner(System.in);
 
     public Player(String name, float money){
         super();
@@ -63,16 +64,14 @@ public class Player extends CardHolder{
     public int scanInput(int bet){
 
         boolean isValid = false; // CHECKS IF INPUT IS VALID
-
+        // int receivedBet = 0; FAZER ISTO DEPOIS DA PARTE GRÁFICA
         while(isValid != true){
-            try{
-                isValid = true;
-            }
-            catch (InputMismatchException e){
-                isValid = false;
-            }
+            System.out.println("Enter your bet: ");
+            //receivedBet = scanner.nextLine();
+
             if(bet <= 0 || bet > this.getMoney())
                 isValid = false;
+            isValid = true;
         }
         this.setBet(bet);
         return this.bet;
