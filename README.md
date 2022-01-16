@@ -56,5 +56,5 @@ We currently only test the methods in LanternaGUI with mockito. We haven't check
 ### SELF-EVALUATION
 
 - Domingos Santos: ?? %
-- Emanuel Gestosa: 40 %
+- Emanuel Gestosa: ?? %
 - Igor Liberato: ?? %
