@@ -16,7 +16,7 @@ public class Table {
     private Dealer dealer;
 
     //Methods----------------------------------------------------------------Constructor, Getters, Setters
-    public Table(String playerName, int money, int deckNum){
+    public Table(String playerName, int money, int deckNum) throws IOException {
         deck = new Deck(deckNum);
         player = new Player(playerName, money);
         dealer = new Dealer();

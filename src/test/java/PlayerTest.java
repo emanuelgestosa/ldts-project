@@ -49,9 +49,11 @@ public class PlayerTest {
     }
 
     @Test
-    public void processKeyBetTest() throws IOException {
-        boolean result = player.processKeyBet('5');
-        Assertions.assertEquals(false, result);
+    public void scanInputTest() throws IOException {
+
+        int result = player.scanInput();
+
+        // NAO SEI COMO TESTAR ISTO
     }
 
 }

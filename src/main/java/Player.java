@@ -13,13 +13,16 @@ public class Player extends CardHolder{
     private float money;
     private Hand splitHand;
     private int bet = 0;
+    private GUI gui;
     Scanner scanner = new Scanner(System.in);
 
-    public Player(String name, float money){
+    public Player(String name, float money) throws IOException {
         super();
         this.name = name;
         this.money = money;
         this.initialMoney = money;
+        gui = new LanternaGUI();
+
     }
 
     public char getChar(KeyStroke key){
@@ -52,6 +55,7 @@ public class Player extends CardHolder{
         boolean inTurn = true;
         while(hand.getValue() < 21 && inTurn) {
             KeyStroke key = gui.getKey();
+            scanInput();
             char choice = getChar(key);
             inTurn = processKey(gui, dealer, deck, choice, hand); //Takes the player's turn
             Table.draw(gui, dealer, this);
@@ -59,7 +63,8 @@ public class Player extends CardHolder{
         }
     }
 
-    public boolean processKeyBet(char choice){
+    public boolean processKeyBet(KeyStroke keyStroke){
+        char choice = keyStroke.getCharacter();
         if(choice == '1'){
             if(this.money > 5){
                 setBet(5);
@@ -111,19 +116,14 @@ public class Player extends CardHolder{
         return false;
     }
 
-    public int scanInput(KeyStroke keyStroke){
+    public int scanInput() throws IOException {
 
         boolean isValid = false; // CHECKS IF INPUT IS VALID
         // int receivedBet = 0; FAZER ISTO DEPOIS DA PARTE GRÁFICA
         while(isValid != true){
-            System.out.println("Enter your bet: ");
-            //receivedBet = scanner.nextLine();
-
-            if(bet <= 0 || bet > this.getMoney())
-                isValid = false;
-            isValid = true;
+            KeyStroke keyStroke = gui.getKey();
+            isValid = processKeyBet(keyStroke);
         }
-        this.setBet(bet);
         return this.bet;
     }
 
