@@ -1,5 +1,6 @@
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
+import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.terminal.Terminal;
 import org.junit.jupiter.api.Assertions;
@@ -28,9 +29,12 @@ public class PlayerTest {
     private Dealer dealer;
     private Deck deck;
     private Scanner scanner;
+    private Robot robot;
+    private KeyStroke keyStroke;
+
 
     @BeforeEach
-    private void helper() throws IOException {
+    private void helper() throws IOException, AWTException {
         screen = Mockito.mock(Screen.class);
         graphics = Mockito.mock(TextGraphics.class);
         terminal = Mockito.mock(Terminal.class);
@@ -39,15 +43,15 @@ public class PlayerTest {
         Mockito.when(screen.newTextGraphics()).thenReturn(graphics);
         gui = new LanternaGUI(screen);
         player = new Player("", 100);
+        robot =  new Robot();
+        keyStroke = Mockito.mock(KeyStroke.class);
 
     }
 
     @Test
-    public void scannerTest() throws IOException {
-
-        player.scanInput(4);
-        Assertions.assertEquals(4, this.player.getBet());
-
+    public void processKeyBetTest() throws IOException {
+        boolean result = player.processKeyBet('5');
+        Assertions.assertEquals(false, result);
     }
 
 }

@@ -57,11 +57,13 @@ public class Player extends CardHolder{
             Table.draw(gui, dealer, this);
             gui.refresh();
         }
+    }
 
+    public boolean processKeyBet(char choice){
 
     }
 
-    public int scanInput(int bet){
+    public int scanInput(KeyStroke keyStroke){
 
         boolean isValid = false; // CHECKS IF INPUT IS VALID
         // int receivedBet = 0; FAZER ISTO DEPOIS DA PARTE GRÁFICA

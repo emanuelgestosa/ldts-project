@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="PlayerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-14T22:38:22" hostname="MacBook-Pro-de-Domingos-2.local" time="1.194">
+<testsuite name="PlayerTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-01-16T21:00:15" hostname="MacBook-Pro-de-Domingos-2.local" time="1.531">
   <properties/>
-  <testcase name="scannerTest()" classname="PlayerTest" time="1.194"/>
+  <testcase name="processKeyBetTest()" classname="PlayerTest" time="1.531"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
