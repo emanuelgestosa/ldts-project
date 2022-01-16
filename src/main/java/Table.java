@@ -16,7 +16,7 @@ public class Table {
     private Dealer dealer;
 
     //Methods----------------------------------------------------------------Constructor, Getters, Setters
-    public Table(String playerName, int money, int deckNum){
+    public Table(String playerName, int money, int deckNum) throws IOException {
         deck = new Deck(deckNum);
         player = new Player(playerName, money);
         dealer = new Dealer();
@@ -52,7 +52,9 @@ public class Table {
 
     private void prepareForNewRound(){
         float multiple = calculateWhoWon(player.getHand(), player.getSplitHand().getHand().size());
-        //TODO player balance += bet*multiple
+        float newMoney = this.player.getMoney();
+        newMoney += this.player.getBet()*multiple;
+        this.player.setMoney(newMoney);
         player.reset();
         dealer.reset();
     }

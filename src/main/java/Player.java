@@ -3,19 +3,26 @@ import com.googlecode.lanterna.input.KeyStroke;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
+import java.util.Scanner;
 
 public class Player extends CardHolder{
-    private int initialMoney;
+    private float initialMoney;
     private String name;
-    private int money;
+    private float money;
     private Hand splitHand;
+    private int bet = 0;
+    private GUI gui;
+    Scanner scanner = new Scanner(System.in);
 
-    public Player(String name, int money){
+    public Player(String name, float money) throws IOException {
         super();
         this.name = name;
         this.money = money;
         this.initialMoney = money;
+        gui = new LanternaGUI();
+
     }
 
     public char getChar(KeyStroke key){
@@ -48,6 +55,7 @@ public class Player extends CardHolder{
         boolean inTurn = true;
         while(hand.getValue() < 21 && inTurn) {
             KeyStroke key = gui.getKey();
+            scanInput();
             char choice = getChar(key);
             inTurn = processKey(gui, dealer, deck, choice, hand); //Takes the player's turn
             Table.draw(gui, dealer, this);
@@ -55,15 +63,87 @@ public class Player extends CardHolder{
         }
     }
 
-    public int getMoney(){
+    public boolean processKeyBet(KeyStroke keyStroke){
+        char choice = keyStroke.getCharacter();
+        if(choice == '1'){
+            if(this.money > 5){
+                setBet(5);
+                return true;
+            }
+        }
+        if(choice == '2'){
+            if(this.money > 10){
+                setBet(10);
+                return true;
+            }
+        }
+        if(choice == '3'){
+            if(this.money > 20){
+                setBet(20);
+                return true;
+            }
+        }
+        if(choice == '4'){
+            if(this.money > 50){
+                setBet(50);
+                return true;
+            }
+        }
+        if(choice == '5'){
+            if(this.money > 100){
+                setBet(100);
+                return true;
+            }
+        }
+        if(choice == '6'){
+            if(this.money > 200){
+                setBet(200);
+                return true;
+            }
+        }
+        if(choice == '7'){
+            if(this.money > 500){
+                setBet(500);
+                return true;
+            }
+        }
+        if(choice == '8'){
+            if(this.money > 1000){
+                setBet(1000);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int scanInput() throws IOException {
+
+        boolean isValid = false; // CHECKS IF INPUT IS VALID
+        // int receivedBet = 0; FAZER ISTO DEPOIS DA PARTE GRÁFICA
+        while(isValid != true){
+            KeyStroke keyStroke = gui.getKey();
+            isValid = processKeyBet(keyStroke);
+        }
+        return this.bet;
+    }
+
+    public float getMoney(){
         return money;
     }
 
-    public int getInitialMoney() {
+    public float getInitialMoney() {
         return initialMoney;
     }
 
-    public void setMoney(int newMoney) {money = newMoney;}
+    public int getBet() {
+        return bet;
+    }
+
+    public void setBet(int bet) {
+        this.bet = bet;
+    }
+
+    public void setMoney(float newMoney) {money = newMoney;}
 
     public void hit(Deck deck, Hand hand) {
         deck.GiveCardTo(hand);
@@ -97,7 +177,7 @@ public class Player extends CardHolder{
     public void reset(){
         super.reset();
         splitHand.getHand().clear();
-        //TODO empty player bet
+        this.bet = 0;
     }
 
     public void setSplitHand(Hand splitHand) {
