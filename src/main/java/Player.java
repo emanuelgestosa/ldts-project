@@ -60,7 +60,55 @@ public class Player extends CardHolder{
     }
 
     public boolean processKeyBet(char choice){
-
+        if(choice == '1'){
+            if(this.money > 5){
+                setBet(5);
+                return true;
+            }
+        }
+        if(choice == '2'){
+            if(this.money > 10){
+                setBet(10);
+                return true;
+            }
+        }
+        if(choice == '3'){
+            if(this.money > 20){
+                setBet(20);
+                return true;
+            }
+        }
+        if(choice == '4'){
+            if(this.money > 50){
+                setBet(50);
+                return true;
+            }
+        }
+        if(choice == '5'){
+            if(this.money > 100){
+                setBet(100);
+                return true;
+            }
+        }
+        if(choice == '6'){
+            if(this.money > 200){
+                setBet(200);
+                return true;
+            }
+        }
+        if(choice == '7'){
+            if(this.money > 500){
+                setBet(500);
+                return true;
+            }
+        }
+        if(choice == '8'){
+            if(this.money > 1000){
+                setBet(1000);
+                return true;
+            }
+        }
+        return false;
     }
 
     public int scanInput(KeyStroke keyStroke){
