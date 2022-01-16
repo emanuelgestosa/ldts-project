@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="LanternaGUITest" tests="4" skipped="0" failures="0" errors="0" timestamp="2022-01-16T14:26:22" hostname="arch" time="1.527">
+  <properties/>
+  <testcase name="getKey()" classname="LanternaGUITest" time="1.271"/>
+  <testcase name="drawHand()" classname="LanternaGUITest" time="0.145"/>
+  <testcase name="drawMenu()" classname="LanternaGUITest" time="0.022"/>
+  <testcase name="drawTable()" classname="LanternaGUITest" time="0.084"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

@@ -20,34 +20,16 @@ import java.io.IOException;
 
 public class PlayerTest {
 
-    private LanternaGUI gui;
-    private Screen screen;
-    private Terminal terminal;
-    private TextGraphics graphics;
     private Player player;
-    private Dealer dealer;
-    private Deck deck;
-    private Scanner scanner;
 
     @BeforeEach
     private void helper() throws IOException {
-        screen = Mockito.mock(Screen.class);
-        graphics = Mockito.mock(TextGraphics.class);
-        terminal = Mockito.mock(Terminal.class);
-        dealer = Mockito.mock(Dealer.class);
-        deck = Mockito.mock(Deck.class);
-        Mockito.when(screen.newTextGraphics()).thenReturn(graphics);
-        gui = new LanternaGUI(screen);
         player = new Player("", 100);
-
     }
 
     @Test
     public void scannerTest() throws IOException {
-
         player.scanInput(4);
         Assertions.assertEquals(4, this.player.getBet());
-
     }
-
 }
