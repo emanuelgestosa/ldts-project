@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
+import static java.lang.Character.toLowerCase;
+import static java.lang.Character.toUpperCase;
+
 public class Player extends CardHolder{
     private float initialMoney;
     private String name;
@@ -24,7 +27,7 @@ public class Player extends CardHolder{
     }
 
     public char getChar(KeyStroke key){
-        return key.getCharacter();
+        return toLowerCase(key.getCharacter());
     }
 
     public boolean processKey(GUI gui, Dealer dealer, Deck deck, char choice, Hand hand) throws IOException{
