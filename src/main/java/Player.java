@@ -120,10 +120,10 @@ public class Player extends CardHolder{
 
         boolean isValid = false;
         // int receivedBet = 0; FAZER ISTO DEPOIS DA PARTE GRAFICA
-        while(isValid != true){
+       // while(isValid != true){
             // KeyStroke keyStroke = gui.getKey();
             // isValid = processKeyBet(keyStroke);
-        }
+       // }
         return this.bet;
     }
 

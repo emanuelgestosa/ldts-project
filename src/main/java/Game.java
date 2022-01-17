@@ -10,8 +10,6 @@ public class Game {
     private int nDecks = 8;
     private final LanternaGUI gui;
 
-
-
     private static Game instance = null;
 
     private Game() throws IOException {
