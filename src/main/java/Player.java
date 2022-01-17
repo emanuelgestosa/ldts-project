@@ -21,7 +21,6 @@ public class Player extends CardHolder{
         this.name = name;
         this.money = money;
         this.initialMoney = money;
-        gui = new LanternaGUI();
 
     }
 
