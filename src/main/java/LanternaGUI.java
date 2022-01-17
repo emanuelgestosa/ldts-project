@@ -60,6 +60,7 @@ public class LanternaGUI implements GUI{
 
     @Override
     public void drawConfigs() throws IOException {
+        TextGraphics graphics = screen.newTextGraphics();
         graphics.putString(0, 0, "(D)eck Number");
         graphics.putString(0, 1, "(Q)uit");
     }
