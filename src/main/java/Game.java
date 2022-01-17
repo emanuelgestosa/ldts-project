@@ -1,7 +1,9 @@
 import com.googlecode.lanterna.input.KeyStroke;
 
 import javax.swing.*;
+import java.awt.*;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Scanner;
 
 public class Game {
@@ -12,18 +14,18 @@ public class Game {
 
     private static Game instance = null;
 
-    private Game() throws IOException {
-        gui = new LanternaGUI(65, 15);
+    private Game() throws IOException, URISyntaxException, FontFormatException {
+        gui = new LanternaGUI(70, 12);
         menu = new Menu();
         table = new Table("Domingos", 50, nDecks);
     }
 
-    public static Game getInstance() throws IOException {
+    public static Game getInstance() throws IOException, URISyntaxException, FontFormatException {
         if (instance == null) instance = new Game();
         return instance;
     }
 
-    public void run() throws IOException {
+    public void run() throws IOException, InterruptedException {
         while(true) {
             gui.clear();
             menu.draw(gui);
@@ -41,7 +43,7 @@ public class Game {
         }
         gui.clear();
         table.play(gui);
-        table.draw(gui, table.getDealer(),table.getPlayer());
+        table.draw(gui, table.getDealer(),table.getPlayer(), 0);
         gui.refresh();
     }
 
@@ -70,7 +72,7 @@ public class Game {
 }
 
 class GameEntryPoint {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException, InterruptedException {
         Game game = Game.getInstance();
         game.run();
     }
