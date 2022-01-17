@@ -55,6 +55,13 @@ public class LanternaGUI implements GUI{
         TextGraphics graphics = screen.newTextGraphics();
         graphics.putString(0, 0, "(S)tart");
         graphics.putString(0, 1, "(Q)uit");
+        graphics.putString(0, 2, "(C)onfigs");
+    }
+
+    @Override
+    public void drawConfigs() throws IOException {
+        graphics.putString(0, 0, "(D)eck Number");
+        graphics.putString(0, 1, "(Q)uit");
     }
 
     @Override

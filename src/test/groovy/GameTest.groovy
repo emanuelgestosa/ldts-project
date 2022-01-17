@@ -14,7 +14,7 @@ class GameTest extends Specification {
         given:
         Hand hand = new Hand();
         when:
-        hand.addCard(new Card("H", "10"))
+        hand.addCard(new Card("H", "T"))
         hand.addCard(new Card("H", "8"))
         hand.addCard(new Card("H", "5"))
         then:
@@ -24,7 +24,7 @@ class GameTest extends Specification {
         given:
         Hand hand = new Hand();
         when:
-        hand.addCard(new Card("H", "10"))
+        hand.addCard(new Card("H", "T"))
         hand.addCard(new Card("H", "A"))
         then:
         hand.getValue() == 21;
@@ -52,7 +52,7 @@ class GameTest extends Specification {
         given:
         Player player = new Player("Liberato", 100);
         player.getHand().addCard(new Card("H", "3"))
-        player.getHand().addCard(new Card("H", "10"))
+        player.getHand().addCard(new Card("H", "T"))
         when:
         player.hit(new Deck(2), player.getHand());
         then:
@@ -62,7 +62,7 @@ class GameTest extends Specification {
         given:
         def mockGUI = Mock(GUI);
         Player player = new Player("Liberato", 100);
-        player.getHand().addCard(new Card("H", "10"))
+        player.getHand().addCard(new Card("H", "T"))
         player.getHand().addCard(new Card("H", "8"))
         player.getHand().addCard(new Card("H", "4"))
         when:

@@ -6,6 +6,8 @@ import java.io.IOException;
 
 public interface GUI {
 
+    public void drawConfigs() throws IOException;
+
     public KeyStroke getKey() throws IOException;
 
     void drawMenu() throws IOException;

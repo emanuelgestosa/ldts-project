@@ -3,7 +3,6 @@ import com.googlecode.lanterna.input.KeyStroke;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -12,8 +11,8 @@ public class Player extends CardHolder{
     private String name;
     private float money;
     private Hand splitHand;
+    private float insurance =0;
     private int bet = 0;
-    private GUI gui;
     Scanner scanner = new Scanner(System.in);
 
     public Player(String name, float money) throws IOException {
@@ -45,8 +44,10 @@ public class Player extends CardHolder{
                 return true;
             return false;
         }
-        if(choice == 'w' && splitHand.getHand().size() == 0)
+        if(choice == 'w')
             split(gui, dealer, deck);
+        if(choice == 'e')
+            insurance(gui, dealer, deck);
         return true;
     }
 
@@ -120,8 +121,8 @@ public class Player extends CardHolder{
         boolean isValid = false;
         // int receivedBet = 0; FAZER ISTO DEPOIS DA PARTE GRAFICA
         while(isValid != true){
-            KeyStroke keyStroke = gui.getKey();
-            isValid = processKeyBet(keyStroke);
+            // KeyStroke keyStroke = gui.getKey();
+            // isValid = processKeyBet(keyStroke);
         }
         return this.bet;
     }
@@ -155,6 +156,8 @@ public class Player extends CardHolder{
 
 
     private void split(GUI gui, Dealer dealer, Deck deck) throws IOException{
+        if(splitHand.getHand().size() != 0 || hand.getCardAt(0).getSymbol() != hand.getCardAt(1).getSymbol())
+            return;
         List<Card> original = new ArrayList<Card>();
         List<Card> split = new ArrayList<Card>();
         original.add(hand.getCardAt(0));
@@ -182,6 +185,17 @@ public class Player extends CardHolder{
     public void setSplitHand(Hand splitHand) {
         this.splitHand = splitHand;
     }
+
+    public void insurance(GUI gui, Dealer dealer, Deck deck){
+        if(dealer.getHand().getHand().get(0).getSymbol() != "A")
+            return;
+        //TODO ask for insurance
+    }
+
+    public float getInsurance() {
+        return insurance;
+    }
 }
+
 
 
