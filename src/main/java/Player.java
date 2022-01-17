@@ -117,8 +117,8 @@ public class Player extends CardHolder{
 
     public int scanInput() throws IOException {
 
-        boolean isValid = false; // CHECKS IF INPUT IS VALID
-        // int receivedBet = 0; FAZER ISTO DEPOIS DA PARTE GRÁFICA
+        boolean isValid = false;
+        // int receivedBet = 0; FAZER ISTO DEPOIS DA PARTE GRAFICA
         while(isValid != true){
             KeyStroke keyStroke = gui.getKey();
             isValid = processKeyBet(keyStroke);
