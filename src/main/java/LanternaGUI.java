@@ -130,6 +130,7 @@ public class LanternaGUI implements GUI{
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
         graphics.setBackgroundColor(TextColor.Factory.fromString("#a2b536"));
+        graphics.putString(51, terminal.getTerminalSize().getRows() - 2,"      ");
         graphics.putString(51, terminal.getTerminalSize().getRows() - 2, Integer.toString(bet));
     }
 

@@ -75,7 +75,7 @@ public class Table {
     public float calculateWhoWon(Hand hand){
         float multiple = 1;
         if(dealer.getHand().getValue() == 21) {
-            multiple -= 1.5;
+            multiple -= 1;
         }
         if(hand.getValue() == 21) {
             multiple += 1.5;

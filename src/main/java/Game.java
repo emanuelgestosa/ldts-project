@@ -28,7 +28,7 @@ public class Game {
     public void run() throws IOException, InterruptedException {
         while(true) {
             gui.clear();
-            menu.draw(gui);
+            Menu.draw(gui);
             gui.refresh();
 
             int key = menu.processKey(gui.getKey());
@@ -36,15 +36,17 @@ public class Game {
                 gui.close();
                 return;
             }
-            else if (key == 1) break;
+            else if (key == 1) {
+                gui.clear();
+                table = new Table("Domingos", 50, nDecks);
+                table.play(gui);
+                table.draw(gui, table.getDealer(),table.getPlayer(), 0);
+                gui.refresh();
+            }
             else if (key ==2) {
                 configs();
             }
         }
-        gui.clear();
-        table.play(gui);
-        table.draw(gui, table.getDealer(),table.getPlayer(), 0);
-        gui.refresh();
     }
 
     public Table getTable() {

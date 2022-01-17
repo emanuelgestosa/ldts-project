@@ -5,10 +5,8 @@ import com.googlecode.lanterna.input.KeyType;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 import static java.lang.Character.toLowerCase;
-import static java.lang.Character.toUpperCase;
 
 public class Player extends CardHolder{
     private float initialMoney;
@@ -16,7 +14,6 @@ public class Player extends CardHolder{
     private float money;
     private Hand splitHand;
     private float insurance =0;
-    Scanner scanner = new Scanner(System.in);
 
     public Player(String name, float money) throws IOException {
         super();
@@ -30,45 +27,47 @@ public class Player extends CardHolder{
         return toLowerCase(key.getCharacter());
     }
 
-    public boolean processKey(GUI gui, Dealer dealer, Deck deck, char choice, Hand hand) throws IOException{
+    public int processKey(GUI gui, Dealer dealer, Deck deck, char choice, Hand hand) throws IOException{
         if(choice == 'd') {
             if (hand.getHand().size() == 2 && hand.getValue() < 21) {
                 double_down(deck, hand);
-                return false;
+                return 0;
             }
         }
         if(choice == 's') {
-            return false;
+            return 0;
         }
         if(choice == 'a') {
             if(hand.getValue() < 21)
                 hit(deck, hand);
             if(hand.getValue() < 21)
-                return true;
-            return false;
+                return 1;
+            return 0;
         }
         if(choice == 'w') {
-            split(gui, dealer, deck);
-            return false;
+            return split(gui, dealer, deck);
         }
         if(choice == 'e') {
             insurance(gui, dealer, deck);
-            return false;
+            return 0;
         }
-        return true;
+        return 1;
     }
 
-    public void turn(GUI gui, Dealer dealer, Deck deck, Hand hand) throws IOException {
-        boolean inTurn = true;
+    public boolean turn(GUI gui, Dealer dealer, Deck deck, Hand hand) throws IOException {
+        int inTurn = 1;
         Table.draw(gui, dealer, this, 1);
         gui.refresh();
-        while(hand.getValue() < 21 && inTurn) {
+        while(hand.getValue() < 21 && inTurn==1) {
             KeyStroke key = gui.getKey();
             char choice = getChar(key);
-            inTurn = processKey(gui, dealer, deck, choice, hand); //Takes the player's turn
+            inTurn = processKey(gui, dealer, deck, choice, hand);//Takes the player's turn
+            if(inTurn ==-1)
+                return false;
             Table.draw(gui, dealer, this, 1);
             gui.refresh();
         }
+        return true;
     }
 
     public void scanInput(GUI gui) throws IOException {
@@ -78,8 +77,13 @@ public class Player extends CardHolder{
         while(true) {
             KeyStroke key= gui.getKey();
             if (key.getKeyType() == KeyType.Enter) {
-                if (bet != 0 || bet <= this.money)
+                if (bet != 0 && bet <= this.money)
                     break;
+            }
+            else if (key.getKeyType() == KeyType.Backspace && bet !=0) {
+                bet = bet/10;
+                gui.drawBet(bet);
+                gui.refresh();
             }
             else if (key.getKeyType() == KeyType.Character && (int) key.getCharacter() >= 48 && (int) key.getCharacter() <= 57) {
                 if (this.money >= (bet * 10) + (int) key.getCharacter() - 48) {
@@ -101,14 +105,6 @@ public class Player extends CardHolder{
         return initialMoney;
     }
 
-    public int getBet(Hand hand) {
-        return hand.getBet();
-    }
-
-    public void setBet(Hand hand, int bet) {
-        hand.setBet(bet);
-    }
-
     public void setMoney(float newMoney) {money = newMoney;}
 
     public void hit(Deck deck, Hand hand) {
@@ -121,9 +117,9 @@ public class Player extends CardHolder{
         hand.setBet(hand.getBet()*2);
     }
 
-    private void split(GUI gui, Dealer dealer, Deck deck) throws IOException{
-        if(splitHand.getHand().size() != 0 || hand.getCardAt(0).getSymbol() != hand.getCardAt(1).getSymbol())
-            return;
+    private int split(GUI gui, Dealer dealer, Deck deck) throws IOException{
+        if(splitHand.getHand().size() != 0 || hand.getCardAt(0).getSymbol() != hand.getCardAt(1).getSymbol() || money<hand.getBet())
+            return 1;
         List<Card> original = new ArrayList<Card>();
         List<Card> split = new ArrayList<Card>();
         original.add(hand.getCardAt(0));
@@ -139,6 +135,7 @@ public class Player extends CardHolder{
         splitHand.setBet(hand.getBet());
         turn(gui, dealer, deck, hand);
         turn(gui, dealer, deck, splitHand);
+        return 0;
     }
     public Hand getSplitHand() {
         return splitHand;
