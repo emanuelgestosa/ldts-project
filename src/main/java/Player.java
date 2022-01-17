@@ -55,16 +55,15 @@ public class Player extends CardHolder{
         boolean inTurn = true;
         while(hand.getValue() < 21 && inTurn) {
             KeyStroke key = gui.getKey();
-            scanInput();
             char choice = getChar(key);
+            scanInput(gui,  dealer,  deck,  hand);
             inTurn = processKey(gui, dealer, deck, choice, hand); //Takes the player's turn
             Table.draw(gui, dealer, this);
             gui.refresh();
         }
     }
 
-    public boolean processKeyBet(KeyStroke keyStroke){
-        char choice = keyStroke.getCharacter();
+    public boolean processKeyBet(GUI gui, Dealer dealer, Deck deck, char choice, Hand hand){
         if(choice == '1'){
             if(this.money > 5){
                 setBet(5);
@@ -116,15 +115,25 @@ public class Player extends CardHolder{
         return false;
     }
 
-    public int scanInput() throws IOException {
-
+    public int scanInput(GUI gui, Dealer dealer, Deck deck, Hand hand) throws IOException {
         boolean isValid = false;
+        while(isValid != true) {
+            KeyStroke key = gui.getKey();
+            char choice = getChar(key);
+            isValid = processKeyBet(gui, dealer, deck, choice, hand); //Takes the player's turn
+            gui.refresh();
+        }
+
+
+
         // int receivedBet = 0; FAZER ISTO DEPOIS DA PARTE GRAFICA
        // while(isValid != true){
             // KeyStroke keyStroke = gui.getKey();
             // isValid = processKeyBet(keyStroke);
        // }
+        this.setMoney(this.money-this.bet);
         return this.bet;
+
     }
 
     public float getMoney(){
