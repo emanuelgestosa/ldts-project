@@ -13,12 +13,15 @@ public class Player extends CardHolder{
     private float money;
     private Hand splitHand;
     private int bet = 0;
+    private GUI gui;
+    Scanner scanner = new Scanner(System.in);
 
-    public Player(String name, float money){
+    public Player(String name, float money) throws IOException {
         super();
         this.name = name;
         this.money = money;
         this.initialMoney = money;
+
     }
 
     public char getChar(KeyStroke key){
@@ -51,30 +54,75 @@ public class Player extends CardHolder{
         boolean inTurn = true;
         while(hand.getValue() < 21 && inTurn) {
             KeyStroke key = gui.getKey();
+            scanInput();
             char choice = getChar(key);
             inTurn = processKey(gui, dealer, deck, choice, hand); //Takes the player's turn
             Table.draw(gui, dealer, this);
             gui.refresh();
         }
-
-
     }
 
-    public int scanInput(int bet){
+    public boolean processKeyBet(KeyStroke keyStroke){
+        char choice = keyStroke.getCharacter();
+        if(choice == '1'){
+            if(this.money > 5){
+                setBet(5);
+                return true;
+            }
+        }
+        if(choice == '2'){
+            if(this.money > 10){
+                setBet(10);
+                return true;
+            }
+        }
+        if(choice == '3'){
+            if(this.money > 20){
+                setBet(20);
+                return true;
+            }
+        }
+        if(choice == '4'){
+            if(this.money > 50){
+                setBet(50);
+                return true;
+            }
+        }
+        if(choice == '5'){
+            if(this.money > 100){
+                setBet(100);
+                return true;
+            }
+        }
+        if(choice == '6'){
+            if(this.money > 200){
+                setBet(200);
+                return true;
+            }
+        }
+        if(choice == '7'){
+            if(this.money > 500){
+                setBet(500);
+                return true;
+            }
+        }
+        if(choice == '8'){
+            if(this.money > 1000){
+                setBet(1000);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int scanInput() throws IOException {
 
         boolean isValid = false; // CHECKS IF INPUT IS VALID
-
+        // int receivedBet = 0; FAZER ISTO DEPOIS DA PARTE GRÁFICA
         while(isValid != true){
-            try{
-                isValid = true;
-            }
-            catch (InputMismatchException e){
-                isValid = false;
-            }
-            if(bet <= 0 || bet > this.getMoney())
-                isValid = false;
+            KeyStroke keyStroke = gui.getKey();
+            isValid = processKeyBet(keyStroke);
         }
-        this.setBet(bet);
         return this.bet;
     }
 
