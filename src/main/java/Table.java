@@ -16,7 +16,7 @@ public class Table {
     private Dealer dealer;
 
     //Methods----------------------------------------------------------------Constructor, Getters, Setters
-    public Table(String playerName, int money, int deckNum){
+    public Table(String playerName, int money, int deckNum) throws IOException {
         deck = new Deck(deckNum);
         player = new Player(playerName, money);
         dealer = new Dealer();
@@ -56,6 +56,9 @@ public class Table {
         if(dealer.getHand().getValue()==21) {
             //TODO balance += insurance*2
         }
+        float newMoney = this.player.getMoney();
+        newMoney += this.player.getBet()*multiple;
+        this.player.setMoney(newMoney);
         player.reset();
         dealer.reset();
     }
@@ -93,7 +96,7 @@ public class Table {
     }
 
     public static void draw(GUI gui, Dealer dealer, Player player) throws IOException {
-        gui.drawTable();
+        gui.drawTable((int)player.getMoney());
         gui.drawHand(dealer);
         gui.drawHand(player);
         gui.refresh();

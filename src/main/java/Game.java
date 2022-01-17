@@ -2,6 +2,7 @@ import com.googlecode.lanterna.input.KeyStroke;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Game {
     private Table table;
@@ -9,10 +10,12 @@ public class Game {
     private int nDecks = 8;
     private final LanternaGUI gui;
 
+
+
     private static Game instance = null;
 
     private Game() throws IOException {
-        gui = new LanternaGUI();
+        gui = new LanternaGUI(65, 15);
         menu = new Menu();
         table = new Table("Domingos", 50, nDecks);
     }
