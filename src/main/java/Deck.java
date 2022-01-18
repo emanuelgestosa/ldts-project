@@ -11,9 +11,14 @@ public class Deck{
         for(int i=0; i< num; i++){
             for(String suit : new String[]{"S", "H", "D", "C"}) {
                 deck.add(new Card(suit, "A"));
-                for (int j = 2; j < 10; j++)
-                    deck.add(new Card(suit, String.valueOf(j)));
-
+                deck.add(new Card(suit, "2"));
+                deck.add(new Card(suit, "3"));
+                deck.add(new Card(suit, "4"));
+                deck.add(new Card(suit, "5"));
+                deck.add(new Card(suit, "6"));
+                deck.add(new Card(suit, "7"));
+                deck.add(new Card(suit, "8"));
+                deck.add(new Card(suit, "9"));
                 deck.add(new Card(suit, "T"));
                 deck.add(new Card(suit, "J"));
                 deck.add(new Card(suit, "Q"));

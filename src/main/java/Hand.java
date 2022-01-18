@@ -3,6 +3,7 @@ import java.util.List;
 
 public class Hand {
     private List<Card> hand;
+    private int bet=0;
 
     Hand(){
         hand = new ArrayList<Card>();
@@ -35,5 +36,13 @@ public class Hand {
 
     public void setHand(List<Card> hand) {
         this.hand = hand;
+    }
+
+    public int getBet() {
+        return bet;
+    }
+
+    public void setBet(int bet) {
+        this.bet = bet;
     }
 }

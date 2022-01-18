@@ -12,9 +12,15 @@ public interface GUI {
 
     void drawMenu() throws IOException;
 
-    void drawTable(int money) throws IOException;
+    void drawChip(Player player, int split)throws IOException;
 
-    void drawHand(CardHolder holder) throws IOException;
+    void drawTable(int money, int phase) throws IOException;
+
+    void drawBet(int bet) throws IOException;
+
+    public void drawSplitHand(Hand hand) throws IOException;
+
+    void drawHand(CardHolder holder, int split) throws IOException;
 
     void refresh() throws IOException;
 

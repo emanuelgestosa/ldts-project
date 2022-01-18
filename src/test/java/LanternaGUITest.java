@@ -46,7 +46,7 @@ public class LanternaGUITest {
 
     @Test
     public void drawTable() throws IOException {
-        gui.drawTable(50);
+        gui.drawTable(50, 0);
         Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
         Mockito.verify(graphics, Mockito.times((1))).fillRectangle(new TerminalPosition(0, 0), terminal.getTerminalSize(), ' ');
         Mockito.verify(graphics, Mockito.times(3)).setBackgroundColor(TextColor.Factory.fromString("#a2b536"));
@@ -64,7 +64,7 @@ public class LanternaGUITest {
         Player player = new Player("", 100);
         player.getHand().addCard(new Card("S", "A"));
         player.getHand().addCard(new Card("H", "T"));
-        gui.drawHand(player);
+        gui.drawHand(player, 0);
         Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#000000"));
         Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns() - 6) / 2, terminal.getTerminalSize().getRows() - 6, "AS");
         Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#fc1111"));
