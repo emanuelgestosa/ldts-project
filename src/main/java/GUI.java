@@ -14,6 +14,8 @@ public interface GUI {
 
     void drawChip(Player player, int split)throws IOException;
 
+    public void drawAlterDecks(int nDecks) throws IOException;
+
     void drawTable(int money, int phase) throws IOException;
 
     void drawBet(int bet) throws IOException;
