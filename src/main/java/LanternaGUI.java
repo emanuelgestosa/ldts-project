@@ -28,7 +28,7 @@ public class LanternaGUI implements GUI{
     private final Terminal terminal;
 
     public LanternaGUI(int width, int height) throws IOException, URISyntaxException, FontFormatException {
-        URL resource = getClass().getClassLoader().getResource("dealerplate california.ttf");
+        URL resource = getClass().getClassLoader().getResource("DealerplateCalifornia-Regular10.ttf");
         File fontFile = new File(resource.toURI());
         Font font =  Font.createFont(Font.TRUETYPE_FONT, fontFile);
         GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
@@ -103,6 +103,15 @@ public class LanternaGUI implements GUI{
     }
 
     @Override
+    public void drawAlterDecks(int nDecks) throws IOException {
+        TextGraphics graphics = screen.newTextGraphics();
+        drawBackground(graphics);
+        graphics.setForegroundColor(TextColor.Factory.fromString("#FFFFFF"));
+        drawCenter(graphics, "Please enter a valid(between 1 and 10) number of Decks:", 0);
+        drawCenter(graphics, Integer.toString(nDecks), -2);
+    }
+
+    @Override
     public void drawTable(int money, int phase) throws IOException {
         TextGraphics graphics = screen.newTextGraphics();
         drawBackground(graphics);
@@ -159,11 +168,11 @@ public class LanternaGUI implements GUI{
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
         List<Card> cards = new ArrayList<Card>(hand.getCards());
-        if (cards.size() < 2) cards.add(new Card("#", "#"));
+        if (cards.size() < 2) cards.add(new Card("?", "?"));
         int drawColumn = (terminal.getTerminalSize().getColumns() - cards.size() * 3) / 2;
         for (int i = 0; i < cards.size(); i++) {
             Card card = cards.get(i);
-            if (Objects.equals(card.getSuit(), "H") || Objects.equals(card.getSuit(), "D")) graphics.setForegroundColor(TextColor.Factory.fromString("#fc1111"));
+            if (Objects.equals(card.getSuit(), "&") || Objects.equals(card.getSuit(), "%")) graphics.setForegroundColor(TextColor.Factory.fromString("#fc1111"));
             else graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
             graphics.putString(drawColumn + i*3, 1, card.getSymbol() + card.getSuit());
         }
@@ -179,7 +188,7 @@ public class LanternaGUI implements GUI{
         int drawColumn = (terminal.getTerminalSize().getColumns() - cards.size() * 3) / fac;
         for (int i = 0; i < cards.size(); i++) {
             Card card = cards.get(i);
-            if (Objects.equals(card.getSuit(), "H") || Objects.equals(card.getSuit(), "D")) graphics.setForegroundColor(TextColor.Factory.fromString("#fc1111"));
+            if (Objects.equals(card.getSuit(), "&") || Objects.equals(card.getSuit(), "%")) graphics.setForegroundColor(TextColor.Factory.fromString("#fc1111"));
             else graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
             graphics.putString(drawColumn + i*3, terminal.getTerminalSize().getRows() - 6, card.getSymbol() + card.getSuit());
         }
@@ -192,7 +201,7 @@ public class LanternaGUI implements GUI{
         int drawColumn = (3* (terminal.getTerminalSize().getColumns() - cards.size() * 3) / 4) - 2;
         for (int i = 0; i < cards.size(); i++) {
             Card card = cards.get(i);
-            if (Objects.equals(card.getSuit(), "H") || Objects.equals(card.getSuit(), "D")) graphics.setForegroundColor(TextColor.Factory.fromString("#fc1111"));
+            if (Objects.equals(card.getSuit(), "&") || Objects.equals(card.getSuit(), "%")) graphics.setForegroundColor(TextColor.Factory.fromString("#fc1111"));
             else graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
             graphics.putString(drawColumn + i*3, terminal.getTerminalSize().getRows() - 6, card.getSymbol() + card.getSuit());
         }

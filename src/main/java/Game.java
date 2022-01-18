@@ -1,4 +1,5 @@
 import com.googlecode.lanterna.input.KeyStroke;
+import com.googlecode.lanterna.input.KeyType;
 
 import javax.swing.*;
 import java.awt.*;
@@ -61,15 +62,29 @@ public class Game {
         while (key != -1){
             key = menu.processConfigKey(gui.getKey());
             if(key == 2) {
-                KeyStroke nDecks = gui.getKey();
-                if ((int) nDecks.getCharacter() < 49 || (int) nDecks.getCharacter() > 57) {
-                    //invalid
-                } else {
-                    this.nDecks = (int) nDecks.getCharacter() - 48;
-                    break;
-                }
+                askForNDecks();
+                break;
             }
         }
+    }
+
+    public void askForNDecks() throws IOException{
+        int nDecks = 0;
+        while(true){
+            gui.drawAlterDecks(nDecks);
+            gui.refresh();
+            KeyStroke key = gui.getKey();
+            if(key.getKeyType() == KeyType.Enter && nDecks != 0){
+                break;
+            }
+            else if (key.getKeyType() == KeyType.Backspace) {
+                nDecks=0;
+            }
+            else if(key.getKeyType() == KeyType.Character && (int) key.getCharacter() > 48 && (int) key.getCharacter() <= 57){
+                nDecks = (int) key.getCharacter() - 48;
+            }
+        }
+        this.nDecks = nDecks;
     }
 }
 
