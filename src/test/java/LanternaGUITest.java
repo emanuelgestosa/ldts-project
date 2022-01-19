@@ -40,8 +40,13 @@ public class LanternaGUITest {
     @Test
     public void drawMenu() throws IOException {
         gui.drawMenu();
-        Mockito.verify(graphics, Mockito.times(1)).putString(0, 0, "(S)tart");
-        Mockito.verify(graphics, Mockito.times(1)).putString(0, 1, "(Q)uit");
+        Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
+        Mockito.verify(graphics, Mockito.times(1)).fillRectangle(new TerminalPosition(0, 0), terminal.getTerminalSize(), ' ');
+        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#43C824"));
+        Mockito.verify(graphics, Mockito.times(1)).fill('.');
+        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns()-"( S )tart".length()-1)/2, (terminal.getTerminalSize().getRows()/2)-2, "( S )tart");
+        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns()-"( C )onfigs".length()-1)/2, (terminal.getTerminalSize().getRows()/2), "( C )onfigs");
+        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns()-"( Q )uit".length()-1)/2, (terminal.getTerminalSize().getRows()/2)+2, "( Q )uit");
     }
 
     @Test

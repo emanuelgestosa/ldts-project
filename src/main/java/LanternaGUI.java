@@ -81,15 +81,15 @@ public class LanternaGUI implements GUI{
         drawCenter(graphics,"( Q )uit", -2);
     }
 
-    public void drawBackground(TextGraphics graphics) throws IOException {
+    private void drawBackground(TextGraphics graphics) throws IOException {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
         graphics.fillRectangle(new TerminalPosition(0, 0), terminal.getTerminalSize(), ' ');
         graphics.setForegroundColor(TextColor.Factory.fromString("#43C824"));
         graphics.fill('.');
     }
 
-    public void drawCenter(TextGraphics graphics, String str, int incrementToHeight)throws IOException{
-        var terminalSize = screen.getTerminalSize();
+    private void drawCenter(TextGraphics graphics, String str, int incrementToHeight)throws IOException{
+        var terminalSize = terminal.getTerminalSize();
         graphics.putString((terminalSize.getColumns()-str.length()-1)/2, (terminalSize.getRows()/2)-incrementToHeight, str);
     }
 
