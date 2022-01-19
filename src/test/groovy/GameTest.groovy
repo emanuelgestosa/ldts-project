@@ -51,8 +51,8 @@ class GameTest extends Specification {
     def "hit test 1 - Less than 21"(){
         given:
         Player player = new Player("Liberato", 100);
-        player.getHand().addCard(new Card("H", "3"))
-        player.getHand().addCard(new Card("H", "T"))
+        player.getHand().addCard(new Card("%", "3"))
+        player.getHand().addCard(new Card("%", "#"))
         when:
         player.hit(new Deck(2), player.getHand());
         then:
@@ -62,9 +62,9 @@ class GameTest extends Specification {
         given:
         def mockGUI = Mock(GUI);
         Player player = new Player("Liberato", 100);
-        player.getHand().addCard(new Card("H", "T"))
-        player.getHand().addCard(new Card("H", "8"))
-        player.getHand().addCard(new Card("H", "4"))
+        player.getHand().addCard(new Card("%", "#"))
+        player.getHand().addCard(new Card("%", "8"))
+        player.getHand().addCard(new Card("%", "4"))
         when:
         player.processKey(mockGUI, new Dealer(),new Deck(2), 'a' as char, player.getHand());
         then:
@@ -74,8 +74,8 @@ class GameTest extends Specification {
         given:
         def mockGUI = Mock(GUI);
         Player player = new Player("Liberato", 100);
-        player.getHand().addCard(new Card("H", "J"))
-        player.getHand().addCard(new Card("H", "A"))
+        player.getHand().addCard(new Card("%", "J"))
+        player.getHand().addCard(new Card("%", "A"))
         when:
         player.processKey(mockGUI, new Dealer(),new Deck(2), 'a' as char, player.getHand());
         then:
@@ -85,8 +85,8 @@ class GameTest extends Specification {
         given:
         def mockGUI = Mock(GUI);
         Player player = new Player("Liberato", 100);
-        player.getHand().addCard(new Card("H", "3"))
-        player.getHand().addCard(new Card("H", "A"))
+        player.getHand().addCard(new Card("%", "3"))
+        player.getHand().addCard(new Card("%", "A"))
         boolean inTurn;
         when:
         inTurn = player.processKey(mockGUI, new Dealer(),new Deck(2), 's' as char, player.getHand());
@@ -98,21 +98,21 @@ class GameTest extends Specification {
         given:
         def mockGUI = Mock(GUI);
         Player player = new Player("Liberato", 100);
-        player.getHand().addCard(new Card("H", "3"))
-        player.getHand().addCard(new Card("H", "A"))
+        player.getHand().addCard(new Card("%", "3"))
+        player.getHand().addCard(new Card("%", "A"))
         boolean inTurn;
         when:
         inTurn = player.processKey(mockGUI, new Dealer(),new Deck(2), 'd' as char, player.getHand());
         then:
-        player.getHand().getHand().size() == 2;
-        inTurn;
+        player.getHand().getHand().size() == 3;
+        !inTurn;
     }
     def "double down test 2 - Different Suits"(){
         given:
         def mockGUI = Mock(GUI);
         Player player = new Player("Liberato", 100);
-        player.getHand().addCard(new Card("H", "6"))
-        player.getHand().addCard(new Card("S", "6"))
+        player.getHand().addCard(new Card("%", "6"))
+        player.getHand().addCard(new Card("*", "6"))
         boolean inTurn;
         when:
         inTurn = player.processKey(mockGUI, new Dealer(),new Deck(2), 'd' as char, player.getHand());
@@ -124,9 +124,9 @@ class GameTest extends Specification {
         given:
         def mockGUI = Mock(GUI);
         Player player = new Player("Liberato", 100);
-        player.getHand().addCard(new Card("H", "6"))
-        player.getHand().addCard(new Card("S", "6"))
-        player.getHand().addCard(new Card("S", "6"))
+        player.getHand().addCard(new Card("%", "6"))
+        player.getHand().addCard(new Card("*", "6"))
+        player.getHand().addCard(new Card("*", "6"))
         boolean inTurn;
         when:
         inTurn = player.processKey(mockGUI, new Dealer(),new Deck(2), 'd' as char, player.getHand());
@@ -138,8 +138,8 @@ class GameTest extends Specification {
         given:
         def mockGUI = Mock(GUI);
         Player player = new Player("Liberato", 100);
-        player.getHand().addCard(new Card("H", "Q"))
-        player.getHand().addCard(new Card("S", "A"))
+        player.getHand().addCard(new Card("%", "Q"))
+        player.getHand().addCard(new Card("*", "A"))
         boolean inTurn;
         when:
         inTurn = player.processKey(mockGUI, new Dealer(),new Deck(2), 'd' as char, player.getHand());
