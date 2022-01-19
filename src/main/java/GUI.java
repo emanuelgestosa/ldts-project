@@ -6,21 +6,21 @@ import java.io.IOException;
 
 public interface GUI {
 
-    public void drawConfigs() throws IOException;
+    void drawConfigs() throws IOException;
 
-    public KeyStroke getKey() throws IOException;
+    KeyStroke getKey() throws IOException;
 
     void drawMenu() throws IOException;
 
     void drawChip(Player player, int split)throws IOException;
 
-    public void drawAlterDecks(int nDecks) throws IOException;
+    void drawAlterDecks(int nDecks) throws IOException;
 
     void drawTable(int money, int phase) throws IOException;
 
     void drawBet(int bet) throws IOException;
 
-    public void drawSplitHand(Hand hand) throws IOException;
+    void drawSplitHand(Hand hand) throws IOException;
 
     void drawHand(CardHolder holder, int split) throws IOException;
 
