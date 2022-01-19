@@ -10,4 +10,7 @@ public abstract class CardHolder {
     public void reset(){
         hand.getHand().clear();
     }
+    public boolean hasBlackjack() {
+        return hand.getValue() == 21 && hand.getCards().size() == 2;
+    }
 }

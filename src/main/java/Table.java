@@ -51,7 +51,6 @@ public class Table {
         draw(gui, dealer, player, 1);
         gui.refresh();
         Thread.sleep(1000);
-        //TODO Waste some time here
         prepareForNewRound(); //Calculates who won, removes/adds money to player, empties hands
     }
 
@@ -73,11 +72,11 @@ public class Table {
     }
 
     public float calculateWhoWon(Hand hand){
-        if(dealer.getHand().getValue() == 21) {
-            if (hand.getValue() == 21) return 1;
+        if(dealer.hasBlackjack()) {
+            if (hand.getValue() == 21 && hand.getCards().size() == 2) return 1;
             else return 0;
         }
-        if(hand.getValue() == 21) return 2.5f;
+        if(hand.getValue() == 21 && hand.getCards().size() == 2) return 2.5f;
         if(hand.getValue() > 21) return 0;
         if(dealer.getHand().getValue() > 21) return 2;
         if(hand.getValue() > dealer.getHand().getValue()) return 2;
