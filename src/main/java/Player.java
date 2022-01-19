@@ -61,58 +61,15 @@ public class Player extends CardHolder{
         while(hand.getValue() < 21 && inTurn==1) {
             KeyStroke key = gui.getKey();
             char choice = getChar(key);
-<<<<<<< HEAD
-            scanInput(gui,  dealer,  deck,  hand);
-            inTurn = processKey(gui, dealer, deck, choice, hand); //Takes the player's turn
-            Table.draw(gui, dealer, this);
-=======
             inTurn = processKey(gui, dealer, deck, choice, hand);//Takes the player's turn
             if(inTurn ==-1)
                 return false;
             Table.draw(gui, dealer, this, 1);
->>>>>>> ef2f233a51a12655154fb7b404568857d66931dc
             gui.refresh();
         }
         return true;
     }
 
-<<<<<<< HEAD
-    public boolean processKeyBet(GUI gui, Dealer dealer, Deck deck, char choice, Hand hand){
-        if(choice == '1'){
-            if(this.money > 5){
-                setBet(5);
-                return true;
-            }
-        }
-        if(choice == '2'){
-            if(this.money > 10){
-                setBet(10);
-                return true;
-            }
-        }
-        if(choice == '3'){
-            if(this.money > 20){
-                setBet(20);
-                return true;
-            }
-        }
-        if(choice == '4'){
-            if(this.money > 50){
-                setBet(50);
-                return true;
-            }
-        }
-        if(choice == '5'){
-            if(this.money > 100){
-                setBet(100);
-                return true;
-            }
-        }
-        if(choice == '6'){
-            if(this.money > 200){
-                setBet(200);
-                return true;
-=======
     public void scanInput(GUI gui) throws IOException {
         int bet=0;
         gui.drawBet(bet);
@@ -122,7 +79,6 @@ public class Player extends CardHolder{
             if (key.getKeyType() == KeyType.Enter) {
                 if (bet != 0 && bet <= this.money)
                     break;
->>>>>>> ef2f233a51a12655154fb7b404568857d66931dc
             }
             else if (key.getKeyType() == KeyType.Backspace && bet !=0) {
                 bet = bet/10;
@@ -137,33 +93,8 @@ public class Player extends CardHolder{
                 }
             }
         }
-<<<<<<< HEAD
-        return false;
-    }
-
-    public int scanInput(GUI gui, Dealer dealer, Deck deck, Hand hand) throws IOException {
-        boolean isValid = false;
-        while(isValid != true) {
-            KeyStroke key = gui.getKey();
-            char choice = getChar(key);
-            isValid = processKeyBet(gui, dealer, deck, choice, hand); //Takes the player's turn
-            gui.refresh();
-        }
-
-
-
-        // int receivedBet = 0; FAZER ISTO DEPOIS DA PARTE GRAFICA
-       // while(isValid != true){
-            // KeyStroke keyStroke = gui.getKey();
-            // isValid = processKeyBet(keyStroke);
-       // }
-        this.setMoney(this.money-this.bet);
-        return this.bet;
-
-=======
         money -= bet;
         this.getHand().setBet(bet);
->>>>>>> ef2f233a51a12655154fb7b404568857d66931dc
     }
 
     public float getMoney(){
