@@ -67,17 +67,30 @@ public class LanternaGUITest {
     }
 
     @Test
-    public void drawHand() throws IOException {
+    public void drawHand1() throws IOException {
         Player player = new Player("", 100);
-        player.getHand().addCard(new Card("S", "A"));
-        player.getHand().addCard(new Card("H", "T"));
+        player.getHand().addCard(new Card("%", "A"));
+        player.getHand().addCard(new Card("*", "#"));
         gui.drawHand(player, 0);
+        Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
         Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#000000"));
-        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns() - 6) / 2, terminal.getTerminalSize().getRows() - 6, "AS");
+        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns() - 6) / 2, terminal.getTerminalSize().getRows() - 6, "A%");
         Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#fc1111"));
-        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns() - 6) / 2 + 3, terminal.getTerminalSize().getRows() - 6, "TH");
+        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns() - 6) / 2 + 3, terminal.getTerminalSize().getRows() - 6, "#*");
 
     }
 
+    @Test
+    public void drawHand2() throws IOException {
+        Dealer dealer = new Dealer();
+        dealer.getHand().addCard(new Card("%", "A"));
+        dealer.getHand().addCard(new Card("*", "#"));
+        gui.drawHand(dealer, 0);
+        Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
+        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#000000"));
+        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns() - 6) / 2, 1, "A%");
+        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#fc1111"));
+        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns() - 6) / 2 + 3, 1, "#*");
 
+    }
 }
