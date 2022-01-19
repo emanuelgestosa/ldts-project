@@ -13,25 +13,18 @@ public class Card {
 
     public String getSymbol() { return symbol; }
 
-    public int getValue(){
-        if (symbol.equals("2"))
-            return 2;
-        if (symbol.equals("3"))
-            return 3;
-        if (symbol.equals("4"))
-            return 4;
-        if (symbol.equals("5"))
-            return 5;
-        if (symbol.equals("6"))
-            return 6;
-        if (symbol.equals("7"))
-            return 7;
-        if (symbol.equals("8"))
-            return 8;
-        if (symbol.equals("9"))
-            return 9;
-        if (symbol.equals("T") || symbol.equals("J") || symbol.equals("Q") || symbol.equals("K") )
-            return 10;
-        else return 11;
+    public int getValue() {
+        switch (symbol) {
+            case "2": return 2;
+            case "3": return 3;
+            case "4": return 4;
+            case "5": return 5;
+            case "6": return 6;
+            case "7": return 7;
+            case "8": return 8;
+            case "9": return 9;
+            case "#": case "K": case "Q": case "J": return 10;
+            default: return 11;
+        }
     }
 }
