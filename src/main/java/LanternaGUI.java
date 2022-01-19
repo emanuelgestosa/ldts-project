@@ -135,6 +135,7 @@ public class LanternaGUI implements GUI{
         graphics.putString(23, terminal.getTerminalSize().getRows() - 2, "Please type in a valid bet:");
     }
 
+    @Override
     public void drawBet(int bet) throws IOException {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));

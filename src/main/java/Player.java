@@ -5,25 +5,25 @@ import com.googlecode.lanterna.input.KeyType;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import static java.lang.Character.toLowerCase;
 
 public class Player extends CardHolder{
-    private float initialMoney;
-    private String name;
+    private final float initialMoney;
     private float money;
     private Hand splitHand;
     private float insurance =0;
 
     public Player(String name, float money) throws IOException {
         super();
-        this.name = name;
         this.money = money;
         this.initialMoney = money;
         splitHand = new Hand();
     }
 
     public char getChar(KeyStroke key){
+        //if (key == null || key.getKeyType() != KeyType.Character) return '\0';
         return toLowerCase(key.getCharacter());
     }
 
@@ -118,7 +118,7 @@ public class Player extends CardHolder{
     }
 
     private int split(GUI gui, Dealer dealer, Deck deck) throws IOException{
-        if(splitHand.getHand().size() != 0 || hand.getCardAt(0).getSymbol() != hand.getCardAt(1).getSymbol() || money<hand.getBet())
+        if(splitHand.getHand().size() != 0 || !Objects.equals(hand.getCardAt(0).getSymbol(), hand.getCardAt(1).getSymbol()) || money<hand.getBet())
             return 1;
         List<Card> original = new ArrayList<Card>();
         List<Card> split = new ArrayList<Card>();

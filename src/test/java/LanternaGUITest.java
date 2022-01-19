@@ -53,29 +53,44 @@ public class LanternaGUITest {
     public void drawTable() throws IOException {
         gui.drawTable(50, 0);
         Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
-        Mockito.verify(graphics, Mockito.times((1))).fillRectangle(new TerminalPosition(0, 0), terminal.getTerminalSize(), ' ');
+        Mockito.verify(graphics, Mockito.times(1)).fillRectangle(new TerminalPosition(0, 0), terminal.getTerminalSize(), ' ');
+        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#43C824"));
+        Mockito.verify(graphics, Mockito.times(1)).fill('.');
         Mockito.verify(graphics, Mockito.times(3)).setBackgroundColor(TextColor.Factory.fromString("#a2b536"));
-        Mockito.verify(graphics, Mockito.times((1))).fillRectangle(new TerminalPosition(0, terminal.getTerminalSize().getRows() - 4), new TerminalSize(terminal.getTerminalSize().getColumns(), 4), ' ');
+        Mockito.verify(graphics, Mockito.times(1)).fillRectangle(new TerminalPosition(0, terminal.getTerminalSize().getRows() - 4), new TerminalSize(terminal.getTerminalSize().getColumns(), 4), ' ');
         Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#753216"));
-        Mockito.verify(graphics, Mockito.times((1))).fillRectangle(new TerminalPosition(0, terminal.getTerminalSize().getRows() - 4), new TerminalSize(terminal.getTerminalSize().getColumns(), 1), ' ');
-        Mockito.verify(graphics, Mockito.times((1))).fillRectangle(new TerminalPosition(20, terminal.getTerminalSize().getRows() - 4), new TerminalSize(2, 4), ' ');
+        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#9E4A27"));
+        Mockito.verify(graphics, Mockito.times(1)).fillRectangle(new TerminalPosition(20, terminal.getTerminalSize().getRows() - 4), new TerminalSize(2, 4), ' ');
+        Mockito.verify(graphics, Mockito.times(1)).fillRectangle(new TerminalPosition(0, terminal.getTerminalSize().getRows() - 4), new TerminalSize(terminal.getTerminalSize().getColumns(), 1), '=');
         Mockito.verify(graphics, Mockito.times(2)).setForegroundColor(TextColor.Factory.fromString("#000000"));
-        Mockito.verify(graphics, Mockito.times(1)).putString(1, terminal.getTerminalSize().getRows() - 2,"Balance: 50");
-        Mockito.verify(graphics, Mockito.times(1)).putString(23, terminal.getTerminalSize().getRows() - 2, "Hit(a) Stand(s) DoubleDown(d) Split(w)");
+        Mockito.verify(graphics, Mockito.times(1)).putString(1, terminal.getTerminalSize().getRows() - 2,"Balance: " + "50");
     }
 
     @Test
-    public void drawHand() throws IOException {
+    public void drawHand1() throws IOException {
         Player player = new Player("", 100);
-        player.getHand().addCard(new Card("S", "A"));
-        player.getHand().addCard(new Card("H", "T"));
+        player.getHand().addCard(new Card("%", "A"));
+        player.getHand().addCard(new Card("*", "#"));
         gui.drawHand(player, 0);
+        Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
         Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#000000"));
-        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns() - 6) / 2, terminal.getTerminalSize().getRows() - 6, "AS");
+        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns() - 6) / 2, terminal.getTerminalSize().getRows() - 6, "A%");
         Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#fc1111"));
-        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns() - 6) / 2 + 3, terminal.getTerminalSize().getRows() - 6, "TH");
+        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns() - 6) / 2 + 3, terminal.getTerminalSize().getRows() - 6, "#*");
 
     }
 
+    @Test
+    public void drawHand2() throws IOException {
+        Dealer dealer = new Dealer();
+        dealer.getHand().addCard(new Card("%", "A"));
+        dealer.getHand().addCard(new Card("*", "#"));
+        gui.drawHand(dealer, 0);
+        Mockito.verify(graphics, Mockito.times(1)).setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
+        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#000000"));
+        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns() - 6) / 2, 1, "A%");
+        Mockito.verify(graphics, Mockito.times(1)).setForegroundColor(TextColor.Factory.fromString("#fc1111"));
+        Mockito.verify(graphics, Mockito.times(1)).putString((terminal.getTerminalSize().getColumns() - 6) / 2 + 3, 1, "#*");
 
+    }
 }

@@ -51,7 +51,6 @@ public class Table {
         draw(gui, dealer, player, 1);
         gui.refresh();
         Thread.sleep(1000);
-        //TODO Waste some time here
         prepareForNewRound(); //Calculates who won, removes/adds money to player, empties hands
     }
 
@@ -73,26 +72,16 @@ public class Table {
     }
 
     public float calculateWhoWon(Hand hand){
-        float multiple = 1;
-        if(dealer.getHand().getValue() == 21) {
-            multiple -= 1;
+        if(dealer.hasBlackjack()) {
+            if (hand.getValue() == 21 && hand.getCards().size() == 2) return 1;
+            else return 0;
         }
-        if(hand.getValue() == 21) {
-            multiple += 1.5;
-            if(player.getSplitHand().getHand().size() >= 1)
-                multiple -=0.5;
-        }
-        if(hand.getValue()==21 || dealer.getHand().getValue() == 21)
-            return multiple;
-        if(hand.getValue() > 21)
-            multiple --;
-        else if(dealer.getHand().getValue() > 21)
-            multiple ++;
-        else if(hand.getValue() > dealer.getHand().getValue())
-            multiple ++;
-        else if(hand.getValue() < dealer.getHand().getValue())
-            multiple --;
-        return multiple;
+        if(hand.getValue() == 21 && hand.getCards().size() == 2) return 2.5f;
+        if(hand.getValue() > 21) return 0;
+        if(dealer.getHand().getValue() > 21) return 2;
+        if(hand.getValue() > dealer.getHand().getValue()) return 2;
+        if (hand.getValue() < dealer.getHand().getValue())  return 0;
+        return 1;
     }
 
     public static void draw(GUI gui, Dealer dealer, Player player, int phase) throws IOException {
