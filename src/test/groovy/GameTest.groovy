@@ -6,7 +6,7 @@ class GameTest extends Specification {
         given:
         Hand hand = new Hand();
         when:
-        hand.addCard(new Card("H", "3"))
+        hand.addCard(new Card("%", "3"))
         then:
         hand.getValue() == 3;
     }
@@ -14,9 +14,9 @@ class GameTest extends Specification {
         given:
         Hand hand = new Hand();
         when:
-        hand.addCard(new Card("H", "T"))
-        hand.addCard(new Card("H", "8"))
-        hand.addCard(new Card("H", "5"))
+        hand.addCard(new Card("%", "#"))
+        hand.addCard(new Card("%", "8"))
+        hand.addCard(new Card("%", "5"))
         then:
         hand.getValue() == 23;
     }
@@ -24,8 +24,8 @@ class GameTest extends Specification {
         given:
         Hand hand = new Hand();
         when:
-        hand.addCard(new Card("H", "T"))
-        hand.addCard(new Card("H", "A"))
+        hand.addCard(new Card("%", "#"))
+        hand.addCard(new Card("%", "A"))
         then:
         hand.getValue() == 21;
     }
@@ -33,8 +33,8 @@ class GameTest extends Specification {
         given:
         Hand hand = new Hand();
         when:
-        hand.addCard(new Card("H", "9"))
-        hand.addCard(new Card("H", "A"))
+        hand.addCard(new Card("%", "9"))
+        hand.addCard(new Card("%", "A"))
         then:
         hand.getValue() == 20;
     }
@@ -42,9 +42,9 @@ class GameTest extends Specification {
         given:
         Hand hand = new Hand();
         when:
-        hand.addCard(new Card("H", "9"))
-        hand.addCard(new Card("H", "A"))
-        hand.addCard(new Card("H", "4"))
+        hand.addCard(new Card("%", "9"))
+        hand.addCard(new Card("%", "A"))
+        hand.addCard(new Card("%", "4"))
         then:
         hand.getValue() == 14;
     }
