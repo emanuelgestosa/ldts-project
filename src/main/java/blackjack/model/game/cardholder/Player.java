@@ -25,4 +25,8 @@ public class Player extends CardHolder {
         return false;
     }
     public void stand() {}
+
+    public boolean doubleDown(Deck deck) {
+        return false;
+    }
 }

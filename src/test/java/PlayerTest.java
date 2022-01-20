@@ -42,4 +42,29 @@ public class PlayerTest {
         player.stand();
         Assertions.assertEquals(player.getHand().getCards().size(), 2);
     }
+    @Test
+    public void ddown1() {
+        player.getHand().addCard(new Card("%", "3"));
+        player.getHand().addCard(new Card("%", "A"));
+        Assertions.assertFalse(player.doubleDown(deck));
+    }
+    @Test
+    public void ddown2() {
+        player.getHand().addCard(new Card("%", "6"));
+        player.getHand().addCard(new Card("*", "6"));
+        Assertions.assertTrue(player.doubleDown(deck));
+    }
+    @Test
+    public void ddown3() {
+        player.getHand().addCard(new Card("%", "3"));
+        player.getHand().addCard(new Card("%", "A"));
+        player.getHand().addCard(new Card("%", "A"));
+        Assertions.assertFalse(player.doubleDown(deck));
+    }
+    @Test
+    public void ddown4() {
+        player.getHand().addCard(new Card("%", "Q"));
+        player.getHand().addCard(new Card("*", "A"));
+        Assertions.assertFalse(player.doubleDown(deck));
+    }
 }
