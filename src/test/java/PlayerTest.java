@@ -46,7 +46,7 @@ public class PlayerTest {
     public void ddown1() {
         player.getHand().addCard(new Card("%", "3"));
         player.getHand().addCard(new Card("%", "A"));
-        Assertions.assertFalse(player.doubleDown(deck));
+        Assertions.assertTrue(player.doubleDown(deck));
     }
     @Test
     public void ddown2() {

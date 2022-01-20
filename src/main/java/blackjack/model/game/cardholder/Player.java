@@ -27,6 +27,10 @@ public class Player extends CardHolder {
     public void stand() {}
 
     public boolean doubleDown(Deck deck) {
-        return false;
+        if (hand.getCards().size() != 2 || hand.getValue() >= 21) return false;
+        hand.addCard(deck);
+        balance -= hand.getBet();
+        hand.setBet(hand.getBet() * 2);
+        return true;
     }
 }
