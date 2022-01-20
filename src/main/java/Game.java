@@ -27,7 +27,8 @@ public class Game {
     }
 
     public void run() throws IOException, InterruptedException {
-        if (!menu.run(gui)) return;
+        nDecks = menu.run(gui);
+        if (nDecks == 0) return;
         while(true) {
             gui.clear();
             table = new Table("Domingos", 50, nDecks);

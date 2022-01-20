@@ -7,17 +7,19 @@ public class Menu {
 
     private int nDecks;
 
-    public Menu() {}
+    public Menu() {
+        nDecks = 8;
+    }
 
-    public boolean run(GUI gui) throws IOException {
+    public int run(GUI gui) throws IOException {
         while (true) {
             draw(gui);
             int key = processKey(gui.getKey());
             switch (key) {
                 case -1:
                     gui.close();
-                    return false;
-                case 1: return true;
+                    return 0;
+                case 1: return nDecks;
                 case 2: configs(gui);
             }
         }
