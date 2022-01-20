@@ -17,7 +17,11 @@ public class Player extends CardHolder {
     public void setBalance(int balance) { this.balance = balance;  }
     public Hand getSplitHand() { return splitHand; }
 
-    public boolean hit() {
+    public boolean hit(Deck deck) {
+        if (hand.getValue() < 21) {
+            hand.addCard(deck);
+            return true;
+        }
         return false;
     }
 }
