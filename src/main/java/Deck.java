@@ -29,9 +29,6 @@ public class Deck{
     public Stack<Card> getDeck() {
         return deck;
     }
-    public void setDeck(Stack<Card> deck) {
-        this.deck = deck;
-    }
 
     //Methods----------------------------------------------------------------Extra
     public void shuffle(){
