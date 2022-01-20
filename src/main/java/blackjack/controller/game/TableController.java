@@ -17,7 +17,15 @@ public class TableController extends GameController {
             case QUIT:
                 game.setState(null);
                 break;
-
+            case RIGHT:
+                getModel().nextEntry();
+                break;
+            case LEFT:
+                getModel().previousEntry();
+                break;
+            case SELECT:
+                if (getModel().isSelectedExit()) game.setState(new MenuState(new Menu()));
+                break;
         }
         if (getModel().getPlayer().getBalance() < 50) game.setState(new MenuState(new Menu()));
     }

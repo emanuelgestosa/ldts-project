@@ -3,6 +3,7 @@ package blackjack.model.game.cardholder;
 public class Player extends CardHolder {
 
     private int balance;
+    private Hand splitHand;
 
     public Player() {
         super();
@@ -15,4 +16,5 @@ public class Player extends CardHolder {
         this.balance = balance;
     }
     public Hand getHand() { return hand; }
+    public Hand getSplitHand() { return splitHand; }
 }

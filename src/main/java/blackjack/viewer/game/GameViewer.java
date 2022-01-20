@@ -15,6 +15,10 @@ public class GameViewer extends Viewer<Table> {
 
     @Override
     public void drawElements(GUI gui) throws IOException {
-
+        for (int i = 0; i < getModel().getNumberEntries(); i++)
+            gui.drawText(
+                    new Position(3 + i*15, gui.getHeight() - 1),
+                    getModel().getEntry(i),
+                    getModel().isSelected(i) ? "#FFD700" : "#FFFFFF");
     }
 }
