@@ -1,14 +1,8 @@
-import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-
-import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.Scanner;
 
 public class Game {
-    private Table table;
     private final Menu menu;
     private final LanternaGUI gui;
 
@@ -29,17 +23,12 @@ public class Game {
         if (nDecks == 0) return;
         while (true) {
             gui.clear();
-            table = new Table("Domingos", 50, nDecks);
+            Table table = new Table("Domingos", 50, nDecks);
             table.play(gui);
-            table.draw(gui, table.getDealer(),table.getPlayer(), 0);
+            table.draw(gui, table.getDealer(), table.getPlayer(), 0);
             gui.refresh();
         }
     }
-
-    public Table getTable() {
-        return table;
-    }
-
 }
 
 class GameEntryPoint {
