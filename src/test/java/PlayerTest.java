@@ -35,5 +35,10 @@ public class PlayerTest {
         player.getHand().addCard(new Card("%", "A"));
         Assertions.assertFalse(player.hit(deck));
     }
-
+    @Test
+    public void stand() {
+        player.getHand().addCard(new Card("%", "3"));
+        player.getHand().addCard(new Card("%", "#"));
+        Assertions.assertEquals(player.getHand().getCards().size(), 2);
+    }
 }
