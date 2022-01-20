@@ -9,9 +9,24 @@ public class Table {
     private final Dealer dealer;
     private Deck deck;
 
-    public Table() {
+    private static Table instance;
+
+    private Table() {
         player = new Player();
         dealer = new Dealer();
         deck = new Deck(8);
+    }
+
+    public static Table getInstance() {
+        if (instance == null) return new Table();
+        return instance;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public Dealer getDealer() {
+        return dealer;
     }
 }

@@ -1,0 +1,58 @@
+package blackjack.controller.game;
+
+import blackjack.Game;
+import blackjack.controller.Controller;
+import blackjack.gui.GUI;
+import blackjack.model.game.table.Table;
+import blackjack.model.menu.BetMenu;
+import blackjack.model.menu.Menu;
+import blackjack.states.GameState;
+import blackjack.states.MenuState;
+
+import javax.sound.sampled.Control;
+import java.io.IOException;
+
+public class BetController extends Controller<BetMenu> {
+
+    public BetController(BetMenu betmenu) {
+        super(betmenu);
+    }
+
+    @Override
+    public void step(Game game, GUI.ACTION action, long time) throws IOException {
+        switch (action) {
+            case RIGHT:
+                getModel().nextEntry();
+                break;
+            case LEFT:
+                getModel().previousEntry();
+                break;
+            case SELECT:
+                if (getModel().isSelectedExit()) game.setState(new MenuState(new Menu()));
+                else if (getModel().isSelected50())  {
+                    Table.getInstance().getPlayer().getHand().setBet(50);
+                    game.setState(new GameState(Table.getInstance()));
+                }
+                else if (getModel().isSelected100()) {
+                    Table.getInstance().getPlayer().getHand().setBet(100);
+                    game.setState(new GameState(Table.getInstance()));
+                }
+                else if (getModel().isSelected250()) {
+                    Table.getInstance().getPlayer().getHand().setBet(250);
+                    game.setState(new GameState(Table.getInstance()));
+                }
+                else if (getModel().isSelected500()) {
+                    Table.getInstance().getPlayer().getHand().setBet(500);
+                    game.setState(new GameState(Table.getInstance()));
+                }
+                else if (getModel().isSelected1000()) {
+                    Table.getInstance().getPlayer().getHand().setBet(1000);
+                    game.setState(new GameState(Table.getInstance()));
+                }
+                break;
+            case QUIT:
+                game.setState(null);
+        }
+
+    }
+}
