@@ -6,7 +6,7 @@ This project was developed by *Domingos Santos* (*up201906680*@fe.up.pt), *Emanu
 
 ### IMPLEMENTED FEATURES
 
-- **Menu** - A basic menu that lets you either start the game or quit by taking input from the user.
+- **model.menu.Menu** - A basic model.menu that lets you either start the game or quit by taking input from the user.
 - **Display Cards** - Display on the screen the cards in the player's and the dealer's hands.
   
 ![img](https://i.imgur.com/3106A9I.png)
@@ -43,15 +43,15 @@ By using the **Singleton** desgin pattern we ensure that:
 
 #### KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
 
-- **Long Method** - Game.run() - Currently this method has two different functionalities (running the menu and the game itself). These two should be separated into individual methods.
+- **Long Method** - Game.run() - Currently this method has two different functionalities (running the model.menu and the game itself). These two should be separated into individual methods.
 
-- **Long Class** - Table - This class does most of the heavy lifting for the flow of the game. As the code grows further we might need to extract some subclasses or interfaces to keep it from becoming more bloated.
+- **Long Class** - model.game.table.Table - This class does most of the heavy lifting for the flow of the game. As the code grows further we might need to extract some subclasses or interfaces to keep it from becoming more bloated.
 
 ------
 
 ### TESTING
   
-We currently only test the methods in LanternaGUI with mockito. We haven't checked coverage or mutation testing for the time being.
+We currently only test the methods in gui.LanternaGUI with mockito. We haven't checked coverage or mutation testing for the time being.
 
 ### SELF-EVALUATION
 
