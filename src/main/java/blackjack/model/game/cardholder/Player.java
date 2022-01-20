@@ -24,7 +24,5 @@ public class Player extends CardHolder {
         }
         return false;
     }
-    public void stand() {
-
-    }
+    public void stand() {}
 }

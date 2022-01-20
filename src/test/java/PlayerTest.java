@@ -39,6 +39,7 @@ public class PlayerTest {
     public void stand() {
         player.getHand().addCard(new Card("%", "3"));
         player.getHand().addCard(new Card("%", "#"));
+        player.stand();
         Assertions.assertEquals(player.getHand().getCards().size(), 2);
     }
 }
