@@ -48,6 +48,11 @@ public class GameViewer extends Viewer<Table> {
                 Integer.toString(getModel().getPlayer().getHand().getValue()),
                 "#29aa4b"
         );
+        gui.drawText(
+                new Position(drawColumn + cards.size()*3, gui.getHeight() - 5),
+                Integer.toString(getModel().getPlayer().getHand().getBet()),
+                "#c7db13"
+        );
     }
 
     private void drawDealerHand(GUI gui) throws IOException {

@@ -10,11 +10,11 @@ public class Table {
 
     private final Player player;
     private final Dealer dealer;
-    private Deck deck;
+    private final Deck deck;
     private final List<String> entries;
     private int currentEntry = 0;
 
-    private static Table instance;
+    private static Table instance = null;
 
     private Table() {
         deck = new Deck(8);
@@ -25,7 +25,7 @@ public class Table {
     }
 
     public static Table getInstance() {
-        if (instance == null) return new Table();
+        if (instance == null) instance = new Table();
         return instance;
     }
 
@@ -36,6 +36,9 @@ public class Table {
         return dealer;
     }
     public Deck getDeck() { return deck; }
+    public void clear() {
+        instance = new Table();
+    }
     public void nextEntry() {
         currentEntry++;
         if (currentEntry > this.entries.size() - 1)
@@ -73,7 +76,7 @@ public class Table {
     }
 
     public boolean isSelectedSplit() {
-        return isSelected(2);
+        return isSelected(4);
     }
 
     public int getNumberEntries() {
