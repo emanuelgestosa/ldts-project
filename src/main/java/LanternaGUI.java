@@ -18,7 +18,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 
@@ -39,7 +38,7 @@ public class LanternaGUI implements GUI{
         screen = createScreen(terminal);
     }
 
-    public LanternaGUI(Screen screen, Terminal terminal) throws IOException {
+    public LanternaGUI(Screen screen, Terminal terminal) {
         this.terminal = terminal;
         this.screen = screen;
     }
@@ -128,7 +127,7 @@ public class LanternaGUI implements GUI{
             drawOptions();
     }
 
-    public void drawAskForBet() throws IOException {
+    private void drawAskForBet() throws IOException {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setForegroundColor(TextColor.Factory.fromString("#000000"));
         graphics.setBackgroundColor(TextColor.Factory.fromString("#a2b536"));
@@ -195,6 +194,7 @@ public class LanternaGUI implements GUI{
         }
     }
 
+    @Override
     public void drawSplitHand(Hand hand) throws IOException {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
@@ -208,7 +208,8 @@ public class LanternaGUI implements GUI{
         }
     }
 
-    public void drawChip(Player player, int split)throws IOException{
+    @Override
+    public void drawChip(Player player, int split) {
         TextGraphics graphics = screen.newTextGraphics();
         graphics.setBackgroundColor(TextColor.Factory.fromString("#2d8c17"));
         graphics.setForegroundColor(TextColor.Factory.fromString("#E7E938"));
