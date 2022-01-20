@@ -13,6 +13,7 @@ public class TableController extends GameController {
     }
 
     public void step(Game game, GUI.ACTION action, long time) {
+        if (getModel().getPlayer().getBalance() < 50) game.setState(new MenuState(new Menu()));
         switch(action) {
             case QUIT:
                 game.setState(null);
@@ -25,8 +26,10 @@ public class TableController extends GameController {
                 break;
             case SELECT:
                 if (getModel().isSelectedExit()) game.setState(new MenuState(new Menu()));
+                else if (getModel().isSelectedHit()) getModel().getPlayer().hit(getModel().getDeck());
+                else if (getModel().isSelectedStand()) getModel().getPlayer().stand();
+                else if (getModel().isSelectedDouble()) getModel().getPlayer().doubleDown(getModel().getDeck());
                 break;
         }
-        if (getModel().getPlayer().getBalance() < 50) game.setState(new MenuState(new Menu()));
     }
 }

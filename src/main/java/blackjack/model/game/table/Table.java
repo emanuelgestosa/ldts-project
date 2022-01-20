@@ -32,10 +32,10 @@ public class Table {
     public Player getPlayer() {
         return player;
     }
-
     public Dealer getDealer() {
         return dealer;
     }
+    public Deck getDeck() { return deck; }
     public void nextEntry() {
         currentEntry++;
         if (currentEntry > this.entries.size() - 1)
