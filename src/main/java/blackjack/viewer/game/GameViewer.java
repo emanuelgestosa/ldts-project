@@ -3,7 +3,6 @@ package blackjack.viewer.game;
 import blackjack.gui.GUI;
 import blackjack.model.Position;
 import blackjack.model.game.cardholder.Card;
-import blackjack.model.game.cardholder.CardHolder;
 import blackjack.model.game.table.Table;
 import blackjack.viewer.Viewer;
 
@@ -44,6 +43,11 @@ public class GameViewer extends Viewer<Table> {
                     Objects.equals(card.getSuit(), "&") || Objects.equals(card.getSuit(), "%") ? "#fc1111" : "#FFFFFF"
             );
         }
+        gui.drawText(
+                new Position(gui.getWidth() / 2 + 1, gui.getHeight() - 3),
+                Integer.toString(getModel().getPlayer().getHand().getValue()),
+                "#29aa4b"
+        );
     }
 
     private void drawDealerHand(GUI gui) throws IOException {
@@ -58,5 +62,10 @@ public class GameViewer extends Viewer<Table> {
                     Objects.equals(card.getSuit(), "&") || Objects.equals(card.getSuit(), "%") ? "#fc1111" : "#FFFFFF"
             );
         }
+        gui.drawText(
+                new Position(gui.getWidth() / 2 + 1, 1),
+                Integer.toString(getModel().getDealer().getHand().getValue()),
+                "#29aa4b"
+        );
     }
 }
