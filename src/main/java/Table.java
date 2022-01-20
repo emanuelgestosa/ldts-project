@@ -95,10 +95,6 @@ public class Table {
         gui.refresh();
     }
 
-    public int getPlayerHandValue(){
-        return getPlayer().getHand().getValue();
-    }
-
     public Dealer getDealer() {
         return dealer;
     }

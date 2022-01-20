@@ -50,10 +50,6 @@ public class Game {
         }
     }
 
-    public Table getTable() {
-        return table;
-    }
-
     public void configs() throws IOException{
         gui.clear();
         gui.drawConfigs();
