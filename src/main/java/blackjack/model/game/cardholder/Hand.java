@@ -21,6 +21,7 @@ public class Hand {
         hand.clear();
     }
     public void addCard(Deck deck) { hand.add(deck.getCards().pop()); }
+    public void addCard(Card card) { hand.add(card); }
     public int getValue() {
         int totValue=0;
         int acesAs11=0;

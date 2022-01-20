@@ -17,10 +17,10 @@ public class Table {
     private static Table instance;
 
     private Table() {
-        player = new Player();
-        dealer = new Dealer();
         deck = new Deck(8);
         deck.shuffle();
+        player = new Player(deck);
+        dealer = new Dealer(deck);
         this.entries = Arrays.asList("Exit", "Hit", "Stand", "DoubleDown", "Split");
     }
 
