@@ -3,7 +3,9 @@ package blackjack.controller.menu;
 import blackjack.Game;
 import blackjack.controller.Controller;
 import blackjack.gui.GUI;
+import blackjack.model.game.table.Table;
 import blackjack.model.menu.Menu;
+import blackjack.states.GameState;
 
 import java.io.IOException;
 
@@ -23,6 +25,7 @@ public class MenuController extends Controller<Menu> {
                 break;
             case SELECT:
                 if (getModel().isSelectedExit()) game.setState(null);
+                if (getModel().isSelectedStart()) game.setState(new GameState(new Table()));
         }
     }
 }

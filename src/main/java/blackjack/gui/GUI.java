@@ -13,6 +13,10 @@ public interface GUI {
 
     void refresh() throws IOException;
 
+    int getWidth() throws IOException;
+
+    int getHeight() throws IOException;
+
     void clear();
 
     void close() throws IOException;

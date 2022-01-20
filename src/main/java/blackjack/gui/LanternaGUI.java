@@ -95,6 +95,16 @@ public class LanternaGUI implements GUI {
     }
 
     @Override
+    public int getWidth() throws IOException {
+        return terminal.getTerminalSize().getColumns();
+    }
+
+    @Override
+    public int getHeight() throws IOException {
+        return terminal.getTerminalSize().getRows();
+    }
+
+    @Override
     public void clear() {
         screen.clear();
     }
