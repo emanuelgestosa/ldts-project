@@ -9,8 +9,7 @@ import java.util.Scanner;
 
 public class Game {
     private Table table;
-    private Menu menu;
-    private int nDecks = 8;
+    private final Menu menu;
     private final LanternaGUI gui;
 
     private static Game instance = null;
@@ -18,7 +17,6 @@ public class Game {
     private Game() throws IOException, URISyntaxException, FontFormatException {
         gui = new LanternaGUI(70, 12);
         menu = new Menu();
-        table = new Table("Domingos", 50, nDecks);
     }
 
     public static Game getInstance() throws IOException, URISyntaxException, FontFormatException {
@@ -27,9 +25,9 @@ public class Game {
     }
 
     public void run() throws IOException, InterruptedException {
-        nDecks = menu.run(gui);
+        int nDecks = menu.run(gui);
         if (nDecks == 0) return;
-        while(true) {
+        while (true) {
             gui.clear();
             table = new Table("Domingos", 50, nDecks);
             table.play(gui);
