@@ -23,7 +23,7 @@ public class Player extends CardHolder{
     }
 
     public char getChar(KeyStroke key){
-        //if (key == null || key.getKeyType() != KeyType.Character) return '\0';
+        if (key == null || key.getKeyType() != KeyType.Character) return '\0';
         return toLowerCase(key.getCharacter());
     }
 
