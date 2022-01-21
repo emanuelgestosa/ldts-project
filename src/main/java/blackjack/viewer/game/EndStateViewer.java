@@ -30,11 +30,13 @@ public class EndStateViewer extends Viewer<EndRoundMenu> {
     }
     private void drawHands(GUI gui) throws IOException {
         drawPlayerHand(gui);
+        if (Table.getInstance().getPlayer().isSplit()) drawPlayerSplitHand(gui);
         drawDealerHand(gui);
     }
+
     private void drawPlayerHand(GUI gui) throws IOException {
         List<Card> cards = new ArrayList<Card>(Table.getInstance().getPlayer().getHand().getCards());
-        int drawColumn = (gui.getWidth() - cards.size()) / 2;
+        int drawColumn = (gui.getWidth() - cards.size()) / (2 + (Table.getInstance().getPlayer().isSplit() ? 2 : 0));
         for (int i = 0; i < cards.size(); i++) {
             Card card = cards.get(i);
             gui.drawText(
@@ -44,7 +46,7 @@ public class EndStateViewer extends Viewer<EndRoundMenu> {
             );
         }
         gui.drawText(
-                new Position(gui.getWidth() / 2 + 1, gui.getHeight() - 3),
+                new Position(drawColumn + cards.size(), gui.getHeight() - 3),
                 Integer.toString(Table.getInstance().getPlayer().getHand().getValue()),
                 "#29aa4b"
         );
@@ -54,6 +56,30 @@ public class EndStateViewer extends Viewer<EndRoundMenu> {
                 "#c7db13"
         );
     }
+
+    private void drawPlayerSplitHand(GUI gui) throws IOException {
+        List<Card> cards = new ArrayList<Card>(Table.getInstance().getPlayer().getSplitHand().getCards());
+        int drawColumn = (gui.getWidth() - cards.size()) / 4 * 3;
+        for (int i = 0; i < cards.size(); i++) {
+            Card card = cards.get(i);
+            gui.drawText(
+                    new Position(drawColumn + i*3, gui.getHeight() - 4),
+                    card.getSymbol() + card.getSuit(),
+                    Objects.equals(card.getSuit(), "&") || Objects.equals(card.getSuit(), "%") ? "#fc1111" : "#FFFFFF"
+            );
+        }
+        gui.drawText(
+                new Position(drawColumn + cards.size(), gui.getHeight() - 3),
+                Integer.toString(Table.getInstance().getPlayer().getSplitHand().getValue()),
+                "#29aa4b"
+        );
+        gui.drawText(
+                new Position(drawColumn + cards.size()*3, gui.getHeight() - 5),
+                Integer.toString(Table.getInstance().getPlayer().getSplitHand().getBet()),
+                "#c7db13"
+        );
+    }
+
     private void drawDealerHand(GUI gui) throws IOException {
         List<Card> cards = new ArrayList<Card>(Table.getInstance().getDealer().getHand().getCards());
         if (cards.size() < 2) cards.add(new Card("?", "?"));

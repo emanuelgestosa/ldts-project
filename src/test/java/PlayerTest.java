@@ -20,20 +20,20 @@ public class PlayerTest {
     public void hit1() {
         player.getHand().addCard(new Card("%", "3"));
         player.getHand().addCard(new Card("%", "#"));
-        Assertions.assertTrue(player.hit(deck));
+        Assertions.assertTrue(player.hit(deck, false));
     }
     @Test
     public void hit2() {
         player.getHand().addCard(new Card("%", "3"));
         player.getHand().addCard(new Card("%", "#"));
         player.getHand().addCard(new Card("%", "#"));
-        Assertions.assertFalse(player.hit(deck));
+        Assertions.assertFalse(player.hit(deck, false));
     }
     @Test
     public void hit3() {
         player.getHand().addCard(new Card("%", "J"));
         player.getHand().addCard(new Card("%", "A"));
-        Assertions.assertFalse(player.hit(deck));
+        Assertions.assertFalse(player.hit(deck, false));
     }
     @Test
     public void stand() {
@@ -46,26 +46,26 @@ public class PlayerTest {
     public void ddown1() {
         player.getHand().addCard(new Card("%", "3"));
         player.getHand().addCard(new Card("%", "A"));
-        Assertions.assertTrue(player.doubleDown(deck));
+        Assertions.assertTrue(player.doubleDown(deck, false));
     }
     @Test
     public void ddown2() {
         player.getHand().addCard(new Card("%", "6"));
         player.getHand().addCard(new Card("*", "6"));
-        Assertions.assertTrue(player.doubleDown(deck));
+        Assertions.assertTrue(player.doubleDown(deck, false));
     }
     @Test
     public void ddown3() {
         player.getHand().addCard(new Card("%", "3"));
         player.getHand().addCard(new Card("%", "A"));
         player.getHand().addCard(new Card("%", "A"));
-        Assertions.assertFalse(player.doubleDown(deck));
+        Assertions.assertFalse(player.doubleDown(deck, false));
     }
     @Test
     public void ddown4() {
         player.getHand().addCard(new Card("%", "Q"));
         player.getHand().addCard(new Card("*", "A"));
-        Assertions.assertFalse(player.doubleDown(deck));
+        Assertions.assertFalse(player.doubleDown(deck, false));
     }
     @Test
     public void split1() {

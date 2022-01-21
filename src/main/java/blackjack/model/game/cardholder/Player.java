@@ -18,21 +18,38 @@ public class Player extends CardHolder {
     public void setBalance(int balance) { this.balance = balance;  }
     public Hand getSplitHand() { return splitHand; }
 
-    public boolean hit(Deck deck) {
-        if (hand.getValue() < 21) {
-            hand.addCard(deck);
-            return true;
+    public boolean hit(Deck deck, boolean split) {
+        if (!split) {
+            if (hand.getValue() < 21) {
+                hand.addCard(deck);
+                return true;
+            }
+        }
+        else {
+            if (splitHand.getValue() < 21) {
+                splitHand.addCard(deck);
+                return true;
+            }
         }
         return false;
     }
     public void stand() {}
 
-    public boolean doubleDown(Deck deck) {
-        if (hand.getCards().size() != 2 || hand.getValue() >= 21) return false;
-        hand.addCard(deck);
-        balance -= hand.getBet();
-        hand.setBet(hand.getBet() * 2);
-        return true;
+    public boolean doubleDown(Deck deck, boolean split) {
+        if (!split) {
+            if (hand.getCards().size() != 2 || hand.getValue() >= 21) return false;
+            hand.addCard(deck);
+            balance -= hand.getBet();
+            hand.setBet(hand.getBet() * 2);
+            return true;
+        }
+        else {
+            if (splitHand.getCards().size() != 2 || splitHand.getValue() >= 21) return false;
+            splitHand.addCard(deck);
+            balance -= splitHand.getBet();
+            splitHand.setBet(splitHand.getBet() * 2);
+            return true;
+        }
     }
     public boolean split(Deck deck) {
         if (isSplit() ||
