@@ -4,8 +4,10 @@ import blackjack.Game;
 import blackjack.gui.GUI;
 import blackjack.model.game.table.Table;
 import blackjack.model.menu.BetMenu;
+import blackjack.model.menu.EndRoundMenu;
 import blackjack.model.menu.Menu;
 import blackjack.states.BetState;
+import blackjack.states.EndState;
 import blackjack.states.MenuState;
 
 public class TableController extends GameController {
@@ -17,7 +19,7 @@ public class TableController extends GameController {
     public void step(Game game, GUI.ACTION action, long time) throws InterruptedException {
         if (getModel().getPlayer().getHand().getValue() == 21) {
             getModel().getDealer().takeTurn(Table.getInstance().getDeck());
-            game.setState(new BetState(new BetMenu()));
+            game.setState(new EndState(new EndRoundMenu()));
             return;
         }
         switch(action) {
@@ -36,7 +38,7 @@ public class TableController extends GameController {
                 else if (getModel().isSelectedStand()) {
                     getModel().getPlayer().stand();
                     getModel().getDealer().takeTurn(Table.getInstance().getDeck());
-                    game.setState(new BetState(new BetMenu()));
+                    game.setState(new EndState(new EndRoundMenu()));
                     break;
                 }
                 else if (getModel().isSelectedDouble()) getModel().getPlayer().doubleDown(getModel().getDeck());

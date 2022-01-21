@@ -51,6 +51,10 @@ public class Table {
             currentEntry = this.entries.size() - 1;
     }
 
+    public void prepareNewRound() {
+
+    }
+
     public String getEntry(int i) {
         return entries.get(i);
     }
