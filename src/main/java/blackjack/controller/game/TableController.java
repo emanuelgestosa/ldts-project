@@ -46,6 +46,7 @@ public class TableController extends GameController {
                     break;
                 }
                 else if (getModel().isSelectedDouble()) getModel().getPlayer().doubleDown(getModel().getDeck());
+                else if (getModel().isSelectedSplit()) getModel().getPlayer().split(getModel().getDeck());
                 break;
         }
     }

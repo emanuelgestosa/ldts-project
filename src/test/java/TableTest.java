@@ -126,4 +126,34 @@ public class TableTest {
         table.getDealer().getHand().addCard(new Card("*", "K"));
         Assertions.assertEquals(2, table.calcWinnings(table.getPlayer().getHand()));
     }
+    @Test
+    public void calcWinnings10() {
+        table.getPlayer().getHand().empty();
+        table.getPlayer().getSplitHand().empty();
+        table.getDealer().getHand().empty();
+        table.getPlayer().getHand().addCard(new Card("%", "9"));
+        table.getPlayer().getHand().addCard(new Card("*", "K"));
+        table.getPlayer().getSplitHand().addCard(new Card("*", "9"));
+        table.getPlayer().getSplitHand().addCard(new Card("%", "10"));
+        table.getDealer().getHand().addCard(new Card("%", "8"));
+        table.getDealer().getHand().addCard(new Card("*", "K"));
+        Assertions.assertEquals(2, table.calcWinnings(table.getPlayer().getHand()));
+        Assertions.assertEquals(2, table.calcWinnings(table.getPlayer().getSplitHand()));
+    }
+    @Test
+    public void calcWinnings11() {
+        table.getPlayer().getHand().empty();
+        table.getPlayer().getSplitHand().empty();
+        table.getDealer().getHand().empty();
+        table.getPlayer().getHand().addCard(new Card("%", "9"));
+        table.getPlayer().getHand().addCard(new Card("*", "K"));
+        table.getPlayer().getSplitHand().addCard(new Card("*", "9"));
+        table.getPlayer().getSplitHand().addCard(new Card("%", "#"));
+        table.getPlayer().getSplitHand().addCard(new Card("%", "#"));
+        table.getDealer().getHand().addCard(new Card("%", "8"));
+        table.getDealer().getHand().addCard(new Card("*", "6"));
+        table.getDealer().getHand().addCard(new Card("*", "K"));
+        Assertions.assertEquals(2, table.calcWinnings(table.getPlayer().getHand()));
+        Assertions.assertEquals(0, table.calcWinnings(table.getPlayer().getSplitHand()));
+    }
 }
