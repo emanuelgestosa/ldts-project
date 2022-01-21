@@ -44,18 +44,24 @@ public class PlayerTest {
     }
     @Test
     public void ddown1() {
+        player.setBalance(1000);
+        player.getHand().setBet(50);
         player.getHand().addCard(new Card("%", "3"));
         player.getHand().addCard(new Card("%", "A"));
         Assertions.assertTrue(player.doubleDown(deck, false));
     }
     @Test
     public void ddown2() {
+        player.setBalance(1000);
+        player.getHand().setBet(50);
         player.getHand().addCard(new Card("%", "6"));
         player.getHand().addCard(new Card("*", "6"));
         Assertions.assertTrue(player.doubleDown(deck, false));
     }
     @Test
     public void ddown3() {
+        player.setBalance(1000);
+        player.getHand().setBet(50);
         player.getHand().addCard(new Card("%", "3"));
         player.getHand().addCard(new Card("%", "A"));
         player.getHand().addCard(new Card("%", "A"));
@@ -63,6 +69,24 @@ public class PlayerTest {
     }
     @Test
     public void ddown4() {
+        player.setBalance(1000);
+        player.getHand().setBet(50);
+        player.getHand().addCard(new Card("%", "Q"));
+        player.getHand().addCard(new Card("*", "A"));
+        Assertions.assertFalse(player.doubleDown(deck, false));
+    }
+    @Test
+    public void ddown5() {
+        player.setBalance(1000);
+        player.getHand().setBet(600);
+        player.getHand().addCard(new Card("%", "Q"));
+        player.getHand().addCard(new Card("*", "Q"));
+        Assertions.assertFalse(player.doubleDown(deck, false));
+    }
+    @Test
+    public void ddown6() {
+        player.setBalance(1000);
+        player.getHand().setBet(600);
         player.getHand().addCard(new Card("%", "Q"));
         player.getHand().addCard(new Card("*", "A"));
         Assertions.assertFalse(player.doubleDown(deck, false));
