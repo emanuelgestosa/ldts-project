@@ -79,6 +79,7 @@ public class PlayerTest {
     public void ddown5() {
         player.setBalance(1000);
         player.getHand().setBet(600);
+        player.setBalance(400);
         player.getHand().addCard(new Card("%", "Q"));
         player.getHand().addCard(new Card("*", "Q"));
         Assertions.assertFalse(player.doubleDown(deck, false));
@@ -87,6 +88,7 @@ public class PlayerTest {
     public void ddown6() {
         player.setBalance(1000);
         player.getHand().setBet(600);
+        player.setBalance(400);
         player.getHand().addCard(new Card("%", "Q"));
         player.getHand().addCard(new Card("*", "A"));
         Assertions.assertFalse(player.doubleDown(deck, false));
