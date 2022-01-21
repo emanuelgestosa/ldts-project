@@ -134,7 +134,7 @@ public class TableTest {
         table.getPlayer().getHand().addCard(new Card("%", "9"));
         table.getPlayer().getHand().addCard(new Card("*", "K"));
         table.getPlayer().getSplitHand().addCard(new Card("*", "9"));
-        table.getPlayer().getSplitHand().addCard(new Card("%", "10"));
+        table.getPlayer().getSplitHand().addCard(new Card("%", "#"));
         table.getDealer().getHand().addCard(new Card("%", "8"));
         table.getDealer().getHand().addCard(new Card("*", "K"));
         Assertions.assertEquals(2, table.calcWinnings(table.getPlayer().getHand()));

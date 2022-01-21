@@ -43,9 +43,12 @@ public class TableController extends GameController {
                     getModel().getPlayer().stand();
                     getModel().getDealer().takeTurn(Table.getInstance().getDeck());
                     game.setState(new EndState(new EndRoundMenu()));
-                    break;
                 }
-                else if (getModel().isSelectedDouble()) getModel().getPlayer().doubleDown(getModel().getDeck());
+                else if (getModel().isSelectedDouble()) {
+                    getModel().getPlayer().doubleDown(getModel().getDeck());
+                    getModel().getDealer().takeTurn(Table.getInstance().getDeck());
+                    game.setState(new EndState(new EndRoundMenu()));
+                }
                 else if (getModel().isSelectedSplit()) getModel().getPlayer().split(getModel().getDeck());
                 break;
         }

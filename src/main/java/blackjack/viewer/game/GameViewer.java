@@ -29,12 +29,13 @@ public class GameViewer extends Viewer<Table> {
 
     private void drawHands(GUI gui) throws IOException {
         drawPlayerHand(gui);
+        if (getModel().getPlayer().isSplit()) drawPlayerSplitHand(gui);
         drawDealerHand(gui);
     }
 
     private void drawPlayerHand(GUI gui) throws IOException {
         List<Card> cards = new ArrayList<Card>(getModel().getPlayer().getHand().getCards());
-        int drawColumn = (gui.getWidth() - cards.size()) / 2;
+        int drawColumn = (gui.getWidth() - cards.size()) / (2 + (getModel().getPlayer().isSplit() ? 2 : 0));
         for (int i = 0; i < cards.size(); i++) {
             Card card = cards.get(i);
             gui.drawText(
@@ -44,13 +45,36 @@ public class GameViewer extends Viewer<Table> {
             );
         }
         gui.drawText(
-                new Position(gui.getWidth() / 2 + 1, gui.getHeight() - 3),
+                new Position(drawColumn + cards.size(), gui.getHeight() - 3),
                 Integer.toString(getModel().getPlayer().getHand().getValue()),
                 "#29aa4b"
         );
         gui.drawText(
                 new Position(drawColumn + cards.size()*3, gui.getHeight() - 5),
                 Integer.toString(getModel().getPlayer().getHand().getBet()),
+                "#c7db13"
+        );
+    }
+
+    private void drawPlayerSplitHand(GUI gui) throws IOException {
+        List<Card> cards = new ArrayList<Card>(getModel().getPlayer().getSplitHand().getCards());
+        int drawColumn = (gui.getWidth() - cards.size()) / 4 * 3;
+        for (int i = 0; i < cards.size(); i++) {
+            Card card = cards.get(i);
+            gui.drawText(
+                    new Position(drawColumn + i*3, gui.getHeight() - 4),
+                    card.getSymbol() + card.getSuit(),
+                    Objects.equals(card.getSuit(), "&") || Objects.equals(card.getSuit(), "%") ? "#fc1111" : "#FFFFFF"
+            );
+        }
+        gui.drawText(
+                new Position(drawColumn + cards.size(), gui.getHeight() - 3),
+                Integer.toString(getModel().getPlayer().getSplitHand().getValue()),
+                "#29aa4b"
+        );
+        gui.drawText(
+                new Position(drawColumn + cards.size()*3, gui.getHeight() - 5),
+                Integer.toString(getModel().getPlayer().getSplitHand().getBet()),
                 "#c7db13"
         );
     }
