@@ -31,7 +31,10 @@ public class EndStateController extends Controller<EndRoundMenu> {
                 getModel().previousEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedNewRound()) game.setState(new BetState(new BetMenu()));
+                if (getModel().isSelectedNewRound()) {
+                    game.setState(new BetState(new BetMenu()));
+                    Table.getInstance().prepareNewRound();
+                }
                 else if (getModel().isSelectedExit()) game.setState(new MenuState(new Menu()));
                 break;
         }
