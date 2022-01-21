@@ -56,7 +56,7 @@ public class TableController extends GameController {
                     else game.setState(new GameSplitState(getModel()));
                 }
                 else if (getModel().isSelectedDouble()) {
-                    getModel().getPlayer().doubleDown(getModel().getDeck(), false);
+                    if (!getModel().getPlayer().doubleDown(getModel().getDeck(), false)) break;
                     if (!getModel().getPlayer().isSplit()) {
                         getModel().getDealer().takeTurn(Table.getInstance().getDeck());
                         game.setState(new EndState(new EndRoundMenu()));

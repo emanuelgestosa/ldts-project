@@ -31,26 +31,31 @@ public class BetController extends Controller<BetMenu> {
             case SELECT:
                 if (getModel().isSelectedExit()) game.setState(new MenuState(new Menu()));
                 else if (getModel().isSelected50())  {
+                    if (Table.getInstance().getPlayer().getBalance() < 50) break;
                     Table.getInstance().dealCards();
                     Table.getInstance().getPlayer().getHand().setBet(50);
                     game.setState(new GameState(Table.getInstance()));
                 }
                 else if (getModel().isSelected100()) {
+                    if (Table.getInstance().getPlayer().getBalance() < 100) break;
                     Table.getInstance().dealCards();
                     Table.getInstance().getPlayer().getHand().setBet(100);
                     game.setState(new GameState(Table.getInstance()));
                 }
                 else if (getModel().isSelected250()) {
+                    if (Table.getInstance().getPlayer().getBalance() < 250) break;
                     Table.getInstance().dealCards();
                     Table.getInstance().getPlayer().getHand().setBet(250);
                     game.setState(new GameState(Table.getInstance()));
                 }
                 else if (getModel().isSelected500()) {
+                    if (Table.getInstance().getPlayer().getBalance() < 500) break;
                     Table.getInstance().dealCards();
                     Table.getInstance().getPlayer().getHand().setBet(500);
                     game.setState(new GameState(Table.getInstance()));
                 }
                 else if (getModel().isSelected1000()) {
+                    if (Table.getInstance().getPlayer().getBalance() < 1000) break;
                     Table.getInstance().dealCards();
                     Table.getInstance().getPlayer().getHand().setBet(1000);
                     game.setState(new GameState(Table.getInstance()));
