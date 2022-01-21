@@ -58,7 +58,9 @@ public class Table {
     }
 
     public void dealCards() {
-
+        player.getHand().addCard(deck);
+        player.getHand().addCard(deck);
+        dealer.getHand().addCard(deck);
     }
 
     public String getEntry(int i) {
