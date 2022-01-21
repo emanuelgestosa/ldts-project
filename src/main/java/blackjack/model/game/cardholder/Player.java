@@ -58,7 +58,8 @@ public class Player extends CardHolder {
             return false;
         splitHand.getCards().add(hand.getCards().get(1));
         hand.getCards().remove(1);
-        splitHand.setBet(hand.getBet());
+        splitHand.setBet(hand.getBet() / 2);
+        hand.setBet(hand.getBet() / 2);
         return true;
     }
     public boolean isSplit() {
