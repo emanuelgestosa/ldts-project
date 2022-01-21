@@ -1,14 +1,18 @@
-public abstract class CardHolder {
+package blackjack.model.game.cardholder;
+
+import blackjack.model.game.table.Deck;
+
+public class CardHolder {
     protected Hand hand;
 
-    CardHolder() {
+    public CardHolder() {
         hand = new Hand();
     }
     public Hand getHand(){
         return hand;
     }
-    public void reset(){
-        hand.getHand().clear();
+    public void emptyHand(){
+        hand.empty();
     }
     public boolean hasBlackjack() {
         return hand.getValue() == 21 && hand.getCards().size() == 2;

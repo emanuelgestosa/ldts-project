@@ -1,3 +1,5 @@
+package blackjack.model.game.cardholder;
+
 public class Card {
     private final String suit;
     private final String symbol;
