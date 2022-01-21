@@ -19,8 +19,8 @@ public class Table {
     private Table() {
         deck = new Deck(8);
         deck.shuffle();
-        player = new Player(deck);
-        dealer = new Dealer(deck);
+        player = new Player();
+        dealer = new Dealer();
         this.entries = Arrays.asList("Exit", "Hit", "Stand", "DoubleDown", "Split");
     }
 
@@ -52,7 +52,9 @@ public class Table {
     }
 
     public void prepareNewRound() {
-
+        player.getHand().empty();
+        player.getHand().setBet(0);
+        dealer.getHand().empty();
     }
 
     public String getEntry(int i) {

@@ -5,7 +5,7 @@ import blackjack.model.game.table.Deck;
 public class CardHolder {
     protected Hand hand;
 
-    public CardHolder(Deck deck) {
+    public CardHolder() {
         hand = new Hand();
     }
     public Hand getHand(){

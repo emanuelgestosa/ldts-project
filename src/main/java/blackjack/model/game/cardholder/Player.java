@@ -7,11 +7,9 @@ public class Player extends CardHolder {
     private int balance;
     private Hand splitHand;
 
-    public Player(Deck deck) {
-        super(deck);
+    public Player() {
+        super();
         this.balance = 1000;
-        hand.addCard(deck);
-        hand.addCard(deck);
     }
     public int getBalance() { return balance; }
     public void setBalance(int balance) { this.balance = balance;  }

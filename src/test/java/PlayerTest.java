@@ -12,7 +12,7 @@ public class PlayerTest {
     @BeforeEach
     private void helper() {
         deck = new Deck(8);
-        this.player = new Player(deck);
+        this.player = new Player();
         player.getHand().empty();
     }
 
