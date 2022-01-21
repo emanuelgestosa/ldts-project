@@ -57,6 +57,10 @@ public class Table {
         dealer.getHand().empty();
     }
 
+    public void dealCards() {
+
+    }
+
     public String getEntry(int i) {
         return entries.get(i);
     }
