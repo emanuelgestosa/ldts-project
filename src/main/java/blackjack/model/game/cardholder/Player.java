@@ -10,6 +10,7 @@ public class Player extends CardHolder {
     public Player() {
         super();
         this.balance = 1000;
+        splitHand = new Hand();
     }
     public int getBalance() { return balance; }
     public void setBalance(int balance) { this.balance = balance;  }
@@ -31,4 +32,8 @@ public class Player extends CardHolder {
         hand.setBet(hand.getBet() * 2);
         return true;
     }
+    public boolean isSplit() {
+        return splitHand.getCards().size() != 0;
+    }
+
 }
