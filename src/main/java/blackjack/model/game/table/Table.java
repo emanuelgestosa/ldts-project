@@ -53,6 +53,8 @@ public class Table {
     }
 
     public void prepareNewRound() {
+        float winnings = player.getHand().getBet() * calcWinnings(player.getHand());
+        player.setBalance((int)(player.getBalance() + winnings));
         player.getHand().empty();
         player.getHand().setBet(0);
         dealer.getHand().empty();
