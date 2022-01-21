@@ -25,7 +25,7 @@ public class Game {
         return instance;
     }
 
-    public void start() throws IOException {
+    public void start() throws IOException, InterruptedException {
         int FPS = 30;
         int frameTime = 1000 / FPS;
 
@@ -48,7 +48,7 @@ public class Game {
 }
 
 class GameEntryPoint {
-    public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException {
+    public static void main(String[] args) throws IOException, URISyntaxException, FontFormatException, InterruptedException {
         Game game = Game.getInstance();
         game.start();
     }

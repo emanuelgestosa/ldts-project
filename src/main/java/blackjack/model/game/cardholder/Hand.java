@@ -1,6 +1,7 @@
 package blackjack.model.game.cardholder;
 
 import blackjack.model.game.table.Deck;
+import blackjack.model.game.table.Table;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +38,10 @@ public class Hand {
         }
         return totValue;
     }
-    public void setBet(int bet) { this.bet = bet; }
+    public void setBet(int bet) {
+        this.bet = bet;
+        Table.getInstance().getPlayer().setBalance(Table.getInstance().getPlayer().getBalance() - bet);
+    }
     public int getBet() {
         return bet;
     }

@@ -7,4 +7,9 @@ public class Dealer extends CardHolder {
         super(deck);
         hand.addCard(deck);
     }
+    public void takeTurn(Deck deck) {
+        while (hand.getValue() < 17) {
+            hand.addCard(deck);
+        }
+    }
 }

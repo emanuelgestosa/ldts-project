@@ -9,9 +9,6 @@ import blackjack.model.menu.Menu;
 import blackjack.states.GameState;
 import blackjack.states.MenuState;
 
-import javax.sound.sampled.Control;
-import java.io.IOException;
-
 public class BetController extends Controller<BetMenu> {
 
     public BetController(BetMenu betmenu) {
@@ -19,7 +16,11 @@ public class BetController extends Controller<BetMenu> {
     }
 
     @Override
-    public void step(Game game, GUI.ACTION action, long time) throws IOException {
+    public void step(Game game, GUI.ACTION action, long time) {
+        if (Table.getInstance().getPlayer().getBalance() < 50) {
+            game.setState(new MenuState(new Menu()));
+            return;
+        }
         switch (action) {
             case RIGHT:
                 getModel().nextEntry();
