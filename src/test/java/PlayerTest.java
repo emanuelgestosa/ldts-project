@@ -102,8 +102,8 @@ public class PlayerTest {
         player.getHand().addCard(new Card("%", "Q"));
         player.getHand().addCard(new Card("*", "Q"));
         Assertions.assertTrue(player.split(deck));
-        Assertions.assertEquals(1, player.getHand().getCards().size());
-        Assertions.assertEquals(1, player.getSplitHand().getCards().size());
+        Assertions.assertEquals(2, player.getHand().getCards().size());
+        Assertions.assertEquals(2, player.getSplitHand().getCards().size());
     }
     @Test
     public void split3() {
