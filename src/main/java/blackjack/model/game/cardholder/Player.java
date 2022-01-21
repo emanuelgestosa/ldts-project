@@ -2,6 +2,8 @@ package blackjack.model.game.cardholder;
 
 import blackjack.model.game.table.Deck;
 
+import java.util.Objects;
+
 public class Player extends CardHolder {
 
     private int balance;
@@ -33,7 +35,14 @@ public class Player extends CardHolder {
         return true;
     }
     public boolean split(Deck deck) {
-        return false;
+        if (isSplit() ||
+                hand.getCards().size() > 2 ||
+                !Objects.equals(hand.getCards().get(0).getSymbol(), hand.getCards().get(1).getSymbol()))
+            return false;
+        splitHand.getCards().add(hand.getCards().get(1));
+        hand.getCards().remove(1);
+        splitHand.setBet(hand.getBet());
+        return true;
     }
     public boolean isSplit() {
         return splitHand.getCards().size() != 0;
