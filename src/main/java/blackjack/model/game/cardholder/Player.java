@@ -37,13 +37,13 @@ public class Player extends CardHolder {
 
     public boolean doubleDown(Deck deck, boolean split) {
         if (!split) {
-            if (hand.getCards().size() != 2 || hand.getValue() >= 21) return false;
+            if (hand.getCards().size() != 2 || hand.getValue() >= 21 || hand.getBet()*2 > balance) return false;
             hand.addCard(deck);
             balance -= hand.getBet();
             hand.setBet(hand.getBet() * 2);
         }
         else {
-            if (splitHand.getCards().size() != 2 || splitHand.getValue() >= 21) return false;
+            if (splitHand.getCards().size() != 2 || splitHand.getValue() >= 21 || splitHand.getBet()*2 > balance) return false;
             splitHand.addCard(deck);
             balance -= splitHand.getBet();
             splitHand.setBet(splitHand.getBet() * 2);
