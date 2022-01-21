@@ -22,6 +22,10 @@ public class TableController extends GameController {
             game.setState(new EndState(new EndRoundMenu()));
             return;
         }
+        if (getModel().getPlayer().getHand().getValue() > 21) {
+            game.setState(new EndState(new EndRoundMenu()));
+            return;
+        }
         switch(action) {
             case QUIT:
                 game.setState(null);
