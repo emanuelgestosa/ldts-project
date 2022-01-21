@@ -11,7 +11,7 @@ public class Table {
 
     private final Player player;
     private final Dealer dealer;
-    private final Deck deck;
+    private Deck deck;
     private final List<String> entries;
     private int currentEntry = 0;
 
@@ -37,6 +37,7 @@ public class Table {
         return dealer;
     }
     public Deck getDeck() { return deck; }
+    public void setNDecks(int n) { deck = new Deck(n); }
     public void clear() {
         instance = new Table();
     }

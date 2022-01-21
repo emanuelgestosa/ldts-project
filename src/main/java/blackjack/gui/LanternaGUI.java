@@ -23,7 +23,6 @@ import java.net.URL;
 public class LanternaGUI implements GUI {
 
     private final Screen screen;
-    private final Terminal terminal;
 
     public LanternaGUI(int width, int height) throws IOException, URISyntaxException, FontFormatException {
         URL resource = getClass().getClassLoader().getResource("DealerplateCalifornia-Regular10.ttf");
@@ -33,12 +32,11 @@ public class LanternaGUI implements GUI {
         ge.registerFont(font);
         Font loadedFont = font.deriveFont(Font.PLAIN,45);
         AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-        terminal = createTerminal(width, height, fontConfig);
+        Terminal terminal = createTerminal(width, height, fontConfig);
         screen = createScreen(terminal);
     }
 
-    public LanternaGUI(Screen screen, Terminal terminal) {
-        this.terminal = terminal;
+    public LanternaGUI(Screen screen) {
         this.screen = screen;
     }
 
@@ -96,12 +94,12 @@ public class LanternaGUI implements GUI {
 
     @Override
     public int getWidth() throws IOException {
-        return terminal.getTerminalSize().getColumns();
+        return screen.getTerminalSize().getColumns();
     }
 
     @Override
     public int getHeight() throws IOException {
-        return terminal.getTerminalSize().getRows();
+        return screen.getTerminalSize().getRows();
     }
 
     @Override
