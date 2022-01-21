@@ -32,6 +32,9 @@ public class Player extends CardHolder {
         hand.setBet(hand.getBet() * 2);
         return true;
     }
+    public boolean split(Deck deck) {
+        return false;
+    }
     public boolean isSplit() {
         return splitHand.getCards().size() != 0;
     }

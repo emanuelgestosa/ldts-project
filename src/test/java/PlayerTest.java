@@ -67,4 +67,25 @@ public class PlayerTest {
         player.getHand().addCard(new Card("*", "A"));
         Assertions.assertFalse(player.doubleDown(deck));
     }
+    @Test
+    public void split1() {
+        player.getHand().addCard(new Card("%", "Q"));
+        player.getHand().addCard(new Card("*", "A"));
+        Assertions.assertFalse(player.split(deck));
+    }
+    @Test
+    public void split2() {
+        player.getHand().addCard(new Card("%", "Q"));
+        player.getHand().addCard(new Card("*", "Q"));
+        Assertions.assertTrue(player.split(deck));
+        Assertions.assertEquals(1, player.getHand().getCards().size());
+        Assertions.assertEquals(1, player.getSplitHand().getCards().size());
+    }
+    @Test
+    public void split3() {
+        player.getHand().addCard(new Card("%", "Q"));
+        player.getHand().addCard(new Card("*", "A"));
+        player.getHand().addCard(new Card("*", "A"));
+        Assertions.assertFalse(player.split(deck));
+    }
 }
