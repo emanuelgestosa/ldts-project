@@ -33,4 +33,79 @@ public class TableTest {
         Assertions.assertEquals(2, table.getPlayer().getHand().getCards().size());
         Assertions.assertEquals(1, table.getDealer().getHand().getCards().size());
     }
+    @Test
+    public void calcWinnings1() {
+        table.getPlayer().getHand().addCard(new Card("%", "8"));
+        table.getPlayer().getHand().addCard(new Card("*", "A"));
+        table.getDealer().getHand().addCard(new Card("%", "8"));
+        table.getDealer().getHand().addCard(new Card("*", "K"));
+        Assertions.assertEquals(2, table.calcWinnings(table.getPlayer().getHand()));
+    }
+    @Test
+    public void calcWinnings2() {
+        table.getPlayer().getHand().addCard(new Card("%", "8"));
+        table.getPlayer().getHand().addCard(new Card("*", "A"));
+        table.getDealer().getHand().addCard(new Card("%", "Q"));
+        table.getDealer().getHand().addCard(new Card("*", "K"));
+        Assertions.assertEquals(0, table.calcWinnings(table.getPlayer().getHand()));
+    }
+    @Test
+    public void calcWinnings3() {
+        table.getPlayer().getHand().addCard(new Card("%", "8"));
+        table.getPlayer().getHand().addCard(new Card("*", "A"));
+        table.getDealer().getHand().addCard(new Card("%", "9"));
+        table.getDealer().getHand().addCard(new Card("*", "K"));
+        Assertions.assertEquals(1, table.calcWinnings(table.getPlayer().getHand()));
+    }
+    @Test
+    public void calcWinnings4() {
+        table.getPlayer().getHand().addCard(new Card("%", "K"));
+        table.getPlayer().getHand().addCard(new Card("*", "A"));
+        table.getDealer().getHand().addCard(new Card("%", "Q"));
+        table.getDealer().getHand().addCard(new Card("*", "K"));
+        Assertions.assertEquals(2.5f, table.calcWinnings(table.getPlayer().getHand()));
+    }
+    @Test
+    public void calcWinnings5() {
+        table.getPlayer().getHand().addCard(new Card("%", "9"));
+        table.getPlayer().getHand().addCard(new Card("*", "A"));
+        table.getDealer().getHand().addCard(new Card("%", "A"));
+        table.getDealer().getHand().addCard(new Card("*", "K"));
+        Assertions.assertEquals(0, table.calcWinnings(table.getPlayer().getHand()));
+    }
+    @Test
+    public void calcWinnings6() {
+        table.getPlayer().getHand().addCard(new Card("%", "Q"));
+        table.getPlayer().getHand().addCard(new Card("*", "A"));
+        table.getDealer().getHand().addCard(new Card("%", "A"));
+        table.getDealer().getHand().addCard(new Card("*", "K"));
+        Assertions.assertEquals(0, table.calcWinnings(table.getPlayer().getHand()));
+    }
+    @Test
+    public void calcWinnings7() {
+        table.getPlayer().getHand().addCard(new Card("%", "9"));
+        table.getPlayer().getHand().addCard(new Card("*", "K"));
+        table.getPlayer().getHand().addCard(new Card("%", "5"));
+        table.getDealer().getHand().addCard(new Card("*", "A"));
+        table.getDealer().getHand().addCard(new Card("%", "6"));
+        Assertions.assertEquals(0, table.calcWinnings(table.getPlayer().getHand()));
+    }
+    @Test
+    public void calcWinnings8() {
+        table.getPlayer().getHand().addCard(new Card("%", "9"));
+        table.getPlayer().getHand().addCard(new Card("*", "K"));
+        table.getPlayer().getHand().addCard(new Card("*", "5"));
+        table.getDealer().getHand().addCard(new Card("%", "A"));
+        table.getDealer().getHand().addCard(new Card("*", "K"));
+        Assertions.assertEquals(0, table.calcWinnings(table.getPlayer().getHand()));
+    }
+    @Test
+    public void calcWinnings9() {
+        table.getPlayer().getHand().addCard(new Card("%", "9"));
+        table.getPlayer().getHand().addCard(new Card("*", "K"));
+        table.getDealer().getHand().addCard(new Card("%", "8"));
+        table.getDealer().getHand().addCard(new Card("*", "6"));
+        table.getDealer().getHand().addCard(new Card("*", "K"));
+        Assertions.assertEquals(2, table.calcWinnings(table.getPlayer().getHand()));
+    }
 }

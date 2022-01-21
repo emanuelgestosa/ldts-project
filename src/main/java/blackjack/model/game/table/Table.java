@@ -1,6 +1,7 @@
 package blackjack.model.game.table;
 
 import blackjack.model.game.cardholder.Dealer;
+import blackjack.model.game.cardholder.Hand;
 import blackjack.model.game.cardholder.Player;
 
 import java.util.Arrays;
@@ -55,6 +56,10 @@ public class Table {
         player.getHand().empty();
         player.getHand().setBet(0);
         dealer.getHand().empty();
+    }
+
+    public float calcWinnings(Hand hand) {
+        return 0;
     }
 
     public void dealCards() {
