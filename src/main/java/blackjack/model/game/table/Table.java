@@ -68,10 +68,10 @@ public class Table {
             if (hand.hasBlackjack()) return 1;
             else return 0;
         }
-        if(hand.hasBlackjack()) return 2.5f;
-        if(hand.bust()) return 0;
-        if(dealer.getHand().bust()) return 2;
-        if(hand.getValue() > dealer.getHand().getValue()) return 2;
+        if (hand.hasBlackjack() && !player.isSplit()) return 2.5f;
+        if (hand.bust()) return 0;
+        if (dealer.getHand().bust()) return 2;
+        if (hand.getValue() > dealer.getHand().getValue()) return 2;
         if (hand.getValue() < dealer.getHand().getValue())  return 0;
         return 1;
     }
