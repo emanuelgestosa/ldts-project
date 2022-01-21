@@ -41,15 +41,14 @@ public class Player extends CardHolder {
             hand.addCard(deck);
             balance -= hand.getBet();
             hand.setBet(hand.getBet() * 2);
-            return true;
         }
         else {
             if (splitHand.getCards().size() != 2 || splitHand.getValue() >= 21) return false;
             splitHand.addCard(deck);
             balance -= splitHand.getBet();
             splitHand.setBet(splitHand.getBet() * 2);
-            return true;
         }
+        return true;
     }
     public boolean split(Deck deck) {
         if (isSplit() ||

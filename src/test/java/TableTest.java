@@ -13,17 +13,32 @@ public class TableTest {
     @BeforeEach
     private void helper() {
         table = Table.getInstance();
+        table.getPlayer().getHand().empty();
+        table.getDealer().getHand().empty();
         table.getPlayer().getHand().addCard(new Card("%", "A"));
-        table.getDealer().getHand().addCard(new Card("*", "2"));
+        table.getDealer().getHand().addCard(new Card("*", "7"));
+        table.getDealer().getHand().addCard(new Card("*", "K"));
+        table.getPlayer().setBalance(1000);
         table.getPlayer().getHand().setBet(500);
     }
 
     @Test
-    public void prepareNewRound() {
+    public void prepareNewRound1() {
+        table.getPlayer().getHand().addCard(new Card("*", "Q"));
         table.prepareNewRound();
         Assertions.assertEquals(0, table.getPlayer().getHand().getCards().size());
         Assertions.assertEquals(0, table.getDealer().getHand().getCards().size());
         Assertions.assertEquals(0, table.getPlayer().getHand().getBet());
+        Assertions.assertEquals(1750, table.getPlayer().getBalance());
+    }
+    @Test
+    public void prepareNewRound2() {
+        table.getPlayer().getHand().addCard(new Card("*", "2"));
+        table.prepareNewRound();
+        Assertions.assertEquals(0, table.getPlayer().getHand().getCards().size());
+        Assertions.assertEquals(0, table.getDealer().getHand().getCards().size());
+        Assertions.assertEquals(0, table.getPlayer().getHand().getBet());
+        Assertions.assertEquals(500, table.getPlayer().getBalance());
     }
     @Test
     public void dealCards() {
