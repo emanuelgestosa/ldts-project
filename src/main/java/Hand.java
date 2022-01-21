@@ -45,16 +45,4 @@ public class Hand {
     public void setBet(int bet) {
         this.bet = bet;
     }
-
-    public boolean hasBlackjack(){
-        if(getValue() == 21 && getHand().size() ==2)
-            return true;
-        return false;
-    }
-
-    public boolean bust(){
-        if (getValue()>21)
-            return true;
-        return false;
-    }
 }

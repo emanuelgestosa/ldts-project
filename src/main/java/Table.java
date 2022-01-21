@@ -72,13 +72,13 @@ public class Table {
     }
 
     public float calculateWhoWon(Hand hand){
-        if(dealer.getHand().hasBlackjack()) {
-            if (hand.hasBlackjack()) return 1;
-                else return 0;
+        if(dealer.hasBlackjack()) {
+            if (hand.getValue() == 21 && hand.getCards().size() == 2) return 1;
+            else return 0;
         }
-        if(hand.hasBlackjack() && !player.isSplit()) return 2.5f;
-        if(hand.bust()) return 0;
-        if(dealer.getHand().bust()) return 2;
+        if(hand.getValue() == 21 && hand.getCards().size() == 2) return 2.5f;
+        if(hand.getValue() > 21) return 0;
+        if(dealer.getHand().getValue() > 21) return 2;
         if(hand.getValue() > dealer.getHand().getValue()) return 2;
         if (hand.getValue() < dealer.getHand().getValue())  return 0;
         return 1;
@@ -97,9 +97,5 @@ public class Table {
 
     public Dealer getDealer() {
         return dealer;
-    }
-
-    public Deck getDeck() {
-        return deck;
     }
 }

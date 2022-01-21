@@ -140,22 +140,14 @@ public class Player extends CardHolder{
     public Hand getSplitHand() {
         return splitHand;
     }
-
     public void reset(){
         super.reset();
         splitHand.getHand().clear();
-        splitHand.setBet(0);
+        splitHand = new Hand();
     }
 
     public void setSplitHand(Hand splitHand) {
         this.splitHand = splitHand;
-    }
-
-    public boolean isSplit(){
-        if(splitHand.getHand().size()==0)
-            return false;
-        else
-            return true;
     }
 
     public void insurance(GUI gui, Dealer dealer, Deck deck){
