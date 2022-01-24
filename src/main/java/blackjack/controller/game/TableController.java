@@ -18,22 +18,26 @@ public class TableController extends GameController {
     }
 
     public void step(Game game, GUI.ACTION action, long time) throws InterruptedException {
-        if (getModel().getPlayer().getHand().getValue() == 21) {
-            if (!getModel().getPlayer().isSplit()) {
-                getModel().getDealer().takeTurn(Table.getInstance().getDeck());
-                game.setState(new EndState(new EndRoundMenu()));
-            }
-            else game.setState(new GameSplitState(getModel()));
+        if (getModel().getPlayer().getHand().getValue() >= 21) {
+            endTurn(game);
             return;
         }
-        if (getModel().getPlayer().getHand().getValue() > 21) {
-            if (!getModel().getPlayer().isSplit()) {
-                getModel().getDealer().takeTurn(Table.getInstance().getDeck());
-                game.setState(new EndState(new EndRoundMenu()));
-            }
-            else game.setState(new GameSplitState(getModel()));
-            return;
+        selectAction(game, action);
+    }
+
+    public void takeDealerTurn(Game game){
+        getModel().getDealer().takeTurn(Table.getInstance().getDeck());
+        game.setState(new EndState(new EndRoundMenu()));
+    }
+
+    public void endTurn(Game game){
+        if (!getModel().getPlayer().isSplit()) {
+            takeDealerTurn(game);
         }
+        else game.setState(new GameSplitState(getModel()));
+    }
+
+    public void selectAction(Game game, GUI.ACTION action){
         switch(action) {
             case QUIT:
                 game.setState(null);
@@ -45,26 +49,25 @@ public class TableController extends GameController {
                 getModel().previousEntry();
                 break;
             case SELECT:
-                if (getModel().isSelectedExit()) game.setState(new MenuState(new Menu()));
-                else if (getModel().isSelectedHit()) getModel().getPlayer().hit(getModel().getDeck(), false);
-                else if (getModel().isSelectedStand()) {
-                    getModel().getPlayer().stand();
-                    if (!getModel().getPlayer().isSplit()) {
-                        getModel().getDealer().takeTurn(Table.getInstance().getDeck());
-                        game.setState(new EndState(new EndRoundMenu()));
-                    }
-                    else game.setState(new GameSplitState(getModel()));
-                }
-                else if (getModel().isSelectedDouble()) {
-                    if (!getModel().getPlayer().doubleDown(getModel().getDeck(), false)) break;
-                    if (!getModel().getPlayer().isSplit()) {
-                        getModel().getDealer().takeTurn(Table.getInstance().getDeck());
-                        game.setState(new EndState(new EndRoundMenu()));
-                    }
-                    else game.setState(new GameSplitState(getModel()));
-                }
-                else if (getModel().isSelectedSplit()) getModel().getPlayer().split(getModel().getDeck());
-                break;
+                caseSelect(game);
         }
+    }
+
+    public void caseSelect(Game game){
+        if (getModel().isSelectedExit()) game.setState(new MenuState(new Menu()));
+        else if (getModel().isSelectedHit()) getModel().getPlayer().hit(getModel().getDeck(), splitCase());
+        else if (getModel().isSelectedStand()) {
+            getModel().getPlayer().stand();
+            endTurn(game);
+        }
+        else if (getModel().isSelectedDouble()) {
+            if (!getModel().getPlayer().doubleDown(getModel().getDeck(), splitCase())) return;
+            endTurn(game);
+        }
+        else if (getModel().isSelectedSplit()) getModel().getPlayer().split(getModel().getDeck());
+    }
+
+    public boolean splitCase(){
+        return false;
     }
 }

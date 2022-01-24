@@ -11,48 +11,27 @@ import blackjack.states.MenuState;
 
 import java.io.IOException;
 
-public class TableSplitController extends GameController {
+public class TableSplitController extends TableController {
     public TableSplitController(Table table) {
         super(table);
     }
 
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws InterruptedException {
-        if (getModel().getPlayer().getSplitHand().getValue() == 21) {
-            getModel().getDealer().takeTurn(Table.getInstance().getDeck());
-            game.setState(new EndState(new EndRoundMenu()));
+        if (getModel().getPlayer().getSplitHand().getValue() >= 21) {
+            takeDealerTurn(game);
             return;
         }
-        if (getModel().getPlayer().getSplitHand().getValue() > 21) {
-            getModel().getDealer().takeTurn(Table.getInstance().getDeck());
-            game.setState(new EndState(new EndRoundMenu()));
-            return;
-        }
-        switch(action) {
-            case QUIT:
-                game.setState(null);
-                break;
-            case RIGHT:
-                getModel().nextEntry();
-                break;
-            case LEFT:
-                getModel().previousEntry();
-                break;
-            case SELECT:
-                if (getModel().isSelectedExit()) game.setState(new MenuState(new Menu()));
-                else if (getModel().isSelectedHit()) getModel().getPlayer().hit(getModel().getDeck(), true);
-                else if (getModel().isSelectedStand()) {
-                    getModel().getPlayer().stand();
-                    getModel().getDealer().takeTurn(Table.getInstance().getDeck());
-                    game.setState(new EndState(new EndRoundMenu()));
-                }
-                else if (getModel().isSelectedDouble()) {
-                    if (!getModel().getPlayer().doubleDown(getModel().getDeck(), true)) break;
-                    getModel().getDealer().takeTurn(Table.getInstance().getDeck());
-                    game.setState(new EndState(new EndRoundMenu()));
-                }
-                else if (getModel().isSelectedSplit()) getModel().getPlayer().split(getModel().getDeck());
-                break;
-        }
+        selectAction(game, action);
+    }
+
+    @Override
+    public void endTurn(Game game){
+        takeDealerTurn(game);
+    }
+
+    @Override
+    public boolean splitCase(){
+        return true;
     }
 }

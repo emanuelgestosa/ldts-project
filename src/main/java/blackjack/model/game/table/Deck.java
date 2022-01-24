@@ -13,19 +13,19 @@ public class Deck {
         this.deck = new Stack<Card>();
         for (int i = 0; i < num; i++) {
             for (String suit : new String[]{"%", "&", "*", "$"}) {
-                deck.add(new Card(suit, "A"));
-                deck.add(new Card(suit, "2"));
-                deck.add(new Card(suit, "3"));
-                deck.add(new Card(suit, "4"));
                 deck.add(new Card(suit, "5"));
-                deck.add(new Card(suit, "6"));
-                deck.add(new Card(suit, "7"));
-                deck.add(new Card(suit, "8"));
-                deck.add(new Card(suit, "9"));
-                deck.add(new Card(suit, "#"));
-                deck.add(new Card(suit, "J"));
-                deck.add(new Card(suit, "Q"));
-                deck.add(new Card(suit, "K"));
+                deck.add(new Card(suit, "5"));
+                deck.add(new Card(suit, "5"));
+                deck.add(new Card(suit, "5"));
+                deck.add(new Card(suit, "5"));
+                deck.add(new Card(suit, "5"));
+                deck.add(new Card(suit, "5"));
+                deck.add(new Card(suit, "5"));
+                deck.add(new Card(suit, "5"));
+                deck.add(new Card(suit, "5"));
+                deck.add(new Card(suit, "5"));
+                deck.add(new Card(suit, "5"));
+                deck.add(new Card(suit, "5"));
             }
         }
     }
