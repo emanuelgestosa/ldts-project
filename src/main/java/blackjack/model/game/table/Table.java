@@ -1,5 +1,6 @@
 package blackjack.model.game.table;
 
+import blackjack.model.Page;
 import blackjack.model.game.cardholder.Dealer;
 import blackjack.model.game.cardholder.Hand;
 import blackjack.model.game.cardholder.Player;
@@ -7,22 +8,20 @@ import blackjack.model.game.cardholder.Player;
 import java.util.Arrays;
 import java.util.List;
 
-public class Table {
+public class Table extends Page {
 
     private final Player player;
     private final Dealer dealer;
     private Deck deck;
-    private final List<String> entries;
-    private int currentEntry = 0;
 
     private static Table instance = null;
 
     private Table() {
+        super(Arrays.asList("Exit", "Hit", "Stand", "DoubleDown", "Split"));
         deck = new Deck(8);
         deck.shuffle();
         player = new Player();
         dealer = new Dealer();
-        this.entries = Arrays.asList("Exit", "Hit", "Stand", "DoubleDown", "Split");
     }
 
     public static Table getInstance() {
@@ -40,17 +39,6 @@ public class Table {
     public void setNDecks(int n) { deck = new Deck(n); }
     public void clear() {
         instance = new Table();
-    }
-    public void nextEntry() {
-        currentEntry++;
-        if (currentEntry > this.entries.size() - 1)
-            currentEntry = 0;
-    }
-
-    public void previousEntry() {
-        currentEntry--;
-        if (currentEntry < 0)
-            currentEntry = this.entries.size() - 1;
     }
 
     public void prepareNewRound() {
@@ -82,14 +70,6 @@ public class Table {
         dealer.getHand().addCard(deck);
     }
 
-    public String getEntry(int i) {
-        return entries.get(i);
-    }
-
-    public boolean isSelected(int i) {
-        return currentEntry == i;
-    }
-
     public boolean isSelectedExit() {
         return isSelected(0);
     }
@@ -108,9 +88,5 @@ public class Table {
 
     public boolean isSelectedSplit() {
         return isSelected(4);
-    }
-
-    public int getNumberEntries() {
-        return this.entries.size();
     }
 }

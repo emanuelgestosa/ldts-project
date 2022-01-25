@@ -1,34 +1,14 @@
 package blackjack.model.menu;
 
+import blackjack.model.Page;
+
 import java.util.Arrays;
 import java.util.List;
 
-public class ConfigsMenu {
-
-    private final List<String> entries;
-    private int currentEntry = 0;
+public class ConfigsMenu extends Page {
 
     public ConfigsMenu() {
-        this.entries = Arrays.asList("2", "3", "4", "5", "6", "7", "8", "Exit");
-    }
-    public void nextEntry() {
-        currentEntry++;
-        if (currentEntry > this.entries.size() - 1)
-            currentEntry = 0;
-    }
-
-    public void previousEntry() {
-        currentEntry--;
-        if (currentEntry < 0)
-            currentEntry = this.entries.size() - 1;
-    }
-
-    public String getEntry(int i) {
-        return entries.get(i);
-    }
-
-    public boolean isSelected(int i) {
-        return currentEntry == i;
+        super(Arrays.asList("2", "3", "4", "5", "6", "7", "8", "Exit"));
     }
 
     public boolean isSelected2() {
@@ -53,8 +33,4 @@ public class ConfigsMenu {
         return isSelected(6);
     }
     public boolean isSelectedExit() { return isSelected(7); }
-
-    public int getNumberEntries() {
-        return this.entries.size();
-    }
 }

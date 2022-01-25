@@ -1,34 +1,16 @@
 package blackjack.model.menu;
 
+import blackjack.model.Page;
+
 import java.util.Arrays;
 import java.util.List;
 
-public class BetMenu {
-    private final List<String> entries;
-    private int currentEntry = 0;
+public class BetMenu extends Page {
 
     public BetMenu()  {
-        this.entries = Arrays.asList("Exit", "50", "100", "250", "500", "1000");
-    }
-    public void nextEntry() {
-        currentEntry++;
-        if (currentEntry > this.entries.size() - 1)
-            currentEntry = 0;
+        super(Arrays.asList("Exit", "50", "100", "250", "500", "1000"));
     }
 
-    public void previousEntry() {
-        currentEntry--;
-        if (currentEntry < 0)
-            currentEntry = this.entries.size() - 1;
-    }
-
-    public String getEntry(int i) {
-        return entries.get(i);
-    }
-
-    public boolean isSelected(int i) {
-        return currentEntry == i;
-    }
 
     public boolean isSelectedExit() {
         return isSelected(0);
@@ -49,9 +31,5 @@ public class BetMenu {
     }
     public boolean isSelected1000() {
         return isSelected(5);
-    }
-
-    public int getNumberEntries() {
-        return this.entries.size();
     }
 }
