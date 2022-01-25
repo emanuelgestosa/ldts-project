@@ -61,7 +61,7 @@ We applied the **MVC pattern**.
 
 - **Implementation.**
 
-[!img](MISSING)
+[!img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/docs/docs/mvc.png)
 
 - **Consequences.**
 
@@ -83,7 +83,7 @@ We applied the **Singleton** design pattern. **Singleton** is a creational desig
 
 - **Implementation.**
 
-![img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/docs/docs/game-singleton.png)
+[!img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/docs/docs/game-singleton.png)
 
 - **Consequences.**
 
