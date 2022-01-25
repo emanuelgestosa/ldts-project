@@ -19,6 +19,7 @@ Visit the code <a href="./src">here</a>.
   * [We want to seperate internal representations of information from the ways information is presented to and accepted from the user](#we-want-to-seperate-internal-representations-of-information-from-the-ways-information-is-presented-to-and-accepted-from-the-user)
   * [We only want one instance of Game running](#we-only-want-one-instance-of-game-running)
   * [We want our program to be compatible with several GUI and also our Viewers shouldn't access the GUI directly](#we-want-our-program-to-be-compatible-with-several-gui-and-also-our-viewers-shouldn't-acess-the-gui-directly)
+  * [We want to make it easy for switching between the different menus and play states of the game](#we-want-to-make-it-easy-for-switching-between-the-different-menus-and-play-states-of-the-game)
 * [Code Smells](#code_smells)
   * [](#)
   * [](#)
@@ -109,6 +110,27 @@ We applied the **Adapter** pattern. The **Adapter** pattern is a structural desi
 By using the **Adapter** desgin pattern we ensure that:
 - The GUI interface and its Lanterna implementation are separated from the main program logic.
 - We can easily introduce a new graphical framework without changes to the client code, as long as we implement the methods in the GUI interface.
+
+### We want to make it easy for switching between the different menus and play states of the game.
+
+- **Problem in Context.**
+
+We have a ton of different menus and states of the gameplay (betting, playing without split, with split, etc), so we needed an easy and simple way to go back and forth between those.
+
+- **The Pattern.**
+
+We applied the **State** pattern. The **State** pattern is a behavioral design pattern that lets an object alter its behavior when its internal state changes.
+
+- **Implementation.**
+
+[!img](MISSING)
+
+- **Consequences.**
+
+By using the **State** design pattern we ensure that:
+- Our code is nicely organized, with each State having its own class.
+- We can easily add new states at any time without messing with the code of the other states.
+- Keep the code simple by avoiding massive conditional statements.
 
 ------
 
