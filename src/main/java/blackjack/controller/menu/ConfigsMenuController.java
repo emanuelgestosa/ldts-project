@@ -10,6 +10,9 @@ import blackjack.states.MenuState;
 
 import java.io.IOException;
 
+import static blackjack.gui.GUI.ACTION.LEFT;
+import static blackjack.gui.GUI.ACTION.RIGHT;
+
 public class ConfigsMenuController extends Controller<ConfigsMenu> {
     public ConfigsMenuController(ConfigsMenu model) {
         super(model);
@@ -17,21 +20,17 @@ public class ConfigsMenuController extends Controller<ConfigsMenu> {
 
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException, InterruptedException {
-        switch (action) {
-            case RIGHT:
-                getModel().nextEntry();
-                break;
-            case LEFT:
-                getModel().previousEntry();
-                break;
-            case SELECT:
-                if (!getModel().isSelectedExit()) {
-                    Table.getInstance().setNDecks(getModel().valueSelected());
-                }
-                game.setState(new MenuState(new Menu()));
-                break;
-            case QUIT:
-                game.setState(null);
+        if (action == RIGHT)
+            getModel().nextEntry();
+        else if (action == LEFT)
+            getModel().previousEntry();
+        selectQuit(game, action);
+    }
+
+    public void caseSelect(Game game){
+        if (!getModel().isSelectedExit()) {
+            Table.getInstance().setNDecks(getModel().valueSelected());
         }
+        game.setState(new MenuState(new Menu()));
     }
 }

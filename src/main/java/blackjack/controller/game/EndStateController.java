@@ -12,6 +12,9 @@ import blackjack.states.MenuState;
 
 import java.io.IOException;
 
+import static blackjack.gui.GUI.ACTION.LEFT;
+import static blackjack.gui.GUI.ACTION.RIGHT;
+
 public class EndStateController extends Controller<EndRoundMenu> {
 
     public EndStateController(EndRoundMenu menu) {
@@ -20,23 +23,18 @@ public class EndStateController extends Controller<EndRoundMenu> {
 
     @Override
     public void step(Game game, GUI.ACTION action, long time) throws IOException, InterruptedException {
-        switch (action) {
-            case QUIT:
-                game.setState(null);
-                break;
-            case RIGHT:
+            if(action==RIGHT)
                 getModel().nextEntry();
-                break;
-            case LEFT:
+            else if (action==LEFT)
                 getModel().previousEntry();
-                break;
-            case SELECT:
-                if (getModel().isSelectedNewRound()) {
-                    game.setState(new BetState(new BetMenu()));
-                    Table.getInstance().prepareNewRound();
-                }
-                else if (getModel().isSelectedExit()) game.setState(new MenuState(new Menu()));
-                break;
+            selectQuit(game, action);
+    }
+
+    public void caseSelect(Game game){
+        if (getModel().isSelectedNewRound()) {
+            game.setState(new BetState(new BetMenu()));
+            Table.getInstance().prepareNewRound();
         }
+        else if (getModel().isSelectedExit()) game.setState(new MenuState(new Menu()));
     }
 }

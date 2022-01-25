@@ -12,6 +12,9 @@ import blackjack.states.EndState;
 import blackjack.states.GameSplitState;
 import blackjack.states.MenuState;
 
+import static blackjack.gui.GUI.ACTION.LEFT;
+import static blackjack.gui.GUI.ACTION.RIGHT;
+
 public class TableController extends Controller<Table> {
 
     public TableController(Table table) {
@@ -39,19 +42,11 @@ public class TableController extends Controller<Table> {
     }
 
     public void selectAction(Game game, GUI.ACTION action){
-        switch(action) {
-            case QUIT:
-                game.setState(null);
-                break;
-            case RIGHT:
+        if(action==RIGHT)
                 getModel().nextEntry();
-                break;
-            case LEFT:
+        else if(action==LEFT)
                 getModel().previousEntry();
-                break;
-            case SELECT:
-                caseSelect(game);
-        }
+        selectQuit(game, action);
     }
 
     public void caseSelect(Game game){
