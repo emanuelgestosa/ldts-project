@@ -4,7 +4,7 @@ In this project you can simulate a BLACKJACK match, by making bets and playing w
 
 This project was developed by *Domingos Santos* (*up201906680*@fe.up.pt), *Emanuel Gestosa* (*up202005485*@fe.up.pt) & *Igor Liberato* (*up202000161*@fe.up.pt) for LDTS 2021⁄22.
 
-Visit the code <a href="./src">here</a>.
+Visit the code <a href="../src">here</a>.
 
 ![img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/docs/docs/game.gif)
 
@@ -18,7 +18,7 @@ Visit the code <a href="./src">here</a>.
 * [Design](#design)
   * [We want to seperate internal representations of information from the ways information is presented to and accepted from the user](#we-want-to-seperate-internal-representations-of-information-from-the-ways-information-is-presented-to-and-accepted-from-the-user)
   * [We only want one instance of Game running](#we-only-want-one-instance-of-game-running)
-  * [We want our program to be compatible with several GUI and also our Viewers shouldn't access Lanterna directly](#we-want-our-program-to-be-compatible-with-several-gui-and-also-our-viewers-shouldn't-acess-the-gui-directly)
+  * [We want our program to be compatible with several GUI and also our Viewers shouldn't access Lanterna directly](#we-want-our-program-to-be-compatible-with-several-gui-and-also-our-viewers-shouldn't-access-lanterna-directly)
   * [We want to make it easy for switching between the different menus and play states of the game](#we-want-to-make-it-easy-for-switching-between-the-different-menus-and-play-states-of-the-game)
   * [We needed a global access point for the Table and an unique instance of it running](#we-needed-a-global-access-point-for-the-table-and-an-unique-instance-of-it-running)
 * [Code Smells](#code_smells)
@@ -92,7 +92,7 @@ By using the **Singleton** desgin pattern we ensure that:
 - We have a global access point to that instance.
 - The instance is initialized only when it's requested for the first time.
 
-### We want our program to be compatible with several GUI and also our Viewers shouldn't access the GUI directly.
+### We want our program to be compatible with several GUI and also our Viewers shouldn't access Lanterna directly.
 
 - **Problem in Context.**
 
