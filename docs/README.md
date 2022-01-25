@@ -104,7 +104,7 @@ We applied the **Adapter** pattern. The **Adapter** pattern is a structural desi
 
 - **Implementation.**
 
-![img](MISSING)
+![img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/docs/docs/adapter.png)
 
 - **Consequences.**
 
