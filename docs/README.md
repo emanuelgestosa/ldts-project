@@ -17,6 +17,7 @@ Visit the code <a href="./src">here</a>.
   * [Dealer](#dealer)
 * [Design](#design)
   * [We want to seperate internal representations of information from the ways information is presented to and accepted from the user](#we-want-to-seperate-internal-representations-of-information-from-the-ways-information-is-presented-to-and-accepted-from-the-user)
+  * [We only want one instance of Game running](#we-only-want-one-instance-of-game-running)
 * [Code Smells](#code_smells)
   * [](#)
   * [](#)
@@ -67,7 +68,7 @@ By using the MVC pattern we ensure that:
 - Controllers that handles information received from the user.
 
 
-### GAME SHOULD ONLY BE INITIALIZED ONCE.
+### We only want one instance of Game running.
 
 - **Problem in Context.**
 
@@ -78,6 +79,7 @@ We didn't have any mesures to stop several instances of Game to be running, whic
 We applied the **Singleton** design pattern. **Singleton** is a creational design pattern that lets you ensure that a class has only one instance, while providing a global access point to this instance.
 
 - **Implementation.**
+
 ![img](https://i.imgur.com/sHrW6m2.png)
 
 - **Consequences.**
