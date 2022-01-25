@@ -83,7 +83,7 @@ We applied the **Singleton** design pattern. **Singleton** is a creational desig
 
 - **Implementation.**
 
-![img](https://i.imgur.com/sHrW6m2.png)
+![img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/docs/docs/game-singleton.png)
 
 - **Consequences.**
 
