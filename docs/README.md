@@ -18,7 +18,7 @@ Visit the code <a href="./src">here</a>.
 * [Design](#design)
   * [We want to seperate internal representations of information from the ways information is presented to and accepted from the user](#we-want-to-seperate-internal-representations-of-information-from-the-ways-information-is-presented-to-and-accepted-from-the-user)
   * [We only want one instance of Game running](#we-only-want-one-instance-of-game-running)
-  * [We want our program to be compatible with several GUI and also our Viewers shouldn't acess the GUI directly](#we-want-our-program-to-be-compatible-with-several-gui-and-also-our-viewers-shouldn't-acess-the-gui-directly)
+  * [We want our program to be compatible with several GUI and also our Viewers shouldn't access the GUI directly](#we-want-our-program-to-be-compatible-with-several-gui-and-also-our-viewers-shouldn't-acess-the-gui-directly)
 * [Code Smells](#code_smells)
   * [](#)
   * [](#)
@@ -55,7 +55,7 @@ In order to keep our code base more organized and readable we decided to use the
 
 - **The Pattern.**
 
-We applied the MVC pattern.
+We applied the **MVC pattern**.
 
 - **Implementation.**
 
@@ -89,6 +89,26 @@ By using the **Singleton** desgin pattern we ensure that:
 - The Game class has only a single instance.
 - We have a global access point to that instance.
 - The instance is initialized only when it's requested for the first time.
+
+### We want our program to be compatible with several GUI and also our Viewers shouldn't access the GUI directly.
+
+- **Problem in Context.**
+
+Our viewers should not have the need to know how to interact directly with Lanterna. We also didn't want our program to be dependent on the Lanterna framework, so we made it easy for a developer to use a different graphical framework without having to change any code in the viewers. 
+
+- **The Pattern.**
+
+We applied the **Adapter** pattern. The **Adapter** pattern is a structural design pattern that allows objects with incompatible interfaces to collaborate.
+
+- **Implementation.**
+
+[!img](MISSING)
+
+- **Consequences.**
+
+By using the **Adapter** desgin pattern we ensure that:
+- The GUI interface and its Lanterna implementation are separated from the main program logic.
+- We can easily introduce a new graphical framework without changes to the client code, as long as we implement the methods in the GUI interface.
 
 ------
 
