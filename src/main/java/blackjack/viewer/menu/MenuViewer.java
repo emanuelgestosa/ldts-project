@@ -6,8 +6,8 @@ import blackjack.model.menu.Menu;
 import blackjack.viewer.Viewer;
 
 public class MenuViewer extends Viewer<Menu> {
-    public MenuViewer(Menu menu) {
-        super(menu);
+    public MenuViewer(Menu model) {
+        super(model);
     }
 
     @Override

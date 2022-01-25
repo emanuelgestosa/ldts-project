@@ -4,7 +4,7 @@ import blackjack.controller.Controller;
 import blackjack.controller.game.TableSplitController;
 import blackjack.model.game.table.Table;
 import blackjack.viewer.Viewer;
-import blackjack.viewer.game.GameViewer;
+import blackjack.viewer.game.MidGameViewer;
 
 public class GameSplitState extends State<Table>{
 
@@ -14,7 +14,7 @@ public class GameSplitState extends State<Table>{
 
     @Override
     protected Viewer<Table> getViewer() {
-        return new GameViewer(getModel());
+        return new MidGameViewer(getModel());
     }
 
     @Override

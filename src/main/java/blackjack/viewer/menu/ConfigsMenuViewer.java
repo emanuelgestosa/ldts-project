@@ -13,7 +13,7 @@ public class ConfigsMenuViewer extends Viewer<ConfigsMenu> {
     }
 
     @Override
-    protected void drawElements(GUI gui) throws IOException {
+    protected void drawElements(GUI gui) {
         gui.drawText(new Position(28, 4), "Number of decks:", "#FFFFFF");
         for (int i = 0; i < getModel().getNumberEntries(); i++)
             gui.drawText(
