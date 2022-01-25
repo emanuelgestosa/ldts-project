@@ -18,6 +18,7 @@ Visit the code <a href="./src">here</a>.
 * [Design](#design)
   * [We want to seperate internal representations of information from the ways information is presented to and accepted from the user](#we-want-to-seperate-internal-representations-of-information-from-the-ways-information-is-presented-to-and-accepted-from-the-user)
   * [We only want one instance of Game running](#we-only-want-one-instance-of-game-running)
+  * [We want our program to be compatible with several GUI and also our Viewers shouldn't acess the GUI directly](#we-want-our-program-to-be-compatible-with-several-gui-and-also-our-viewers-shouldn't-acess-the-gui-directly)
 * [Code Smells](#code_smells)
   * [](#)
   * [](#)
