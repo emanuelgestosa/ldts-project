@@ -124,7 +124,7 @@ We applied the **State** pattern. The **State** pattern is a behavioral design p
 
 - **Implementation.**
 
-![img](MISSING)
+![img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/docs/docs/state.png)
 
 - **Consequences.**
 
