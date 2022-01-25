@@ -18,7 +18,7 @@ Visit the code <a href="./src">here</a>.
 * [Design](#design)
   * [We want to seperate internal representations of information from the ways information is presented to and accepted from the user](#we-want-to-seperate-internal-representations-of-information-from-the-ways-information-is-presented-to-and-accepted-from-the-user)
   * [We only want one instance of Game running](#we-only-want-one-instance-of-game-running)
-  * [We want our program to be compatible with several GUI and also our Viewers shouldn't access the GUI directly](#we-want-our-program-to-be-compatible-with-several-gui-and-also-our-viewers-shouldn't-acess-the-gui-directly)
+  * [We want our program to be compatible with several GUI and also our Viewers shouldn't access Lanterna directly](#we-want-our-program-to-be-compatible-with-several-gui-and-also-our-viewers-shouldn't-acess-the-gui-directly)
   * [We want to make it easy for switching between the different menus and play states of the game](#we-want-to-make-it-easy-for-switching-between-the-different-menus-and-play-states-of-the-game)
   * [We needed a global access point for the Table and an unique instance of it running](#we-needed-a-global-access-point-for-the-table-and-an-unique-instance-of-it-running)
 * [Code Smells](#code_smells)
