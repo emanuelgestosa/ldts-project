@@ -20,6 +20,7 @@ Visit the code <a href="./src">here</a>.
   * [We only want one instance of Game running](#we-only-want-one-instance-of-game-running)
   * [We want our program to be compatible with several GUI and also our Viewers shouldn't access the GUI directly](#we-want-our-program-to-be-compatible-with-several-gui-and-also-our-viewers-shouldn't-acess-the-gui-directly)
   * [We want to make it easy for switching between the different menus and play states of the game](#we-want-to-make-it-easy-for-switching-between-the-different-menus-and-play-states-of-the-game)
+  * [We needed a global access point for the Table and an unique instance of it running](#we-needed-a-global-access-point-for-the-table-and-an-unique-instance-of-it-running)
 * [Code Smells](#code_smells)
   * [](#)
   * [](#)
@@ -60,7 +61,7 @@ We applied the **MVC pattern**.
 
 - **Implementation.**
 
-![img](MISSING)
+[!img](MISSING)
 
 - **Consequences.**
 
@@ -132,21 +133,38 @@ By using the **State** design pattern we ensure that:
 - We can easily add new states at any time without messing with the code of the other states.
 - Keep the code simple by avoiding massive conditional statements.
 
+### We needed a global access point for the Table and an unique instance of it running.
+
+- **Problem in Context.**
+
+We don't need (and shouldn't) have more than one instance of Table running at any given time. It is also very convinient having a global access point to it.
+
+- **The Pattern.**
+
+Once again, we applied the **Singleton** pattern.
+
+- **Implementation.**
+
+[!img](MISSING)
+
+- **Consequences.**
+
+By using the **Singleton** desgin pattern we ensure that:
+- The Table class has only a single instance.
+- We have a global access point to that instance.
+- The instance is initialized only when it's requested for the first time.
+
 ------
 
 ## KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
 
-### Long Method
-Some functions like STEP on BetController have a lot of code lines. It can be fixed by calling other smaller functions that execute those lines, making it easier to analyze and to debug.
-- **Long Method** - Game.run() - Currently this method has two different functionalities (running the model.menu and the game itself). These two should be separated into individual methods.
 
-- **Long Class** - model.game.table.Table - This class does most of the heavy lifting for the flow of the game. As the code grows further we might need to extract some subclasses or interfaces to keep it from becoming more bloated.
 
 ------
 
 ### TESTING
 
-We currently only test the methods in gui.LanternaGUI with mockito. We haven't checked coverage or mutation testing for the time being.
+
 
 ### SELF-EVALUATION
 
