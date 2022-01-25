@@ -145,7 +145,7 @@ Once again, we applied the **Singleton** pattern.
 
 - **Implementation.**
 
-![img](MISSING)
+![img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/docs/docs/table-singleton.png)
 
 - **Consequences.**
 
