@@ -61,7 +61,7 @@ We applied the **MVC pattern**.
 
 - **Implementation.**
 
-[!img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/docs/docs/mvc.png)
+![img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/docs/docs/mvc.png)
 
 - **Consequences.**
 
@@ -83,7 +83,7 @@ We applied the **Singleton** design pattern. **Singleton** is a creational desig
 
 - **Implementation.**
 
-[!img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/docs/docs/game-singleton.png)
+![img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/docs/docs/game-singleton.png)
 
 - **Consequences.**
 
@@ -104,7 +104,7 @@ We applied the **Adapter** pattern. The **Adapter** pattern is a structural desi
 
 - **Implementation.**
 
-[!img](MISSING)
+![img](MISSING)
 
 - **Consequences.**
 
@@ -124,7 +124,7 @@ We applied the **State** pattern. The **State** pattern is a behavioral design p
 
 - **Implementation.**
 
-[!img](MISSING)
+![img](MISSING)
 
 - **Consequences.**
 
@@ -145,7 +145,7 @@ Once again, we applied the **Singleton** pattern.
 
 - **Implementation.**
 
-[!img](MISSING)
+![img](MISSING)
 
 - **Consequences.**
 
