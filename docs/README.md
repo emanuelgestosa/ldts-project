@@ -16,12 +16,7 @@ Visit the code <a href="./src">here</a>.
   * [Player](#player)
   * [Dealer](#dealer)
 * [Design](#design)
-  * [](#)
-  * [](#)
-  * [](#)
-  * [](#)
-  * [](#)
-  * [](#)
+  * [We want to seperate internal representations of information from the ways information is presented to and accepted from the user](#we-want-to-seperate-internal-representations-of-information-from-the-ways-information-is-presented-to-and-accepted-from-the-user)
 * [Code Smells](#code_smells)
   * [](#)
   * [](#)
@@ -35,7 +30,7 @@ Visit the code <a href="./src">here</a>.
 ## FEATURES
 
 #### Menus
-- The game has several menus: main menu, configs menu, bet menu and end round menu. Each one if this menus is represented by a State.
+- The game has several menus: main menu, configs menu, bet menu and end round menu. Each one of this menus is represented by a State.
  
 #### Table
 - The table is resposible for managing the game logic. Prepares new rounds (cleaning player's and dealer's hands and bet) and calculates winnings (or losses) after the end of each round.
@@ -48,6 +43,29 @@ Visit the code <a href="./src">here</a>.
 
 ### Dealer
 - The dealer will take his turn after the player has passed or has a hand of value 21 or above. The dealer will simply draw cards until his hand value hits 17 or more.
+
+## DESIGN
+
+### We want to seperate internal representations of information from the ways information is presented to and accepted from the user.
+
+- **Problem in Context.**
+In order to keep our code base more organized and readable we decided to use the Model-View-Controller architetural pattern. This way, our code will be separated into 3 distinct parts.
+
+- **The Pattern.**
+
+We applied the MVC pattern.
+
+- **Implementation.**
+
+![img](MISSING)
+
+- **Consequences.**
+
+By using the MVC pattern we ensure that:
+- We have models that contain the core functionality and data.
+- Views that display the information to the user.
+- Controllers that handles information received from the user.
+
 
 ### GAME SHOULD ONLY BE INITIALIZED ONCE.
 
