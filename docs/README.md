@@ -6,16 +6,15 @@ This project was developed by *Domingos Santos* (*up201906680*@fe.up.pt), *Emanu
 
 Visit the code <a href="./src">here</a>.
 
-![img](https://imgur.com/Jj5DIsk.gif)
+![img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/docs/docs/game.gif)
 
 
-## Menu
+## Jump to topic
 * [Implemented Features](#features)
-  * [Controller](#controller)
-  * [Player](#player)
+  * [Menus](#menus)
   * [Table](#table)
-  * [State](#state)
-  * [Viewer](#viewer)
+  * [Player](#player)
+  * [Dealer](#dealer)
 * [Design](#design)
   * [](#)
   * [](#)
@@ -33,36 +32,22 @@ Visit the code <a href="./src">here</a>.
 * [Self-Evaluation](#self_evaluation)
 
 
-## IMPLEMENTED FEATURES
-All of these features are evident in the [gif above](#lpoo_19---breakout).
+## FEATURES
 
-
-
-#### Controller
-- **Game.start** - Project's function that sets a timeout when there's no activity or plays while the code is running;
-- **"Controllers".step** -  This function is a Controller that manages players's actions and controlls to change the current state. It checks if it is a "RIGHT", "LEFT", "SELECT", "SPLIT", "DOUBLE", "STAND", "HIT" and more control and according to that, proceeds to execute them. This functionality is used in all Controller Classes;
-#### Player
-- **Player.hit** - This function computes a HIT;
-- **Player.doubleDown** - This function computes a DOUBLE DOWN;
-- **Player.split** - This function computes a SPLIT;
+#### Menus
+- The game has several menus: main menu, configs menu, bet menu and end round menu. Each one if this menus is represented by a State.
+ 
 #### Table
-- **Table.prepareNewRound** - This function calculates each player's wins // loss and resets all cards, hands and bets;
-- **Table.calcWinnings** - This function calculates if it is a Win or a Lose;
-#### State
-- **State.step** - This function deals with user keyboard input and changes it states upon that input;
-#### Viewer
-// ACHAM NECESSÁRIO DESCREVER AS FUNÇOES DE DRAW?!
+- The table is resposible for managing the game logic. Prepares new rounds (cleaning player's and dealer's hands and bet) and calculates winnings (or losses) after the end of each round.
 
+#### Player
+- **Hit** - Gives a card to the player.
+- **Stand** - Passes the turn.
+- **Double Down** - Gives a card to the player, doubles the bet and passes the turn.
+- **Split** - Divides the player initial hand in two (requires an adicional bet). The player will then play first with the hand on the left and then with the one on the right.
 
-
-![img](https://i.imgur.com/3106A9I.png)
-
-A screenshot of the inicial state of the game (before any decisions have been made).
-Note that this is only a basic display, we definitley will work on it to make it more visually appeling.
-
-## PLANNED FEATURES
-
-- **Turn** - The player will decide which startegy is the best, according to his cards. He can choose between *Split*, *Double*, *Stand* & *Hit*.
+### Dealer
+- The dealer will take his turn after the player has passed or has a hand of value 21 or above. The dealer will simply draw cards until his hand value hits 17 or more.
 
 ### GAME SHOULD ONLY BE INITIALIZED ONCE.
 
