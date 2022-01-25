@@ -11,26 +11,21 @@ public class ConfigsMenu extends Page {
         super(Arrays.asList("2", "3", "4", "5", "6", "7", "8", "Exit"));
     }
 
-    public boolean isSelected2() {
-        return isSelected(0);
-    }
-    public boolean isSelected3() {
-        return isSelected(1);
-    }
-    public boolean isSelected4() {
-        return isSelected(2);
-    }
-    public boolean isSelected5() {
-        return isSelected(3);
-    }
-    public boolean isSelected6() {
-        return isSelected(4);
-    }
-    public boolean isSelected7() {
-        return isSelected(5);
-    }
-    public boolean isSelected8() {
-        return isSelected(6);
-    }
     public boolean isSelectedExit() { return isSelected(7); }
+
+    public int valueSelected(){
+        if (isSelected(0))
+            return 2;
+        else if(isSelected(1))
+            return 3;
+        else if(isSelected(2))
+            return 4;
+        else if(isSelected(3))
+            return 5;
+        else if(isSelected(4))
+            return 6;
+        else if(isSelected(5))
+            return 7;
+        else return 8;
+    }
 }

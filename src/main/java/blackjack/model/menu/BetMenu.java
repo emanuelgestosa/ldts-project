@@ -11,25 +11,19 @@ public class BetMenu extends Page {
         super(Arrays.asList("Exit", "50", "100", "250", "500", "1000"));
     }
 
-
     public boolean isSelectedExit() {
         return isSelected(0);
     }
 
-    public boolean isSelected50() {
-        return isSelected(1);
-    }
-
-    public boolean isSelected100() {
-        return isSelected(2);
-    }
-    public boolean isSelected250() {
-        return isSelected(3);
-    }
-    public boolean isSelected500() {
-        return isSelected(4);
-    }
-    public boolean isSelected1000() {
-        return isSelected(5);
+    public int valueSelected(){
+        if (isSelected(1))
+            return 50;
+        else if(isSelected(2))
+            return 100;
+        else if(isSelected(3))
+            return 250;
+        else if(isSelected(4))
+            return 500;
+        else return 1000;
     }
 }

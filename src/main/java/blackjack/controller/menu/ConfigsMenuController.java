@@ -25,13 +25,9 @@ public class ConfigsMenuController extends Controller<ConfigsMenu> {
                 getModel().previousEntry();
                 break;
             case SELECT:
-                if (getModel().isSelected2()) Table.getInstance().setNDecks(2);
-                else if (getModel().isSelected3()) Table.getInstance().setNDecks(3);
-                else if (getModel().isSelected4()) Table.getInstance().setNDecks(4);
-                else if (getModel().isSelected5()) Table.getInstance().setNDecks(5);
-                else if (getModel().isSelected6()) Table.getInstance().setNDecks(6);
-                else if (getModel().isSelected7()) Table.getInstance().setNDecks(7);
-                else if (getModel().isSelected8()) Table.getInstance().setNDecks(8);
+                if (!getModel().isSelectedExit()) {
+                    Table.getInstance().setNDecks(getModel().valueSelected());
+                }
                 game.setState(new MenuState(new Menu()));
                 break;
             case QUIT:

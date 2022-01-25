@@ -1,6 +1,7 @@
 package blackjack.controller.game;
 
 import blackjack.Game;
+import blackjack.controller.Controller;
 import blackjack.gui.GUI;
 import blackjack.model.game.table.Table;
 import blackjack.model.menu.BetMenu;
@@ -11,7 +12,7 @@ import blackjack.states.EndState;
 import blackjack.states.GameSplitState;
 import blackjack.states.MenuState;
 
-public class TableController extends GameController {
+public class TableController extends Controller<Table> {
 
     public TableController(Table table) {
         super(table);
