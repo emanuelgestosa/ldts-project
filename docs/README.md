@@ -158,6 +158,7 @@ By using the **Singleton** desgin pattern we ensure that:
 ### Duplicate Code
 
 Throughout the whole project, sometimes, there are two or more code fragments that look almost identical. A large number of conditional expressions are present and perform similar code.
+For example, on controllers like BetController, EndStateController, TableController... MenuController we always repeat the same conditions.
 To solve this code smell, we could merge these operators into a single condition through "Consolidate Conditional Expression" and "Extract Method" to place the condition in a separate method with an easy-to-understand name.
 
 
