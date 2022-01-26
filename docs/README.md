@@ -22,11 +22,8 @@ Visit the code <a href="../src">here</a>.
   * [We want to make it easy for switching between the different menus and play states of the game](#we-want-to-make-it-easy-for-switching-between-the-different-menus-and-play-states-of-the-game)
   * [We needed a global access point for the Table and an unique instance of it running](#we-needed-a-global-access-point-for-the-table-and-an-unique-instance-of-it-running)
 * [Code Smells](#code_smells)
-  * [](#)
-  * [](#)
-  * [](#)
-  * [](#)
-  * [](#)
+  * [Duplicate Code](#duplicate_code)
+  * [Temporary Field](#temporary_field)
 * [Testing](#testing)
 * [Self-Evaluation](#self_evaluation)
 
@@ -158,7 +155,15 @@ By using the **Singleton** desgin pattern we ensure that:
 
 ## KNOWN CODE SMELLS AND REFACTORING SUGGESTIONS
 
+### Duplicate Code
 
+Throughout the whole project, sometimes, there are two or more code fragments that look almost identical. A large number of conditional expressions are present and perform similar code.
+To solve this code smell, we could merge these operators into a single condition through "Consolidate Conditional Expression" and "Extract Method" to place the condition in a separate method with an easy-to-understand name.
+
+
+### Temporary Field
+On Player class, Hand splitHand is a private field that get its value only under certain circumstances, otherwise, it is empty.
+To solve this problem, we could put splitHand and all code operating it in a seperate class via "Extract Class".
 
 ------
 
