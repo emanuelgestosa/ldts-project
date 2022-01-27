@@ -170,6 +170,11 @@ To solve this problem, we could put splitHand and all code operating it in a sep
 
 ### TESTING
 
+#### Coverage Report
+
+![img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/docs/docs/test-coverage.png)
+
+#### Mutation Testing Report
 
 
 ### SELF-EVALUATION
