@@ -170,7 +170,8 @@ To solve this problem, we could put splitHand and all code operating it in a sep
 
 ### TESTING
 
-#### Coverage Report
+<a href="https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/tree/testing-report/docs/CoverageTestReport/test">Coverage Report</a>
+
 
 ![img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/master/docs/test-coverage.png)
 
