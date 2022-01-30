@@ -181,6 +181,6 @@ To solve this problem, we could put splitHand and all code operating it in a sep
 
 ### SELF-EVALUATION
 
-- Domingos Santos: ?? %
-- Emanuel Gestosa: ?? %
-- Igor Liberato: ?? %
+- Domingos Santos: 20 %
+- Emanuel Gestosa: 40 %
+- Igor Liberato: 40 %
