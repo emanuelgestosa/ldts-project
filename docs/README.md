@@ -177,6 +177,7 @@ To solve this problem, we could put splitHand and all code operating it in a sep
 
 #### Mutation Testing Report
 
+![img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/master/docs/mutation-report.png)
 
 ### SELF-EVALUATION
 
