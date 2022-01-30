@@ -2,9 +2,10 @@ plugins {
     id 'java'
     id 'application'
     id 'groovy'
+    id 'info.solidsoft.pitest' version '1.6.0'
 }
 
-group 'org.example'
+group 'blackjack'
 version '1.0-SNAPSHOT'
 
 dependencies {
@@ -25,5 +26,9 @@ test {
 }
 
 application {
-    mainClass.set("Application")
+    mainClass.set("Game")
+}
+
+pitest {
+    junit5PluginVersion = '0.12'
 }
