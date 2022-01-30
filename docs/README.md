@@ -179,6 +179,8 @@ To solve this problem, we could put splitHand and all code operating it in a sep
 
 ![img](https://github.com/FEUP-LDTS-2021/ldts-project-assignment-g1501/blob/master/docs/mutation-report.png)
 
+Em relação ao mutation testing, por algum motivo, não conseguimos correr corretamente as linhas de código necessárias à sua implementação, pelo que o resultado obtido de 0% sera irreal. Como tal gostaríamos que tivesse isso em consideração na avaliação deste ponto.
+
 ### SELF-EVALUATION
 
 - Domingos Santos: 20 %
