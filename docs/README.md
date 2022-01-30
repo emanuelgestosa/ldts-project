@@ -21,11 +21,11 @@ Visit the code <a href="../src">here</a>.
   * [We want our program to be compatible with several GUI and also our Viewers shouldn't access Lanterna directly](#we-want-our-program-to-be-compatible-with-several-gui-and-also-our-viewers-shouldn't-access-lanterna-directly)
   * [We want to make it easy for switching between the different menus and play states of the game](#we-want-to-make-it-easy-for-switching-between-the-different-menus-and-play-states-of-the-game)
   * [We needed a global access point for the Table and an unique instance of it running](#we-needed-a-global-access-point-for-the-table-and-an-unique-instance-of-it-running)
-* [Code Smells](#code_smells)
-  * [Duplicate Code](#duplicate_code)
-  * [Temporary Field](#temporary_field)
+* [Code Smells](#known-code-smells-and-refactoring-suggestions)
+  * [Duplicate Code](#duplicate-code)
+  * [Temporary Field](#temporary-field)
 * [Testing](#testing)
-* [Self-Evaluation](#self_evaluation)
+* [Self-Evaluation](#self-evaluation)
 
 
 ## FEATURES
